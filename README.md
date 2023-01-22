@@ -10,4 +10,3 @@ Kayla Dunnuck, Lorenz Carvajal, Rohan Simon, Todd Cooney
 Kayla Dunnuck & Lorenz Carvajal
 ###### Back-End Engineers:
 Rohan Simon & Todd Cooney
-
