@@ -11,6 +11,7 @@ import (
 const imageDir = "images/"
 
 func GetImage(c *gin.Context) {
+	// TODO: Implement this endpoint
 	log.Println("Get Image")
 	c.JSON(http.StatusOK, gin.H{"status": "ok"})
 }
