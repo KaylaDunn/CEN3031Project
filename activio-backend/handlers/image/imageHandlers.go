@@ -10,9 +10,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// file path to the image directory
-const imageDir = "images/"
-
 func GetImage(c *gin.Context) {
 	// TODO: Implement this endpoint
 	log.Println("Get Image")
