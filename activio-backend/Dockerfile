@@ -7,7 +7,17 @@ WORKDIR /go/src/app
 
 COPY . .
 
-# Install dependencies
+# Echo os and arch
+RUN echo "OS: $(uname -s)" && echo "Arch: $(uname -m)"
+
+# Install libvips
+RUN apt-get update && apt-get install -y libvips-dev
+
+# Set PKG_CONFIG_PATH for libvips
+ENV PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
+RUN pkg-config --libs vips
+
+# Install go dependencies
 RUN go get -d -v ./...
 
 # Build the app
