@@ -16,6 +16,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HeaderComponent } from './components/header/header.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { HeaderComponent } from './components/header/header.component';
     MatTableModule,
     MatBadgeModule,
     MatSnackBarModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
