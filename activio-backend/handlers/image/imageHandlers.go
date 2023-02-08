@@ -10,9 +10,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// file path to the image directory
-const imageDir = "images/"
-
 func GetImage(c *gin.Context) {
 	// TODO: Implement this endpoint
 	log.Println("Get Image")
@@ -40,9 +37,22 @@ func UploadImage(c *gin.Context) {
 	}
 
 	// Save the file to the server
-	fileData, _ := file.Open()
+	fileData, err := file.Open()
 
-	buffer, _ := io.ReadAll(fileData)
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Error uploading file"})
+		return
+	}
+
+	buffer, err := io.ReadAll(fileData)
+
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Error uploading file"})
+		return
+	}
+
 	defer fileData.Close()
 
 	hashedFilename, err := utils.CompressImage(buffer, 50, file.Filename)

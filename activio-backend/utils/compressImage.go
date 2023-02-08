@@ -10,7 +10,7 @@ import (
 const imageDir = "images/"
 
 func CompressImage(buffer []byte, quality int, fileName string) (string, error) {
-	// TODO: Implement this endpoint
+
 	hashName := StringHash(fileName)
 	log.Println(hashName)
 
@@ -21,6 +21,11 @@ func CompressImage(buffer []byte, quality int, fileName string) (string, error) 
 	}
 
 	processed, err := bimg.NewImage(converted).Process(bimg.Options{Quality: quality})
+
+	if err != nil {
+		log.Println(err)
+		return fileName, err
+	}
 
 	write := bimg.Write(imageDir+hashName+".webp", processed)
 	if write != nil {
