@@ -10,7 +10,7 @@ import (
 const imageDir = "images/"
 
 func CompressImage(buffer []byte, quality int, fileName string) (string, error) {
-	// TODO: Implement this endpoint
+
 	hashName := StringHash(fileName)
 	log.Println(hashName)
 
