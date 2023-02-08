@@ -16,11 +16,13 @@ import { MatTableModule } from '@angular/material/table';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HeaderComponent } from './components/header/header.component';
-
+import { LoginComponent } from './login/login.component';
+import {RouterModule } from '@angular/router'
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +40,13 @@ import { HeaderComponent } from './components/header/header.component';
     MatTableModule,
     MatBadgeModule,
     MatSnackBarModule,
+    RouterModule.forRoot([
+      
+      {
+        path: 'login',
+        component: LoginComponent
+      }
+      ])
   ],
   providers: [],
   bootstrap: [AppComponent]
