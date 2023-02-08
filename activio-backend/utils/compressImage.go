@@ -22,6 +22,11 @@ func CompressImage(buffer []byte, quality int, fileName string) (string, error) 
 
 	processed, err := bimg.NewImage(converted).Process(bimg.Options{Quality: quality})
 
+	if err != nil {
+		log.Println(err)
+		return fileName, err
+	}
+
 	write := bimg.Write(imageDir+hashName+".webp", processed)
 	if write != nil {
 		log.Println("Error saving file: " + fileName)
