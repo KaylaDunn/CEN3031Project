@@ -40,9 +40,21 @@ func UploadImage(c *gin.Context) {
 	}
 
 	// Save the file to the server
-	fileData, _ := file.Open()
+	fileData, err := file.Open()
+	// Check if there is an error
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Error opening file"})
+		return
+	}
 
-	buffer, _ := io.ReadAll(fileData)
+	buffer, err := io.ReadAll(fileData)
+	// Check if there is an error
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Error reading file"})
+		return
+	}
 	defer fileData.Close()
 
 	hashedFilename, err := utils.CompressImage(buffer, 50, file.Filename)
