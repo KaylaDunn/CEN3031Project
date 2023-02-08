@@ -1,8 +1,11 @@
 package image
 
 import (
+	"io"
 	"log"
 	"net/http"
+
+	utils "activio-backend/utils"
 
 	"github.com/gin-gonic/gin"
 )
@@ -37,17 +40,20 @@ func UploadImage(c *gin.Context) {
 	}
 
 	// Save the file to the server
-	// TODO: Hash the file name for storage
-	// TODO: Compress the image
-	err = c.SaveUploadedFile(file, imageDir + file.Filename)
+	fileData, _ := file.Open()
+
+	buffer, _ := io.ReadAll(fileData)
+	defer fileData.Close()
+
+	hashedFilename, err := utils.CompressImage(buffer, 50, file.Filename)
 	if err != nil {
 		log.Println(err)
-		c.JSON(http.StatusBadRequest, gin.H{"error": "File not uploaded"})
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Error uploading file"})
 		return
 	}
 
 	// Print the file name and time of upload
 	log.Printf("File: %s uploaded\n", file.Filename)
 
-	c.JSON(http.StatusOK, gin.H{"status": "ok"})
+	c.JSON(http.StatusOK, gin.H{"status": "ok", "hash name": hashedFilename})
 }
