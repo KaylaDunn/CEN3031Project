@@ -51,6 +51,10 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
       {
         path: 'login',
         component: LoginComponent
+      },
+      {
+        path: '',
+        component: HeaderComponent
       }
       ]),
       MatFormFieldModule,
