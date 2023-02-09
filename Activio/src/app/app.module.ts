@@ -17,12 +17,14 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './login/login.component';
-import {RouterModule } from '@angular/router'
+import {RouterModule } from '@angular/router';
+import { WelcomeComponent } from './welcome/welcome.component'
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
