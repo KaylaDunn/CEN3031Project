@@ -1,0 +1,8 @@
+- User stories
+  - answer
+- What issues your team planned to address
+  - answer
+- Which ones were successfully completed
+  - answer
+- Which ones didn't and why?
+  - answer
