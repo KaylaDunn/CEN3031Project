@@ -1,0 +1,25 @@
+mat-card {
+    width: fit-content;
+}
+
+.main-div {
+    height: 13vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.location-div {
+    height: 11vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-us-div {
+    height: 14vh;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}

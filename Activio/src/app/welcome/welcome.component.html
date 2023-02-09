@@ -1,23 +1,43 @@
 
-<mat-card>
-    <mat-card-header>
-        <mat-card-title>
-            Welcome to Activio!
-        </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        Find the best activities to do around the world and meet other travelers.
-    </mat-card-content>
-</mat-card>
+<div class="main-div">
+    <mat-card class="activio-welcome">
+        <mat-card-header>
+            <mat-card-title>
+                Welcome to Activio!
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            Find the best activities to do around the world and meet other travelers.
+        </mat-card-content>
+    </mat-card>
+</div>
 
 <router-outlet></router-outlet>
 
-<mat-form-field appearance="fill" [style.width.%]="35">
-    Where to?
-    <input [style.width.%]="70" matInput placeholder="Enter desired destination...">
-    <mat-hint algin="end">Hint</mat-hint>
-</mat-form-field>
+<div class="location-div">
+    <mat-form-field appearance="fill" [style.width.%]="23">
+        Where to?
+        <input [style.width.%]="60" matInput placeholder="Enter desired destination...">
+        <mat-hint algin="end">Hint</mat-hint>
+    </mat-form-field>
+    
+    <button mat-raised-button color="primary">
+        Go!
+    </button>
+</div>
 
-<button mat-raised-button color="primary">
-    Go!
-</button>
+<div class="about-us-div">
+    <mat-card class="about-us">
+        <mat-card-header>
+            <mat-card-title>
+                About us
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            Activio aims to connect people passionate about travel and provide an easy way to find things to do, 
+            whether it be in your local city or a dream vacation. Created by students at the University of Florida,
+            it is a free and accessible way to learn about the rich cultural life around the world and spice up 
+            any trip. Follow friends, like and comment on posted activities, and have fun exploring!
+        </mat-card-content>
+    </mat-card>
+</div>
