@@ -17,8 +17,12 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './login/login.component';
-import {RouterModule } from '@angular/router';
-import { WelcomeComponent } from './welcome/welcome.component'
+import { RouterModule } from '@angular/router';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {TextFieldModule} from '@angular/cdk/text-field';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +52,10 @@ import { WelcomeComponent } from './welcome/welcome.component'
         path: 'login',
         component: LoginComponent
       }
-      ])
+      ]),
+      MatFormFieldModule,
+      TextFieldModule,
+      MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]
