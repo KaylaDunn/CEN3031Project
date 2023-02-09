@@ -22,13 +22,15 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {TextFieldModule} from '@angular/cdk/text-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { LogsuccessComponent } from './logsuccess/logsuccess.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     LoginComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    LogsuccessComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,10 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
         path: '',
         component: HeaderComponent
       },
-     
+      {
+        path: 'logsuccess',
+        component: LogsuccessComponent
+      }
       ]),
       MatFormFieldModule,
       TextFieldModule,
