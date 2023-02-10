@@ -17,11 +17,10 @@ func main() {
 	r.MaxMultipartMemory = 8 << 20  // 8 MiB
 
   // Single image endpoints
-  r.GET("/image", image.GetImage)
+  r.Static("/image", "./images")
   r.POST("/image", image.UploadImage)
 
   // Multiple image endpoints
-  // r.GET("/images", image.GetImages) TODO: Implement this endpoint
   r.POST("/images", image.MultipleImageUpload)
 
 
