@@ -13,8 +13,14 @@ func main() {
   // as stated in the documentation:
 	r.MaxMultipartMemory = 8 << 20  // 8 MiB
 
+  // Single image endpoints
   r.GET("/image", image.GetImage)
   r.POST("/image", image.UploadImage)
+
+  // Multiple image endpoints
+  // r.GET("/images", image.GetImages) TODO: Implement this endpoint
+  r.POST("/images", image.MultipleImageUpload)
+
 
   r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
