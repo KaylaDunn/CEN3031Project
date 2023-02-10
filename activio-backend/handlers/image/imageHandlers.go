@@ -10,12 +10,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func GetImage(c *gin.Context) {
-	// TODO: Implement this endpoint
-	log.Println("Get Image")
-	c.JSON(http.StatusOK, gin.H{"status": "ok"})
-}
-
 func UploadImage(c *gin.Context) {
 	// This endpoint is used to upload an image to the server
 
