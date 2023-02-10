@@ -4,10 +4,13 @@ import (
 	"github.com/gin-gonic/gin"
 
 	image "activio-backend/handlers/image"
+	utils "activio-backend/utils"
 )
 
 func main() {
   r := gin.Default()
+
+  utils.CreateImageDir()
 
   // Set a lower memory limit for multipart forms (default is 32 MiB)
   // as stated in the documentation:
