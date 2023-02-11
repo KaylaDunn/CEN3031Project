@@ -5,10 +5,11 @@ ENV PORT=8080
 
 WORKDIR /go/src/app
 
-COPY . .
+# Copy go.mod and go.sum
+COPY go.mod go.sum ./
 
-# Echo os and arch
-RUN echo "OS: $(uname -s)" && echo "Arch: $(uname -m)"
+# Install go dependencies
+RUN go mod download
 
 # Install libvips
 RUN apt-get update && apt-get install -y libvips-dev
@@ -17,8 +18,8 @@ RUN apt-get update && apt-get install -y libvips-dev
 ENV PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 RUN pkg-config --libs vips
 
-# Install go dependencies
-RUN go get -d -v ./...
+# Copy the source code
+COPY . .
 
 # Build the app
 RUN go build -o main .
