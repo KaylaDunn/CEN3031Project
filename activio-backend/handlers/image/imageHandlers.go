@@ -74,6 +74,16 @@ func MultipleImageUpload(c *gin.Context) {
 
 	files := form.File["images"]
 
+	// Make sure there are files to upload
+	if len(files) == 0 {
+		log.Println("No files to upload")
+		c.JSON(http.StatusBadRequest, gin.H{"error": "No files to upload"})
+		return
+	}
+
+	// Store all uploaded filenames to return to the caller
+	filenames := []string{}
+
 	for _, file := range files {
 		// Check to see if the file is an image (jpg, png, etc.)
 		fileType := file.Header["Content-Type"][0]
@@ -102,16 +112,20 @@ func MultipleImageUpload(c *gin.Context) {
 
 		defer fileData.Close()
 
-		_, err = utils.CompressImage(buffer, 50, file.Filename)
+		compressedName, err := utils.CompressImage(buffer, 50, file.Filename)
 		if err != nil {
 			log.Println(err)
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Error uploading file"})
 			return
 		}
 
+		// Append the filename to the list of filenames
+		filenames = append(filenames, compressedName + ".webp")
+
 		// Print the file name and time of upload
 		log.Printf("File: %s uploaded\n", file.Filename)
 	}
 
-	c.JSON(http.StatusOK, gin.H{"status": "ok"})
+	// Return the list of filenames to the caller
+	c.JSON(http.StatusOK, gin.H{"status": "ok", "filenames": filenames})
 }
