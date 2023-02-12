@@ -5,14 +5,14 @@ ENV PORT=8080
 
 WORKDIR /go/src/app
 
+# Install libvips
+RUN apt-get update && apt-get install -y libvips-dev
+
 # Copy go.mod and go.sum
 COPY go.mod go.sum ./
 
 # Install go dependencies
 RUN go mod download
-
-# Install libvips
-RUN apt-get update && apt-get install -y libvips-dev
 
 # Set PKG_CONFIG_PATH for libvips
 ENV PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
@@ -21,7 +21,8 @@ RUN pkg-config --libs vips
 # Copy the source code
 COPY . .
 
-# Build the app
+# Uncomment to build the app 
+# Build the app 
 RUN go build -o main .
 
 # Expose the port
