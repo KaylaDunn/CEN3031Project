@@ -1,9 +1,11 @@
 services:
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: activio-backend
-    command: ./main
+    entrypoint: ["./main"]
     ports:
       - "3000:8080"
-    volumes:
-      - .:/go/src/app
+    volumes: # Mount images folder
+      - ./images:/go/src/app/images
