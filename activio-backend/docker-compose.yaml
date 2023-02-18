@@ -1,5 +1,19 @@
 services:
-  app:
+  db: # MySQL container
+    image: mysql
+    container_name: activio-db
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: activio
+      MYSQL_USER: activio
+      MYSQL_PASSWORD: activio
+    volumes: # Mount database folder
+      - ./db-dump:/var/lib/mysql
+  app: # Backend container
     build:
       context: .
       dockerfile: Dockerfile
@@ -9,3 +23,5 @@ services:
       - "3000:8080"
     volumes: # Mount images folder
       - ./images:/go/src/app/images
+    depends_on:
+      - db
