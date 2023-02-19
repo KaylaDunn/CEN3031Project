@@ -2,3 +2,4 @@ images/
 .DS_Store
 main
 db-dump/
+.vscode/
