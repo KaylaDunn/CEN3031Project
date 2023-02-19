@@ -1,7 +1,8 @@
 package initialize
 
 import (
-	"activio-backend/handlers/image"
+	handlers "activio-backend/handlers"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
@@ -16,15 +17,16 @@ func InitRoutes(r *gin.Engine) {
 
   // Alive endpoint
   r.GET(apiPrefix + "/alive", func(c *gin.Context) {
-    c.JSON(200, gin.H{
+    c.JSON(http.StatusOK, gin.H{
       "message": "I'm alive!",
     })
   })
 
-  // Single image endpoints
+  // image endpoints
   r.Static(apiPrefix + "/image", "./images")
-  r.POST(apiPrefix + "/image", image.UploadImage)
+  r.POST(apiPrefix + "/image", handlers.UploadImage)
+  r.POST(apiPrefix + "/images", handlers.MultipleImageUpload)
 
-  // Multiple image endpoints
-  r.POST(apiPrefix + "/images", image.MultipleImageUpload)
+  // user endpoints
+  r.POST(apiPrefix + "/user", handlers.CreateNewUser)
 }
