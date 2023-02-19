@@ -3,17 +3,19 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 
+	db "activio-backend/db"
 	initialize "activio-backend/initialize"
 	utils "activio-backend/utils"
 )
 
 func main() {
   r := gin.Default()
+  
+  db.InitDb()
+  initialize.InitRoutes(r)
 
   utils.CreateImageDir()
 
-  initialize.InitRoutes(r)
 
-
-  r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
+  r.Run() // listen and serve on 0.0.0.0:8080
 }
