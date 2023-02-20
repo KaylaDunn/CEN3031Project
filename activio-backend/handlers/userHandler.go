@@ -29,7 +29,7 @@ func CreateNewUser(c *gin.Context) {
 
 	// Check to see if the user already exists
 	var existingUser models.User
-	db.DB.Where("email = ?", user.Email).First(&existingUser)
+	db.DB.Find(&existingUser, "email = ?", user.Email)
 
 	if existingUser.Email != "" {
 		log.Println("User already exists")
