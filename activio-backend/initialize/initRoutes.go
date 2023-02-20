@@ -15,18 +15,20 @@ func InitRoutes(r *gin.Engine) {
   // as stated in the documentation:
   r.MaxMultipartMemory = 8 << 20  // 8 MiB
 
+  api := r.Group(apiPrefix)
+
   // Alive endpoint
-  r.GET(apiPrefix + "/alive", func(c *gin.Context) {
+  api.GET("/alive", func(c *gin.Context) {
     c.JSON(http.StatusOK, gin.H{
       "message": "I'm alive!",
     })
   })
 
   // image endpoints
-  r.Static(apiPrefix + "/image", "./images")
-  r.POST(apiPrefix + "/image", handlers.UploadImage)
-  r.POST(apiPrefix + "/images", handlers.MultipleImageUpload)
+  api.Static("/image", "./images")
+  api.POST("/image", handlers.UploadImage)
+  api.POST("/images", handlers.MultipleImageUpload)
 
   // user endpoints
-  r.POST(apiPrefix + "/user", handlers.CreateNewUser)
+  api.POST("/user", handlers.CreateNewUser)
 }
