@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"io"
 	"log"
 	"net/http"
 
@@ -22,34 +21,9 @@ func UploadImage(c *gin.Context) {
 		return
 	}
 
-	// Check to see if the file is an image (jpg, png, etc.)
-	fileType := file.Header["Content-Type"][0]
-	if fileType != "image/jpeg" && fileType != "image/png" {
-		log.Println("File is not an image")
-		c.JSON(http.StatusBadRequest, gin.H{"error": "File is not an image"})
-		return
-	}
+	// Save image to server
+	hashedFilename, err := utils.SaveImage(file, 50)
 
-	// Save the file to the server
-	fileData, err := file.Open()
-
-	if err != nil {
-		log.Println(err)
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Error uploading file"})
-		return
-	}
-
-	buffer, err := io.ReadAll(fileData)
-
-	if err != nil {
-		log.Println(err)
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Error uploading file"})
-		return
-	}
-
-	defer fileData.Close()
-
-	hashedFilename, err := utils.CompressImage(buffer, 50, file.Filename)
 	if err != nil {
 		log.Println(err)
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Error uploading file"})
@@ -85,34 +59,10 @@ func MultipleImageUpload(c *gin.Context) {
 	filenames := []string{}
 
 	for _, file := range files {
-		// Check to see if the file is an image (jpg, png, etc.)
-		fileType := file.Header["Content-Type"][0]
-		if fileType != "image/jpeg" && fileType != "image/png" {
-			log.Println("File is not an image")
-			c.JSON(http.StatusBadRequest, gin.H{"error": "File is not an image"})
-			return
-		}
+		
+		// Save image to server
+		compressedName, err := utils.SaveImage(file, 50)
 
-		// Save the file to the server
-		fileData, err := file.Open()
-
-		if err != nil {
-			log.Println(err)
-			c.JSON(http.StatusBadRequest, gin.H{"error": "Error uploading file"})
-			return
-		}
-
-		buffer, err := io.ReadAll(fileData)
-
-		if err != nil {
-			log.Println(err)
-			c.JSON(http.StatusBadRequest, gin.H{"error": "Error uploading file"})
-			return
-		}
-
-		defer fileData.Close()
-
-		compressedName, err := utils.CompressImage(buffer, 50, file.Filename)
 		if err != nil {
 			log.Println(err)
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Error uploading file"})
@@ -120,10 +70,10 @@ func MultipleImageUpload(c *gin.Context) {
 		}
 
 		// Append the filename to the list of filenames
-		filenames = append(filenames, compressedName + ".webp")
-
+		filenames = append(filenames, compressedName)
+		
 		// Print the file name and time of upload
-		log.Printf("File: %s uploaded\n", file.Filename)
+		log.Printf("File: %s uploaded\n", file.Filename) 
 	}
 
 	// Return the list of filenames to the caller
