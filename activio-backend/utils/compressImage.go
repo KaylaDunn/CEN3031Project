@@ -34,6 +34,6 @@ func CompressImage(buffer []byte, quality int, fileName string) (string, error) 
 		return fileName, err
 	}
 
-	return hashName, nil
+	return hashName + ".webp", nil
 
 }
