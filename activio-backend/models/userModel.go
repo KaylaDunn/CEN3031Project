@@ -12,5 +12,5 @@ type User struct {
 	LastName string `json:"lastName" binding:"required,min=2,max=20"`
 	Email    string `json:"email" binding:"required,email"`
 	Verified bool   `json:"verified"`
-	// ProfilePicture string `json:"profilePicture"` // TODO:IMPLEMENT LATER
+	ProfilePicture string `json:"profilePicture"`
 }
