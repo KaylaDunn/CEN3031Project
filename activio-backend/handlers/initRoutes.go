@@ -1,7 +1,6 @@
-package initialize
+package handlers
 
 import (
-	handlers "activio-backend/handlers"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -26,9 +25,9 @@ func InitRoutes(r *gin.Engine) {
 
   // image endpoints
   api.Static("/image", "./images")
-  api.POST("/image", handlers.UploadImage)
-  api.POST("/images", handlers.MultipleImageUpload)
+  api.POST("/image", UploadImage)
+  api.POST("/images", MultipleImageUpload)
 
   // user endpoints
-  api.POST("/user", handlers.CreateNewUser)
+  api.POST("/user", CreateNewUser)
 }

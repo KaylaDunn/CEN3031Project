@@ -4,7 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 
 	db "activio-backend/db"
-	initialize "activio-backend/initialize"
+	handlers "activio-backend/handlers"
 	utils "activio-backend/utils"
 )
 
@@ -12,7 +12,7 @@ func main() {
   r := gin.Default()
   
   db.InitDb()
-  initialize.InitRoutes(r)
+  handlers.InitRoutes(r)
 
   utils.CreateImageDir()
 
