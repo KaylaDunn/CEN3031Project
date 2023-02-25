@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	utils "activio-backend/utils"
+	"activio-backend/utils"
 
 	"github.com/gin-gonic/gin"
 )

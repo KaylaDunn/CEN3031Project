@@ -4,9 +4,9 @@ import (
 	"log"
 	"net/http"
 
-	db "activio-backend/db"
-	models "activio-backend/models"
-	utils "activio-backend/utils"
+	"activio-backend/db"
+	"activio-backend/models"
+	"activio-backend/utils"
 
 	"github.com/gin-gonic/gin"
 )

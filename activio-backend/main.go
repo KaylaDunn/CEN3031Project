@@ -3,9 +3,9 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 
-	db "activio-backend/db"
-	handlers "activio-backend/handlers"
-	utils "activio-backend/utils"
+	"activio-backend/db"
+	"activio-backend/handlers"
+	"activio-backend/utils"
 )
 
 func main() {
