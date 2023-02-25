@@ -1,7 +1,7 @@
 package db
 
 import (
-	models "activio-backend/models"
+	"activio-backend/models"
 	"log"
 
 	"gorm.io/driver/mysql"
