@@ -29,7 +29,7 @@ func CreateNewUser(c *gin.Context) {
 
 	// Check to see if the user already exists
 	var existingUser models.User
-	db.DB.Find(&existingUser, "email = ?", user.Email)
+	db.GetDB().Find(&existingUser, "email = ?", user.Email)
 
 	if existingUser.Email != "" {
 		log.Println("User already exists")
@@ -44,7 +44,7 @@ func CreateNewUser(c *gin.Context) {
 	user.Password = utils.HashPassword(user.Password)
 
 	// Create the user
-	db.DB.Create(&user)
+	db.GetDB().Create(&user)
 
 	// Return the user's email, id, verified status
 	c.JSON(http.StatusOK, gin.H{

@@ -8,7 +8,7 @@ import (
 	"gorm.io/gorm"
 )
 
-var DB *gorm.DB
+var dbInstance *gorm.DB
 
 func InitDb() {
 	dsn := "activio:activio@tcp(host.docker.internal:3306)/activio?charset=utf8mb4&parseTime=True&loc=Local"
@@ -18,12 +18,17 @@ func InitDb() {
 		log.Fatal(err)
 	}
 
-	DB = db
+	dbInstance = db
 
 	modelMigrate()
 }
 
+// Get db instance
+func GetDB() *gorm.DB {
+	return dbInstance
+}
+
 // Add models here
 func modelMigrate() {
-	DB.AutoMigrate(&models.User{})
+	dbInstance.AutoMigrate(&models.User{})
 }
