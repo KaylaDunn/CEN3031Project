@@ -1,8 +1,13 @@
 package utils
 
-const SECRET = "activio" // Get this from an environment variable
+import (
+	"golang.org/x/crypto/bcrypt"
+)
 
 func HashPassword(password string) string {
-	hashedPassword := StringHash(password + SECRET)
-	return hashedPassword
+	bytes, err := bcrypt.GenerateFromPassword([]byte(password), 14)
+	if err != nil {
+		panic(err)
+	}
+	return string(bytes)
 }
