@@ -29,5 +29,5 @@ func InitRoutes(r *gin.Engine) {
   api.POST("/images", MultipleImageUpload)
 
   // user endpoints
-  api.POST("/user", CreateNewUser)
+  api.POST("/signup", SignUp)
 }

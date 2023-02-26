@@ -11,7 +11,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func CreateNewUser(c *gin.Context) {
+func SignUp(c *gin.Context) {
 	// This endpoint is used to create a new user
 
 	// Create a new user object
