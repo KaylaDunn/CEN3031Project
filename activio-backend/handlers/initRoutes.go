@@ -30,4 +30,5 @@ func InitRoutes(r *gin.Engine) {
 
   // user endpoints
   api.POST("/signup", SignUp)
+  api.POST("/login", Login)
 }
