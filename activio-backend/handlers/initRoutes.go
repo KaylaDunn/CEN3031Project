@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"activio-backend/middleware"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -14,7 +15,8 @@ func InitRoutes(r *gin.Engine) {
   // as stated in the documentation:
   r.MaxMultipartMemory = 8 << 20  // 8 MiB
 
-  api := r.Group(apiPrefix)
+  api := r.Group(apiPrefix) // General API group
+  auth := api.Group("/auth", middleware.RequireAuth) // Auth group
 
   // Alive endpoint
   api.GET("/alive", func(c *gin.Context) {
@@ -30,4 +32,6 @@ func InitRoutes(r *gin.Engine) {
 
   // user endpoints
   api.POST("/signup", SignUp)
+  api.POST("/login", Login)
+  auth.GET("/verify", VerifyLoggedInStatus)
 }

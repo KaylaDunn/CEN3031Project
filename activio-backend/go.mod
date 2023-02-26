@@ -4,7 +4,10 @@ go 1.19
 
 require github.com/gin-gonic/gin v1.8.2
 
-require github.com/h2non/bimg v1.1.5
+require (
+	github.com/golang-jwt/jwt/v5 v5.0.0-rc.1
+	github.com/h2non/bimg v1.1.5
+)
 
 require github.com/go-sql-driver/mysql v1.7.0 // indirect
 
