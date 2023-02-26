@@ -48,8 +48,8 @@ func CreateNewUser(c *gin.Context) {
 
 	// Return the user's email, id, verified status
 	c.JSON(http.StatusOK, gin.H{
-		"email":    user.Email,
 		"id":       user.ID,
+		"email":    user.Email,
 		"verified": user.Verified,
 	})
 }
