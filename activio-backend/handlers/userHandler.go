@@ -101,3 +101,24 @@ func Login(c *gin.Context) {
 	c.SetCookie("Authorization", token, 3600 * 24, "", "", false, true)
 	c.JSON(http.StatusOK, gin.H{})
 }
+
+func VerifyLoggedInStatus(c *gin.Context) {
+	// This endpoint is used to verify if a user is logged in
+
+	// Get the user from the context
+	user, ok := c.Get("user")
+
+	// Check if there is an error
+	if !ok {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Error verifying logged in status"})
+		return
+	}
+
+
+	// Return the user's email, id, verified status
+	c.JSON(http.StatusOK, gin.H{
+		"id":       user.(models.User).ID,
+		"email":    user.(models.User).Email,
+		"verified": user.(models.User).Verified,
+	})
+}
