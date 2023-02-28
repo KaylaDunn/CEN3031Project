@@ -36,11 +36,10 @@ The following naming conventions are used throughout the documentation:
 - **Request Body:**
     - `username` - The username of the user
     - `password` - The password of the user
-    - `email` - The email of the user (Unique)
-- **Response Body:**
     - `firstName` - The first name of the user
     - `lastName` - The last name of the user
-    - `username` - The username of the user
+    - `email` - The email of the user (Unique)
+- **Response Body:**
     - `email` - The email of the user
     - `id` - The id of the user
     - `verified` - Whether the user has verified their email
