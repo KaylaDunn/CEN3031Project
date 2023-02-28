@@ -11,8 +11,10 @@ func TestHashPassword(t *testing.T) {
 		t.Errorf("got %t, wanted %t", got, want)
 	}
 
-	got = ComparePassword("incorrect", HashPassword("password"))
-	want = false
+}
+func TestHashPasswordFalse(t *testing.T) {
+	got := ComparePassword("incorrect", HashPassword("password"))
+	want := false
 
 	if got != want {
 		t.Errorf("got %t, wanted %t", got, want)
