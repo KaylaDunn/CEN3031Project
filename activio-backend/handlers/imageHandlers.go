@@ -17,7 +17,7 @@ func UploadImage(c *gin.Context) {
 	// Check if there is an error
 	if err != nil {
 		log.Println(err)
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Error uploading file"})
+		c.JSON(http.StatusBadRequest, gin.H{"Error": "Error uploading file"})
 		return
 	}
 
@@ -26,7 +26,7 @@ func UploadImage(c *gin.Context) {
 
 	if err != nil {
 		log.Println(err)
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Error uploading file"})
+		c.JSON(http.StatusBadRequest, gin.H{"Error": "Error uploading file"})
 		return
 	}
 
@@ -42,7 +42,7 @@ func MultipleImageUpload(c *gin.Context) {
 	form, err := c.MultipartForm()
 	if err != nil {
 		log.Println(err)
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Error uploading file"})
+		c.JSON(http.StatusBadRequest, gin.H{"Error": "Error uploading file"})
 		return
 	}
 
@@ -51,7 +51,7 @@ func MultipleImageUpload(c *gin.Context) {
 	// Make sure there are files to upload
 	if len(files) == 0 {
 		log.Println("No files to upload")
-		c.JSON(http.StatusBadRequest, gin.H{"error": "No files to upload"})
+		c.JSON(http.StatusBadRequest, gin.H{"Error": "No files to upload"})
 		return
 	}
 
@@ -65,7 +65,7 @@ func MultipleImageUpload(c *gin.Context) {
 
 		if err != nil {
 			log.Println(err)
-			c.JSON(http.StatusBadRequest, gin.H{"error": "Error uploading file"})
+			c.JSON(http.StatusBadRequest, gin.H{"Error": "Error uploading file"})
 			return
 		}
 
