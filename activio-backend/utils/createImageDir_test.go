@@ -10,7 +10,7 @@ func TestCreateImageDir(t *testing.T) {
 	CreateImageDir()
 	imageDirExists := true
 
-	if _, err := os.Stat("./images"); os.IsNotExist(err) {
+	if _, err := os.Stat("../images"); os.IsNotExist(err) {
 		imageDirExists = false
 	}
 
