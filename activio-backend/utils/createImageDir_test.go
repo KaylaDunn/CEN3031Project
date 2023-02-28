@@ -8,11 +8,10 @@ import (
 func TestCreateImageDir(t *testing.T) {
 
 	CreateImageDir()
-	imageDirExists := false
+	imageDirExists := true
 
-	_, err := os.Stat("./images")
-	if err == nil {
-		imageDirExists = true
+	if _, err := os.Stat("./images"); os.IsNotExist(err) {
+		imageDirExists = false
 	}
 
 	got := imageDirExists
