@@ -15,16 +15,16 @@ The following naming conventions are used throughout the documentation:
 # API Endpoints Grouped by Tag
 
 ## User Management
-- POST [api/signup](#api/signup)
-- POST [api/login](#api/login)
-- GET [api/auth/refreshtoken](#api/auth/refreshtoken)
+- POST [api/signup](#apisignup)
+- POST [api/login](#apilogin)
+- GET [api/auth/refreshtoken](#apiauthrefreshtoken)
 
 ## Image Management
-- POST [api/images](#api/images)
-- GET [api/image/[id]](#api/image/[id])
+- POST [api/images](#apiimages)
+- GET [api/image/[id]](#apiimageid)
 
 ## Miscellaneous
-- GET [api/alive](#api/alive)
+- GET [api/alive](#apialive)
 
 
 # Endpoints
