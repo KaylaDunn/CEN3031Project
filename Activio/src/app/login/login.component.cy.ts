@@ -27,4 +27,11 @@ describe('LoginComponent', () => {
         cy.mount(LoginComponent)
         cy.get('button').should('be.enabled')
     })
+
+    it('types username and password', () => {
+        cy.mount(LoginComponent)
+        cy.get('input[type="text"]').type('myUsername123')
+        cy.get('input[type="password"]').type('myPassword123')
+    })
+
 })
