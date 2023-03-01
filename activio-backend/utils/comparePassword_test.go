@@ -12,7 +12,7 @@ func TestComparePassword(t *testing.T) {
 	}
 
 }
-func TestComparePasswordFalse(t *testing.T) {
+func TestComparePasswordFail(t *testing.T) {
 
 	got := ComparePassword("wrong", HashPassword("password"))
 	want := false
