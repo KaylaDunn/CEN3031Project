@@ -3,15 +3,15 @@
     <h1>Sign Up</h1>
     <form method="post" appearance="fill">
             <label>Email Address</label>
-            <input type="text" name="e" placeholder="email.address@example.com" required="required" />
+            <input [(ngModel)]="registerUserData.email" type="text" name="email" placeholder="email.address@example.com" required="required" />
             <label>Username</label>
-            <input type="text" name="u" placeholder="user123" required="required" />
+            <input [(ngModel)]="registerUserData.username" type="text" name="username" placeholder="user123" required="required" />
             <label>Password</label>
-            <input type="password" name="p" placeholder="password" required="required" />
+            <input [(ngModel)]="registerUserData.password" type="password" name="password" placeholder="password" required="required" />
             <label>Confirm Password</label>
-            <input type="password" name="p" placeholder="password" required="required" />
+            <input [(ngModel)]="registerUserData.passwordconfirm" type="password" name="confirm" placeholder="password" required="required" />
     </form>
-    <button type="button" class="btn btn-secondary btn-block btn-large">
+    <button (click)="registerUser()" type="button" class="btn btn-secondary btn-block btn-large">
         <a>Create my account!</a>
     </button>
 </div>

@@ -1,9 +1,9 @@
 <div class="login">
   <h1>Login</h1>
   <form method="post">
-    <input type="text" name="u" placeholder="Username" required="required" />
-    <input type="password" name="p" placeholder="Password" required="required" />
-    <button type="button" class="btn btn-primary btn-block btn-large">
+    <input [(ngModel)]="loginUserData.username" type="text" name="u" placeholder="Username" required="required" />
+    <input [(ngModel)]="loginUserData.password" type="password" name="p" placeholder="Password" required="required" />
+    <button (click)="loginUser()" type="button" class="btn btn-primary btn-block btn-large">
       <a routerLink="/logsuccess">Let me in.</a>
     </button>
   </form>
@@ -12,7 +12,7 @@
 <p>Don't have an account? Create one below!</p>
 
 <div class="btn2">
-  <button type="signup" class="btn btn-secondary btn-block btn-large">
+  <button type="button" class="btn btn-secondary btn-block btn-large">
     <a routerLink="/createaccount">Create my account.</a>
   </button>
 </div>

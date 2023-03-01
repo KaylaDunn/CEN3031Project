@@ -24,7 +24,9 @@ import {TextFieldModule} from '@angular/cdk/text-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { LogsuccessComponent } from './logsuccess/logsuccess.component';
 import { CreateaccountComponent } from './createaccount/createaccount.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { AuthService } from './auth.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +39,7 @@ import { CreateaccountComponent } from './createaccount/createaccount.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     BrowserAnimationsModule,
     MatSidenavModule,
     MatGridListModule,
@@ -50,6 +53,7 @@ import { CreateaccountComponent } from './createaccount/createaccount.component'
     MatTableModule,
     MatBadgeModule,
     MatSnackBarModule,
+    HttpClientModule,
     RouterModule.forRoot([
       
       {
@@ -73,7 +77,7 @@ import { CreateaccountComponent } from './createaccount/createaccount.component'
       TextFieldModule,
       MatAutocompleteModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
