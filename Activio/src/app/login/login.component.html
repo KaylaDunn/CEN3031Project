@@ -3,7 +3,7 @@
   <form method="post">
     <input [(ngModel)]="loginUserData.email" type="text" name="u" placeholder="Email" required="required" />
     <input [(ngModel)]="loginUserData.password" type="password" name="p" placeholder="Password" required="required" />
-    <button (click)="loginUser()" type="button" class="btn btn-primary btn-block btn-large">
+    <button (click)="loginUser()" data-cy="b1" type="button" class="btn btn-primary btn-block btn-large">
       <a>Let me in.</a>
     </button>
   </form>
@@ -12,7 +12,7 @@
 <p>Don't have an account? Create one below!</p>
 
 <div class="btn2">
-  <button type="button" class="btn btn-secondary btn-block btn-large">
+  <button data-cy="b2" type="button" class="btn btn-secondary btn-block btn-large">
     <a routerLink="/createaccount">Create my account.</a>
   </button>
 </div>

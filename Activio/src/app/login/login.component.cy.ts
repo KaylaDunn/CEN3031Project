@@ -1,4 +1,7 @@
+import { TestBed } from '@angular/core/testing';
 import { LoginComponent } from "./login.component"; // import the login component
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { AuthService } from '../auth.service';
 
 // front end's first cypress test!
 // sources:
@@ -11,6 +14,12 @@ import { LoginComponent } from "./login.component"; // import the login componen
 // "describe" block contains all our tests in a file
 // takes 2 params: name of test suite & function that will execute the tests
 describe('LoginComponent', () => {
+
+    beforeEach(() => TestBed.configureTestingModule({
+        imports: [HttpClientTestingModule], 
+        providers: [AuthService]
+      }));
+
     // each "it" block is a test
     // first param: brief description of spec
     // 2nd param: function that contains test code

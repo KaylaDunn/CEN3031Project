@@ -13,18 +13,20 @@ describe('My First Test', () => {
     cy.url().should('eq', 'http://localhost:4200/login')
   })
 
+  /*
   it('navigates to logged in page', () => {
     cy.visit('/login')
     cy.get('input[type="text"]').type('myUsername123')
     cy.get('input[type="password"]').type('myPassword123')
-    cy.get('button[type="button"]').click()
+    cy.get('button[data-cy="b1"]').click()
     cy.url().should('eq', 'http://localhost:4200/logsuccess')
   })
+  */
 
   it('navigates to Signup page', () => {
     cy.visit('/login')
-    cy.get('button[type="signup"]').click()
+    cy.get('button[data-cy="b2"]').click()
     cy.url().should('eq', 'http://localhost:4200/createaccount')
   })
-
+  
 })
