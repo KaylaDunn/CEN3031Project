@@ -3,7 +3,10 @@
   - Created and set up Create Account page so that users can navigate to it from the Log In page and create an account if they do not have one. So far, the button on the Home page navigates to the Log In, where there are 2 buttons. The first one was completed last Sprint, but the second one navigates to the Create Account page. This is still missing data verification and inputting the account information into a database.
   - Implemented unit tests and end-to-end tests for all components and available buttons. Tests are described below.
   - Connection of the frontend and backend systems.
-  - <insert backend progress>
+  - Configured Backend to use Docker for containerization.
+  - Created a User Model using GORM and MySQL that can serialize/unserialize users in the database. 
+  - Added ability to login to the backend using JSON Web Tokens as authorization. 
+  - Updated API to allow the creation of users, login of users, and revalidate a user's token.
 - List unit tests and Cypress tests for frontend
   - Component tests:
     - Each component now has a .cy.ts file, which contains its component tests.
@@ -16,10 +19,10 @@
     - The second test checks that the Login button on the main page navigates to the Login page.
     - The third test checks that Create Account button on the Login page navigates to the Signup page.
 - List unit tests for backend
-  - 1
-  - 2
-  - 3
+  - Backend has near 1:1 mapping for each major function.
+  - Naming convention is as follows: `fileName_test.go`
+  - Please check each folder for the appropriate go tests
 - Add documentation for your backend API
-  - 1
+  - [API Documentation](https://github.com/KaylaDunn/CEN3031Project/tree/main/activio-backend)
 - Video presentation link
   - 1
