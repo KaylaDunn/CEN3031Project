@@ -23,6 +23,6 @@
   - Naming convention is as follows: `fileName_test.go`
   - Please check each folder for the appropriate go tests
 - Add documentation for your backend API
-  - [API Documentation](https://github.com/KaylaDunn/CEN3031Project/tree/main/activio-backend)
+  - [API Documentation](https://github.com/KaylaDunn/CEN3031Project/blob/main/activio-backend/README.md)
 - Video presentation link
   - 1
