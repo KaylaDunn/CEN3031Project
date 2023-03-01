@@ -21,7 +21,13 @@
 - List unit tests for backend
   - Backend has near 1:1 mapping for each major function.
   - Naming convention is as follows: `fileName_test.go`
-  - Please check each folder for the appropriate go tests
+  - Please check each folder for the appropriate go tests.
+    - userHandler_test.go tests user signup and login functionality with pass/fail test condition.
+    - comparePassword_test.go tests the comparePassword function with pass/fail test conditions.
+    - textStringHash_test.go tests the StringHash function with pass/fail test conditions.
+    - hashPassword_test.go tests the hashPassword function with pass/fail test conditions.
+    - createImageDir_test.go tests the functionality of the createImageDir function.
+    - initRoutes_test.go tests the functionality of the alive endpoint.
 - Add documentation for your backend API
   - [API Documentation](https://github.com/KaylaDunn/CEN3031Project/blob/main/activio-backend/README.md)
 - Video presentation link
