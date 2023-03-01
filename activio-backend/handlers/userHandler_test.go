@@ -122,8 +122,8 @@ func TestSignup(t *testing.T) {
 	want := true
 
 	body, _ := io.ReadAll(response.Body)
-	fmt.Println("response Body:", string(body))
-	println(string(body))
+	//fmt.Println("response Body:", string(body))
+	//println(string(body))
 
 	if string(body) == "{\"Error\":\"User already exists\"}" {
 		got = true
