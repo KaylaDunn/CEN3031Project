@@ -22,18 +22,20 @@ func TestStringHash(t *testing.T) {
 		t.Errorf("got %t, wanted %t", got, want)
 	}
 
-	// Hash an input string using SHA256
+}
+func TestStringHashFail(t *testing.T) {
 
+	// Hash an input string using SHA256
+	h := sha256.New()
 	h.Write([]byte("incorrectpassword"))
 
 	// Convert the hashed bytes to a string
-	hashedString = fmt.Sprintf("%x", h.Sum(nil))
+	hashedString := fmt.Sprintf("%x", h.Sum(nil))
 
-	got = hashedString == StringHash("password")
-	want = false
+	got := hashedString == StringHash("password")
+	want := false
 
 	if got != want {
 		t.Errorf("got %t, wanted %t", got, want)
 	}
-
 }

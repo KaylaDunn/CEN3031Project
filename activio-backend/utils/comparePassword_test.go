@@ -11,8 +11,11 @@ func TestComparePassword(t *testing.T) {
 		t.Errorf("got %t, wanted %t", got, want)
 	}
 
-	got = ComparePassword("wrong", HashPassword("password"))
-	want = false
+}
+func TestComparePasswordFail(t *testing.T) {
+
+	got := ComparePassword("wrong", HashPassword("password"))
+	want := false
 
 	if got != want {
 		t.Errorf("got %t, wanted %t", got, want)
