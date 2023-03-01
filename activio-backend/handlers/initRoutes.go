@@ -32,7 +32,7 @@ func InitRoutes(r *gin.Engine) {
 
   // user endpoints
   api.POST("/signup", SignUp)
-  api.OPTIONS("/signup", func(c *gin.Context) {
+  api.OPTIONS("/*", func(c *gin.Context) {
     c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
     c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
     c.Writer.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, UPDATE")
@@ -45,7 +45,7 @@ func InitRoutes(r *gin.Engine) {
       c.AbortWithStatus(204)
       return
     }
-    
+
   })
   api.POST("/login", Login)
   auth.GET("/refreshtoken", RefreshJWT)
