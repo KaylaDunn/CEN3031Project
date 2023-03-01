@@ -1,15 +1,20 @@
 # Sprint 2 Report #
 - Detail work you've completed in Sprint 2
   - Created and set up Create Account page so that users can navigate to it from the Log In page and create an account if they do not have one. So far, the button on the Home page navigates to the Log In, where there are 2 buttons. The first one was completed last Sprint, but the second one navigates to the Create Account page. This is still missing data verification and inputting the account information into a database.
-  - Implemented unit tests for all components. Unit tests are described below.
+  - Implemented unit tests and end-to-end tests for all components and available buttons. Tests are described below.
   - Connection of the frontend and backend systems.
   - <insert backend progress>
 - List unit tests and Cypress tests for frontend
-  - Each component now has a .cy.ts file, which contains its component tests.
-  - Each component has a test for mounting, which mounts the component into the test app in order to run functionality tests.
-  - Most components (header, createaccount, login, and welcome) have a functionality test that checks if its buttons are clickable.
-  - The only component that does not have this test is the logsuccess, because it does not have any buttons and no functionality to test.
-  - 
+  - Component tests:
+    - Each component now has a .cy.ts file, which contains its component tests.
+    - Each component has a test for mounting, which mounts the component into the test app in order to run functionality tests.
+    - Most components (header, createaccount, login, and welcome) have a functionality test that checks if its buttons are clickable.
+    - The only component that does not have this test is the logsuccess, because it does not have any buttons and no functionality to test.
+  - End-to-end tests:
+    - There are three additional tests in spec.cy.ts, checking the navigation.
+    - The first test checks that the main page loads successfully.
+    - The second test checks that the Login button on the main page navigates to the Login page.
+    - The third test checks that Create Account button on the Login page navigates to the Signup page.
 - List unit tests for backend
   - 1
   - 2
