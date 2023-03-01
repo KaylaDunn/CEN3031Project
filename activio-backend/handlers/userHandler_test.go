@@ -85,3 +85,42 @@ func TestLoginFail(t *testing.T) {
 		t.Errorf("got %t, wanted %t", got, want)
 	}
 }
+
+func TestSignup(t *testing.T) {
+
+	data := map[string]interface{}{
+		"username":  "bigchungus",
+		"password":  "bigchunguspassword",
+		"firstName": "Bugs",
+		"lastName":  "Bunny",
+		"email":     "bigchungus@ufl.edu",
+	}
+
+	jsonData, err := json.Marshal(data)
+	if err != nil {
+		fmt.Printf("could not marshal json: %s\n", err)
+		return
+	}
+
+	httpposturl := "http://0.0.0.0:3000/api/signup"
+
+	request, _ := http.NewRequest("POST", httpposturl, bytes.NewBuffer(jsonData))
+	request.Header.Set("Content-Type", "application/json; charset=UTF-8")
+
+	client := &http.Client{}
+	response, error := client.Do(request)
+	if error != nil {
+		panic(error)
+	}
+	defer response.Body.Close()
+
+	fmt.Println("response Status:", response.Status)
+	fmt.Println("response Headers:", response.Header)
+
+	got := response.Status == "200 OK"
+	want := true
+
+	if got != want {
+		t.Errorf("got %t, wanted %t", got, want)
+	}
+}
