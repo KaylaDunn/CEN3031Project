@@ -59,6 +59,7 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          
           "configurations": {
             "production": {
               "browserTarget": "Activio:build:production"
@@ -73,7 +74,6 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "Activio:build",
-            "proxyConfig": "src/proxy.config.json"
           }
         },
         "test": {
