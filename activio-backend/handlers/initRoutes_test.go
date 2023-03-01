@@ -31,7 +31,6 @@ func TestAliveEndpoint(t *testing.T) {
 	}
 	defer response.Body.Close()
 	body, _ := io.ReadAll(response.Body)
-	fmt.Println("response Body:", string(body))
 
 	got := string(body) == "{\"message\":\"I'm alive!\"}"
 	want := true

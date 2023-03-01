@@ -34,15 +34,6 @@ func TestLogin(t *testing.T) {
 	}
 	defer response.Body.Close()
 
-	fmt.Println("response Status:", response.Status)
-	fmt.Println("response Headers:", response.Header)
-
-	//save this business for now for reference later
-	//body, _ := ioutil.ReadAll(response.Body)
-	//fmt.Println("response Body:", string(body))
-
-	//fmt.Printf("json data: %s\n", jsonData)
-
 	got := response.Status == "200 OK"
 	want := true
 
@@ -75,9 +66,6 @@ func TestLoginFail(t *testing.T) {
 		panic(error)
 	}
 	defer response.Body.Close()
-
-	fmt.Println("response Status:", response.Status)
-	fmt.Println("response Headers:", response.Header)
 
 	got := response.Status == "400 Bad Request"
 	want := true
@@ -115,15 +103,10 @@ func TestSignup(t *testing.T) {
 	}
 	defer response.Body.Close()
 
-	fmt.Println("response Status:", response.Status)
-	fmt.Println("response Headers:", response.Header)
-
 	got := response.Status == "200 OK"
 	want := true
 
 	body, _ := io.ReadAll(response.Body)
-	//fmt.Println("response Body:", string(body))
-	//println(string(body))
 
 	if string(body) == "{\"Error\":\"User already exists\"}" {
 		got = true
