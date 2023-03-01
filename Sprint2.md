@@ -1,7 +1,7 @@
 # Sprint 2 Report #
 - Detail work you've completed in Sprint 2
   - Created and set up Create Account page so that users can navigate to it from the Log In page and create an account if they do not have one. So far, the button on the Home page navigates to the Log In, where there are 2 buttons. The first one was completed last Sprint, but the second one navigates to the Create Account page. This is still missing data verification and inputting the account information into a database.
-  - Implemented unit tests and end-to-end tests for all components and available buttons. Tests are described below.
+  - Implemented unit tests and end-to-end tests for all components and available buttons/inputs. Tests are described below.
   - Connection of the frontend and backend systems.
   - Configured Backend to use Docker for containerization.
   - Created a User Model using GORM and MySQL that can serialize/unserialize users in the database. 
@@ -12,7 +12,7 @@
     - Each component now has a .cy.ts file, which contains its component tests.
     - Each component has a test for mounting, which mounts the component into the test app in order to run functionality tests.
     - Most components (header, createaccount, login, and welcome) have a functionality test that checks if its buttons are clickable.
-    - The only component that does not have this test is the logsuccess, because it does not have any buttons and no functionality to test.
+    - There is also a test that makes sure the input text boxes are fillable.
   - End-to-end tests:
     - There are three additional tests in spec.cy.ts, checking the navigation.
     - The first test checks that the main page loads successfully.
@@ -31,4 +31,4 @@
 - Add documentation for your backend API
   - [API Documentation](https://github.com/KaylaDunn/CEN3031Project/blob/main/activio-backend/README.md)
 - Video presentation link
-  - 1
+  - [Sprint 2 Demo](https://youtu.be/TUmSeXbHywI)
