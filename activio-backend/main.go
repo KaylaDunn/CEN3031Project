@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 
 	"activio-backend/db"
@@ -10,6 +11,8 @@ import (
 
 func main() {
   r := gin.Default()
+
+  r.Use(cors.Default())
   
   db.InitDb()
   handlers.InitRoutes(r)
