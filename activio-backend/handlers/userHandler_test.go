@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"testing"
 )
@@ -121,7 +121,7 @@ func TestSignup(t *testing.T) {
 	got := response.Status == "200 OK"
 	want := true
 
-	body, _ := ioutil.ReadAll(response.Body)
+	body, _ := io.ReadAll(response.Body)
 	fmt.Println("response Body:", string(body))
 	println(string(body))
 
