@@ -15,7 +15,7 @@ func InitRoutes(r *gin.Engine) {
   // as stated in the documentation:
   r.MaxMultipartMemory = 8 << 20  // 8 MiB
 
-  api := r.Group(apiPrefix) // General API group
+  api := r.Group(apiPrefix, middleware.CORSMiddleware) // General API group
   auth := api.Group("/auth", middleware.RequireAuth) // Auth group
 
   // Alive endpoint
