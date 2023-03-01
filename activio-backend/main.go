@@ -12,7 +12,14 @@ import (
 func main() {
   r := gin.Default()
 
-  r.Use(cors.Default())
+  // Allow cors on localhost:3000, localhost:4200 for development
+  r.Use(cors.New(cors.Config{
+    AllowOrigins: []string{"http://localhost:3000", "http://localhost:4200"},
+    AllowMethods: []string{"GET", "POST", "PUT", "DELETE", "PATCH"},
+    AllowHeaders: []string{"Origin", "Content-Length", "Content-Type", "Authorization"},
+    ExposeHeaders: []string{"Content-Length", "Content-Type", "Authorization"},
+    AllowCredentials: true,
+  }))
   
   db.InitDb()
   handlers.InitRoutes(r)
