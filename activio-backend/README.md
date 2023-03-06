@@ -18,6 +18,7 @@ The following naming conventions are used throughout the documentation:
 - POST [api/signup](#apisignup)
 - POST [api/login](#apilogin)
 - GET [api/auth/refreshtoken](#apiauthrefreshtoken)
+- DELETE [api/auth/deleteaccount](#apiauthdeleteaccount)
 
 ## Image Management
 - POST [api/images](#apiimages)
@@ -64,6 +65,18 @@ The following naming conventions are used throughout the documentation:
     - None
 - **Response Header**
     - `Authorization` - The API key of the user (JWT token)
+
+### `api/auth/deleteaccount`
+- **Description:** Deletes the user's account and all of their data
+- **Method:** DELETE
+- **URL:** `/api/auth/deleteaccount`
+- **Request Body:**
+    - None
+- **Response Body:**
+    - On Success:
+        - `message` - "User deleted successfully"
+    - On Failure:
+        - `error` - "Unauthorized"
 
 ### `api/images`
 - **Description:** Upload multiple images
