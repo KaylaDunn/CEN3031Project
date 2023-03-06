@@ -6,7 +6,7 @@ ENV PORT=8080
 WORKDIR /go/src/app
 
 # Install libvips
-RUN apt-get update && apt-get install -y libvips-dev
+RUN apt-get update && apt-get install -y libvips-dev --no-install-recommends
 
 # Copy go.mod and go.sum
 COPY go.mod go.sum ./
