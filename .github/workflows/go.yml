@@ -22,7 +22,6 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y libvips-dev --no-install-recommends
-        go mod download
         PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
         pkg-config --libs vips
 
