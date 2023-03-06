@@ -10,6 +10,9 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: activio-backend
     steps:
     - uses: actions/checkout@v3
 
@@ -22,11 +25,12 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y libvips-dev --no-install-recommends
+        go mod download
         PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
         pkg-config --libs vips
 
     - name: Build App
-      run: go build -v activio-backend/main.go
+      run: go build -v ./...
 
 #     - name: Test App
-#       run: go test -v activio-backend/...
+#       run: go test -v ./...
