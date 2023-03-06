@@ -129,3 +129,34 @@ func RefreshJWT(c *gin.Context) {
 	c.SetCookie("Authorization", token, 3600 * 24, "", "", false, true)
 	c.JSON(http.StatusOK, gin.H{})
 }
+
+func DeleteUserAndUserData(c *gin.Context) {
+	// This endpoint is used to delete a user and all of their data
+
+	// Get the user from the context
+	user, ok := c.Get("user")
+
+	// Check if there is an error
+	if !ok {
+		c.JSON(http.StatusBadRequest, gin.H{"Error": "Error deleting user", "Suggestion": "Please try again later"})
+		return
+	}
+
+	// Verify if the user still exists
+	var existingUser models.User
+	db.GetDB().Find(&existingUser, "id = ?", user.(models.User).ID)
+
+	if existingUser.Email == "" {
+		log.Println("User does not exist")
+		c.JSON(http.StatusBadRequest, gin.H{"Error": "User does not exist", "Suggestion": "Please sign up or check your email"})
+		return
+	}
+
+	// Delete the user
+	db.GetDB().Delete(&models.User{}, user.(models.User).ID)
+
+	// TODO: Delete all of the user's data
+	
+	// Return a success message
+	c.JSON(http.StatusOK, gin.H{"message": "User deleted successfully"})
+}

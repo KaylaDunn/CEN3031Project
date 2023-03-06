@@ -34,4 +34,5 @@ func InitRoutes(r *gin.Engine) {
   api.POST("/signup", SignUp)
   api.POST("/login", Login)
   auth.GET("/refreshtoken", RefreshJWT)
+  auth.DELETE("/deleteaccount", DeleteUserAndUserData)
 }
