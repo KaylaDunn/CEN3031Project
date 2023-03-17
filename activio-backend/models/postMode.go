@@ -4,12 +4,12 @@ import (
 	"gorm.io/gorm"
 )
 
-type Posts struct {
+type Post struct {
 	gorm.Model
-	PostedBy string `json:"postedBy"`
-	PostDescription string `json:"postDescription"`
-	PostImages []string `json:"postImages"`
-	NumberOfLikes uint `json:"numberOfLikes"`
-	Comments []Comments `json:"comments"`
+	PostedBy uint `json:"postedBy"` // User ID
+	Description string `json:"postDescription"`
+	Longitude float64 `json:"longitude"`
+	Latitude float64 `json:"latitude"`
+	LocationName string `json:"locationName"`
 }
 

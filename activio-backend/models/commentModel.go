@@ -4,10 +4,9 @@ import (
 	"gorm.io/gorm"
 )
 
-type Comments struct {
-	gorm.Model
-	CommentedBy string `json:"commentedBy"`
+type Comment struct {
+	gorm.Model	
 	Comment string `json:"comment"`
-	PostId uint `json:"postId"`
-	NumberOfLikes uint `json:"numberOfLikes"`
+	CommentedBy uint `json:"commentedBy"` // User ID
+	CommentedOn uint `json:"commentedOn"` // Post ID
 }
