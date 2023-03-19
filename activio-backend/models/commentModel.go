@@ -8,5 +8,5 @@ type Comment struct {
 	gorm.Model	
 	Comment string `json:"comment"`
 	CommentedBy uint `json:"commentedBy"` // User ID
-	CommentedOn uint `json:"commentedOn"` // Post ID
+	CommentedOn uint `json:"commentedOn" gorm:"index"` // Post ID
 }
