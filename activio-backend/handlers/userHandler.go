@@ -160,3 +160,23 @@ func DeleteUserAndUserData(c *gin.Context) {
 	// Return a success message
 	c.JSON(http.StatusOK, gin.H{"message": "User deleted successfully"})
 }
+
+func getUserDetails(c *gin.Context) {
+	// Return user details
+
+	// Get the user from the context
+	user, ok := c.Get("user")
+
+	// Check if there is an error
+	if !ok {
+		c.JSON(http.StatusBadRequest, gin.H{"Error": "Error getting user details", "Suggestion": "Please try again later"})
+		return
+	}
+
+	// Return the user's email, id, verified status
+	c.JSON(http.StatusOK, gin.H{
+		"id":       user.(models.User).ID,
+		"email":    user.(models.User).Email,
+		"verified": user.(models.User).Verified,
+	})
+}

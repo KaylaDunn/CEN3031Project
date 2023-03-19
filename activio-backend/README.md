@@ -19,6 +19,7 @@ The following naming conventions are used throughout the documentation:
 - POST [api/login](#apilogin)
 - GET [api/auth/refreshtoken](#apiauthrefreshtoken)
 - DELETE [api/auth/deleteaccount](#apiauthdeleteaccount)
+- GET [api/auth/me](#apiauthme)
 
 ## Image Management
 - POST [api/images](#apiimages)
@@ -78,6 +79,17 @@ The following naming conventions are used throughout the documentation:
     - On Failure:
         - `error` - "Unauthorized"
 
+### `api/auth/me`
+- **Description:** Gets the user's information
+- **Method:** GET
+- **URL:** `/api/auth/me`
+- **Request Body:**
+    - None
+- **Response Body:**
+    - `email` - The email of the user
+    - `id` - The id of the user
+    - `verified` - Whether the user has verified their email
+    
 ### `api/images`
 - **Description:** Upload multiple images
 - **Method:** POST
