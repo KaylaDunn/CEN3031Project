@@ -39,4 +39,5 @@ func InitRoutes(r *gin.Engine) {
 
   // post endpoints
   api.GET("/posts", GetPosts)
+  auth.POST("/createpost", createPost)
 }

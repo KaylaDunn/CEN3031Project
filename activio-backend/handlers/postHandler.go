@@ -66,3 +66,37 @@ func GetPosts(c *gin.Context) {
 		"posts": postResponses,
 	})
 }
+
+func createPost(c *gin.Context) {
+	// get the user id from the context
+	userID := c.MustGet("user").(models.User).ID
+
+	// get the post data from the request
+	var post models.Post
+	err := c.ShouldBindJSON(&post)
+	if err != nil {
+		log.Fatal(err)
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": "Bad request",
+		})
+		return
+	}
+
+	// set the user id of the post
+	post.UserID = userID
+
+	// create the post in the database
+	err = db.GetDB().Create(&post).Error
+	if err != nil {
+		log.Fatal(err)
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "error creating post",
+		})
+		return
+	}
+
+	// return the post
+	c.JSON(http.StatusOK, gin.H{
+		"post": post,
+	})
+}
