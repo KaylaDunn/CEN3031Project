@@ -6,7 +6,7 @@ import (
 
 type Post struct {
 	gorm.Model
-	PostedBy uint `json:"postedBy" gorm:"index"` // User ID
+	UserID uint `json:"postedBy" gorm:"index"` // User ID
 	Description string `json:"postDescription"`
 	Longitude float64 `json:"longitude"`
 	Latitude float64 `json:"latitude"`
