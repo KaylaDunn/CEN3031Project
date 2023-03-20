@@ -25,6 +25,10 @@ The following naming conventions are used throughout the documentation:
 - POST [api/images](#apiimages)
 - GET [api/image/[id]](#apiimageid)
 
+## Post Management
+- GET [api/posts](#apiposts)
+- POST [api/auth/createpost](#apiauthcreatepost)
+
 ## Miscellaneous
 - GET [api/alive](#apialive)
 
@@ -105,6 +109,25 @@ The following naming conventions are used throughout the documentation:
 - **URL:** `/api/image/[id]`
 - **Response Body:**
     - `image` - The image
+
+### `api/posts`
+- **Description:** Get all posts
+- **Method:** GET
+- **URL:** `/api/posts`
+- **Response Body:**
+    - `posts` - Up to 10 posts in the database
+
+### `api/auth/createpost`
+- **Description:** Create a post
+- **Method:** POST
+- **URL:** `/api/auth/createpost`
+- **Request Body:**
+    - `Description` - The description of the post
+    - `Longitude` - The longitude of the post (Type: Double)
+    - `Latitude` - The latitude of the post (Type: Double)
+    - `LocationName` - The name of the location of the post
+- **Response Body:**
+    - `post` - The post that was created
 
 ## `api/alive`
 - **Description:** Check if the server is alive
