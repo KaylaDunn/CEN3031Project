@@ -75,9 +75,10 @@ func createPost(c *gin.Context) {
 	var post models.Post
 	err := c.ShouldBindJSON(&post)
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 		c.JSON(http.StatusBadRequest, gin.H{
-			"message": "Bad request",
+			"message": "Error in request body",
+			"suggestion": "Check if the request body is valid JSON and if all required fields are present.",
 		})
 		return
 	}
@@ -88,7 +89,7 @@ func createPost(c *gin.Context) {
 	// create the post in the database
 	err = db.GetDB().Create(&post).Error
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"message": "error creating post",
 		})
