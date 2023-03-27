@@ -11,9 +11,9 @@ import (
 )
 
 type PostResponse struct {
-	models.Post
-	Images []models.Image `json:"images"`
-	Comments []models.Comment `json:"comments"`
+	models.PostApiResponse
+	Images []models.ImageApiResponse `json:"images"`
+	Comments []models.CommentApiResponse `json:"comments"`
 }
 
 func GetPosts(c *gin.Context) {

@@ -13,3 +13,9 @@ type Image struct {
 	Order int `json:"order"`
 	IsProfilePicture bool `json:"isProfilePicture"`
 }
+
+type ImageApiResponse struct {
+	ID uint `json:"id"`
+	Order int `json:"order"`
+	HashedFileName string `json:"fileName"`
+}

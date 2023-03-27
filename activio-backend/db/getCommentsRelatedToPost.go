@@ -6,10 +6,10 @@ import (
 	"activio-backend/models"
 )
 
-func GetCommentsRelatedToPost(postID uint) ([]models.Comment, error) {
-	var comments []models.Comment
+func GetCommentsRelatedToPost(postID uint) ([]models.CommentApiResponse, error) {
+	var comments []models.CommentApiResponse
 
-	err := GetDB().Where("commented_on = ?", postID).Find(&comments).Error
+	err := GetDB().Table("comments").Where("post_id = ?", postID).Find(&comments).Error
 
 	if err != nil {
 		log.Fatal(err)
