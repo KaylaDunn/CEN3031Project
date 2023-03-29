@@ -210,6 +210,7 @@ func AddImagesToPost (c *gin.Context) {
 
 	// Store all uploaded filenames to return to the caller
 	filenames := []string{}
+	images := []models.Image{}
 
 	for i, file := range files {
 		
@@ -228,24 +229,25 @@ func AddImagesToPost (c *gin.Context) {
 		// Print the file name and time of upload
 		log.Printf("File: %s uploaded\n", file.Filename) 
 
-		// Save the image to the database
-		image := models.Image{
+		// Save the image 
+		images = append(images, models.Image{
 			UploadedBy: userID,
 			PostID : post.ID,
 			OriginalName : file.Filename,
 			HashedFileName: compressedName,
 			Order: i,
 			IsProfilePicture: false,
-		}
+		})
+	}
 
-		err = db.GetDB().Create(&image).Error
-		if err != nil {
-			log.Println(err)
-			c.JSON(http.StatusInternalServerError, gin.H{
-				"message": "error creating post",
-			})
-			return
-		}
+	// Save the images to the database
+	err = db.GetDB().Create(&images).Error
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "error creating post",
+		})
+		return
 	}
 
 	// Return the list of filenames to the caller
