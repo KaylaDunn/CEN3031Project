@@ -156,8 +156,6 @@ func TestGetPosts(t *testing.T) {
 	got := response.Status == "200 OK"
 	want := true
 
-	println(response.Status)
-
 	if got != want {
 		t.Errorf("got %t, wanted %t", got, want)
 	}
