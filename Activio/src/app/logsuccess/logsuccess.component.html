@@ -1,53 +1,54 @@
 <mat-toolbar class="justify-between max-w-7xl mx-auto border-x">
-    <a routerLink="MemberPage">Activio</a>
-    <button type="postBtn" mat-raised-button color="primary">
-      <a routerLink="/post">Post</a>
-    </button>
-  </mat-toolbar>
+  <a routerLink="MemberPage">Activio</a>
+  <button type="postBtn" mat-raised-button color="primary">
+    <a routerLink="/post">Post</a>
+  </button>
+</mat-toolbar>
 
 <div class="logsuccess-div">
-    <mat-card class="activio-welcome-back">
-        <mat-card-header>
-            <mat-card-title>
-                Welcome back to Activio!
-            </mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            Find the best activities to do around the world and meet other travelers.
-        </mat-card-content>
-    </mat-card>
+  <mat-card class="activio-welcome-back">
+    <mat-card-header>
+      <mat-card-title>
+        Welcome back to Activio!
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      Find the best activities to do around the world and meet other travelers.
+    </mat-card-content>
+  </mat-card>
 </div>
 
 <div class="whereto-div">
-    <div class="loc-div">
-        Where to?
-        <mat-form-field appearance="fill" [style.width.%]="43">
-            <input [style.width.%]="300" matInput placeholder="Enter desired destination...">
-        </mat-form-field>
-        <button type="locBtn" mat-raised-button color="primary">
-            Go!
-        </button>
-    </div>
+  <div class="loc-div">
+    Where to?
+    <mat-form-field appearance="fill" [style.width.%]="43">
+      <input [style.width.%]="300" matInput placeholder="Enter desired destination...">
+    </mat-form-field>
+    <button type="locBtn" mat-raised-button color="primary">
+      Go!
+    </button>
+  </div>
 </div>
 
-  <mat-card class="example-card">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Devil's Den</mat-card-title>
-      <mat-card-subtitle>Location: Levy County, Florida</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="http://nebula.wsimg.com/5933dd41591566ae191465c8816e13e0?AccessKeyId=EB68A1444DDCC3C0CD01&disposition=0&alloworigin=1" alt="Photo of Devil's Den'">
-    <mat-card-content>
-      <p>
-        This cave is pretty awesome. We spent about an hour and 15 minutes in the water. They give you 1.5 hours total. It's a long drive from Orlando. But it's definitely worth it. If you have your own mask and goggles that will save you a few dollars. The staff is super friendly, And was worth it.
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions>
-  </mat-card>
-  <mat-divider></mat-divider>
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Devil's Den</mat-card-title>
+    <mat-card-subtitle>Location: Levy County, Florida</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="http://nebula.wsimg.com/5933dd41591566ae191465c8816e13e0?AccessKeyId=EB68A1444DDCC3C0CD01&disposition=0&alloworigin=1" alt="Photo of Devil's Den'">
+  <mat-card-content>
+    <p>
+      This cave is pretty awesome. We spent about an hour and 15 minutes in the water. They give you 1.5 hours total. It's a long drive from Orlando. But it's definitely worth it. If you have your own mask and goggles that will save you a few dollars. The staff is super friendly, And was worth it.
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+    <button mat-button>COMMENT</button>
+  </mat-card-actions>
+</mat-card>
+<mat-divider></mat-divider>
 
 
 
@@ -66,6 +67,7 @@
   <mat-card-actions>
     <button mat-button>LIKE</button>
     <button mat-button>SHARE</button>
+    <button mat-button>COMMENT</button>
   </mat-card-actions>
 </mat-card>
 
@@ -85,5 +87,81 @@
   <mat-card-actions>
     <button mat-button>LIKE</button>
     <button mat-button>SHARE</button>
+    <button mat-button>COMMENT</button>
   </mat-card-actions>
 </mat-card>
+
+<mat-card class="example-review">
+  <mat-card-header>
+      <span class="material-icons">star</span>
+      <span class="material-icons">star</span>
+      <span class="material-icons">star</span>
+      <span class="material-icons">star</span>
+      <span class="material-icons">star</span>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      Staff are very friendly and the water is really nice to swim in cause it’s cool like Californias waters but not salty/chlorine filled like other swimming choices. A good bucket list place. You can see fish and a turtle while swimming in the sinkhole. I recommend bringing a waterproof phone case to take photos. Wear your swimsuit when leaving parking lot cause what you bring is what you have to swim with.
+    </p>
+  </mat-card-content>
+</mat-card>
+
+
+<mat-card class="example-review2">
+  <mat-card-header>
+    <span class="material-icons">star</span>
+    <span class="material-icons">star</span>
+    <span class="material-icons">star</span>
+    <span class="material-icons">star</span>
+    <span class="material-icons">star</span>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      Really cool experience. Recommend snorkeling here and visiting the beautiful gardens at Cedar Lakes Woods and Gardens right next door. You get 1.5 hours to snorkel but will only really need 30-45 minutes of snorkel time before the novelty wears off. With that being said it is pretty darn cool and impressive enough of go again if I had someone else going who hasn't been.
+    </p>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="example-review3">
+  <mat-card-header>
+    <span class="material-icons">star</span>
+    <span class="material-icons"> star_outline </span>
+    <span class="material-icons"> star_outline </span>
+    <span class="material-icons"> star_outline </span>
+    <span class="material-icons"> star_outline </span>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      The lack of information on their page should be a sign. I’m so disappointed at this place. Don’t get me wrong, the devils dive cave it’s beautiful, but… your enjoyment will depend on how many others will be in the cave at the same time and if you plan on camping, using your RV or even staying in the cabins, I would recommend you to not waist your time, this place has absolutely nothing to do. There’s no good trails, you can’t fish, the water pond are covered with green stink icky algae, the ponds are lifeless, it’s sad. There’s no activities to do within the area or anywhere close by.  So it’s not worth it staying here. Come for the cave and leave. And the cave is not all of that either.
+    </p>
+  </mat-card-content>
+</mat-card>
+<mat-card class="example-review4">
+  <mat-card-header>
+    <span class="material-icons">star</span>
+    <span class="material-icons">star</span>
+    <span class="material-icons">star</span>
+    <span class="material-icons">star</span>
+    <span class="material-icons">star</span>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      This cave is pretty awesome. We spent about an hour and 15 minutes in the water. They give you 1.5 hours total. It's a long drive from Orlando. But it's definitely worth it. If you have your own mask and goggles that will save you a few dollars. The staff is super friendly, And was worth it.
+    </p>
+  </mat-card-content>
+</mat-card>
+<mat-card class="example-review5">
+  <mat-card-header>
+    <span class="material-icons">star</span>
+    <span class="material-icons">star</span>
+    <span class="material-icons">star</span>
+    <span class="material-icons">star</span>
+    <span class="material-icons">star</span>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      This cave is pretty awesome. We spent about an hour and 15 minutes in the water. They give you 1.5 hours total. It's a long drive from Orlando. But it's definitely worth it. If you have your own mask and goggles that will save you a few dollars. The staff is super friendly, And was worth it.
+    </p>
+  </mat-card-content>
+</mat-card>
+
