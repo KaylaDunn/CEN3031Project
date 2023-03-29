@@ -3,6 +3,7 @@ package handlers
 import (
 	"log"
 	"net/http"
+	"strconv"
 
 	"activio-backend/db"
 	"activio-backend/models"
@@ -99,5 +100,56 @@ func createPost(c *gin.Context) {
 	// return the post
 	c.JSON(http.StatusOK, gin.H{
 		"post": post,
+	})
+}
+
+func GetPost(c *gin.Context) {
+	// get the post id from the request
+	postID := c.Param("id")
+
+	// convert the post id to an int
+	id, err := strconv.Atoi(postID)
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": "Invalid ID",
+			"suggestion": "Check if the ID is a number.",
+		})
+		return
+	}
+
+	// get the post from the database
+	post, err := db.GetPostById(id)
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "Post not found",
+		})
+		return
+	}
+
+	// get the images related to the post
+	images, err := db.GetImagesRelatedToPost(post.ID)
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "Internal server error",
+		})
+		return
+	}
+
+	// get the comments related to the post
+	comments, err := db.GetCommentsRelatedToPost(post.ID)
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "Internal server error",
+		})
+		return
+	}
+
+	// return the post
+	c.JSON(http.StatusOK, gin.H{
+		"post": PostResponse{post, images, comments},
 	})
 }
