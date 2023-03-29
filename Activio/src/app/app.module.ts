@@ -29,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { PostComponent } from './post/post.component';
+import { LogoutComponent } from './logout/logout.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,8 @@ import { PostComponent } from './post/post.component';
     WelcomeComponent,
     LogsuccessComponent,
     CreateaccountComponent,
-    PostComponent
+    PostComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +80,11 @@ import { PostComponent } from './post/post.component';
       {
         path: 'post',
         component: PostComponent
-      }
+      },
+      {
+        path: 'logout',
+        component: LogoutComponent
+        }
       ]),
       MatFormFieldModule,
       MatInputModule,

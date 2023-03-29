@@ -1,7 +1,9 @@
 mat-card {
     width: fit-content;
 }
-
+.PostBtn {
+    margin-right: -890px;
+}
 .logsuccess-div {
     height: 13vh;
     display: flex;
