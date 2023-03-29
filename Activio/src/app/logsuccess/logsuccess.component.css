@@ -8,17 +8,63 @@ mat-card {
     justify-content: center;
     align-items: center;
 }
-
+.whereto-div{
+    justify-content: center;
+    align-items: center;
+    margin-right: 300px;
+}
+.example-review {
+  max-width: 400px;
+  margin-top: -1700px;
+}
+.example-review2 {
+  max-width: 400px;
+  margin-top: 20px;
+}
+.example-review3 {
+  max-width: 400px;
+  margin-left: 850px;
+  margin-top: -300px;
+}
+.example-review4 {
+  max-width: 400px;
+  margin-top: -1500px;
+  margin-left: 80%;
+}
 .whereto-div {
     margin: 0 auto;
     padding-top: 30px;
     font-size: 16px; 
     padding-left: 35%;
 }
-.about-us-div {
-    height: 14vh;
-    width: 90%;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
+.example-card {
+  max-width: 400px;
+  margin: auto;
+  margin-bottom: 20px;
 }
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+.example-card2 {
+  max-width: 400px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.example-header-image2 {
+  background-image: url('https://media.istockphoto.com/id/1336021035/photo/black-and-white-color-cat-looking-at-camera-curiosity.jpg?b=1&s=170667a&w=0&k=20&c=_z9Uj-G_QzE-mxqd4-mSRFYFTwB3UEi6g_hLySo_s2Y=');
+  background-size: cover;
+}
+.example-card3 {
+  max-width: 400px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.example-header-image3 {
+  background-image: url('https://images.unsplash.com/photo-1533450718592-29d45635f0a9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8anBnfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60');
+  background-size: cover;
+}
+

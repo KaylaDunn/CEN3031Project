@@ -1,47 +1,167 @@
 <mat-toolbar class="justify-between max-w-7xl mx-auto border-x">
-    <a routerLink="MemberPage">Activio</a>
-    <button type="postBtn" mat-raised-button color="primary">
-      <a routerLink="/post">Post</a>
-    </button>
-  </mat-toolbar>
+  <a routerLink="MemberPage">Activio</a>
+  <button type="postBtn" mat-raised-button color="primary">
+    <a routerLink="/post">Post</a>
+  </button>
+</mat-toolbar>
 
 <div class="logsuccess-div">
-    <mat-card class="activio-welcome-back">
-        <mat-card-header>
-            <mat-card-title>
-                Welcome back to Activio!
-            </mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            Find the best activities to do around the world and meet other travelers.
-        </mat-card-content>
-    </mat-card>
+  <mat-card class="activio-welcome-back">
+    <mat-card-header>
+      <mat-card-title>
+        Welcome back to Activio!
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      Find the best activities to do around the world and meet other travelers.
+    </mat-card-content>
+  </mat-card>
 </div>
 
 <div class="whereto-div">
-    <div class="loc-div">
-        Where to?
-        <mat-form-field appearance="fill" [style.width.%]="23">
-            <input [style.width.%]="100" matInput placeholder="Enter desired destination...">
-        </mat-form-field>
-        <button type="locBtn" mat-raised-button color="primary">
-            Go!
-        </button>
-    </div>
+  <div class="loc-div">
+    Where to?
+    <mat-form-field appearance="fill" [style.width.%]="43">
+      <input [style.width.%]="300" matInput placeholder="Enter desired destination...">
+    </mat-form-field>
+    <button type="locBtn" mat-raised-button color="primary">
+      Go!
+    </button>
+  </div>
 </div>
 
-<div class="about-us-div">
-    <mat-card class="about-us">
-        <mat-card-header>
-            <mat-card-title>
-                About us
-            </mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            Activio aims to connect people passionate about travel and provide an easy way to find things to do, 
-            whether it be in your local city or a dream vacation. Created by students at the University of Florida,
-            it is a free and accessible way to learn about the rich cultural life around the world and spice up 
-            any trip. Follow friends, like and comment on posted activities, and have fun exploring!
-        </mat-card-content>
-    </mat-card>
-</div>
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Devil's Den</mat-card-title>
+    <mat-card-subtitle>Location: Levy County, Florida</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="http://nebula.wsimg.com/5933dd41591566ae191465c8816e13e0?AccessKeyId=EB68A1444DDCC3C0CD01&disposition=0&alloworigin=1" alt="Photo of Devil's Den'">
+  <mat-card-content>
+    <p>
+      This cave is pretty awesome. We spent about an hour and 15 minutes in the water. They give you 1.5 hours total. It's a long drive from Orlando. But it's definitely worth it. If you have your own mask and goggles that will save you a few dollars. The staff is super friendly, And was worth it.
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+    <button mat-button>COMMENT</button>
+  </mat-card-actions>
+</mat-card>
+<mat-divider></mat-divider>
+
+
+
+<mat-card class="example-card2">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image2"></div>
+    <mat-card-title>Disney World</mat-card-title>
+    <mat-card-subtitle>Location: Orlando,Florida</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Cinderella_Castle_October_1.jpg" alt="Photo of Disney World">
+  <mat-card-content>
+    <p>
+      The most magical place in the world. Have the best time here, staff were very friendly. The rides were really fun but you do have to wait quite a bit for them which is understandable. Meeting the Disney characters was a wonderful experience. The whole atmosphere is very nice but be prepared to walk a lot. Overall it’s a great place, 10/10 would recommend
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+    <button mat-button>COMMENT</button>
+  </mat-card-actions>
+</mat-card>
+
+<mat-divider></mat-divider>
+<mat-card class="example-card3">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image3"></div>
+    <mat-card-title>Ringling Museum</mat-card-title>
+    <mat-card-subtitle>Location: Sarasota, Florida</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="data:image/jpeg;base64,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" alt="Photo of Ringling Museum">
+  <mat-card-content>
+    <p>
+      Beautiful and enjoyable. Histories of the Ringling Brothers Circus, family and their art collections was most enjoyable.
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+    <button mat-button>COMMENT</button>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card class="example-review">
+  <mat-card-header>
+      <span class="material-icons">star</span>
+      <span class="material-icons">star</span>
+      <span class="material-icons">star</span>
+      <span class="material-icons">star</span>
+      <span class="material-icons">star</span>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      Staff are very friendly and the water is really nice to swim in cause it’s cool like Californias waters but not salty/chlorine filled like other swimming choices. A good bucket list place. You can see fish and a turtle while swimming in the sinkhole. I recommend bringing a waterproof phone case to take photos. Wear your swimsuit when leaving parking lot cause what you bring is what you have to swim with.
+    </p>
+  </mat-card-content>
+</mat-card>
+
+
+<mat-card class="example-review2">
+  <mat-card-header>
+    <span class="material-icons">star</span>
+    <span class="material-icons">star</span>
+    <span class="material-icons">star</span>
+    <span class="material-icons">star</span>
+    <span class="material-icons">star</span>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      Really cool experience. Recommend snorkeling here and visiting the beautiful gardens at Cedar Lakes Woods and Gardens right next door. You get 1.5 hours to snorkel but will only really need 30-45 minutes of snorkel time before the novelty wears off. With that being said it is pretty darn cool and impressive enough of go again if I had someone else going who hasn't been.
+    </p>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="example-review3">
+  <mat-card-header>
+    <span class="material-icons">star</span>
+    <span class="material-icons"> star_outline </span>
+    <span class="material-icons"> star_outline </span>
+    <span class="material-icons"> star_outline </span>
+    <span class="material-icons"> star_outline </span>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      The lack of information on their page should be a sign. I’m so disappointed at this place. Don’t get me wrong, the devils dive cave it’s beautiful, but… your enjoyment will depend on how many others will be in the cave at the same time and if you plan on camping, using your RV or even staying in the cabins, I would recommend you to not waist your time, this place has absolutely nothing to do. There’s no good trails, you can’t fish, the water pond are covered with green stink icky algae, the ponds are lifeless, it’s sad. There’s no activities to do within the area or anywhere close by.  So it’s not worth it staying here. Come for the cave and leave. And the cave is not all of that either.
+    </p>
+  </mat-card-content>
+</mat-card>
+<mat-card class="example-review4">
+  <mat-card-header>
+    <span class="material-icons">star</span>
+    <span class="material-icons">star</span>
+    <span class="material-icons">star</span>
+    <span class="material-icons">star</span>
+    <span class="material-icons">star</span>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      This cave is pretty awesome. We spent about an hour and 15 minutes in the water. They give you 1.5 hours total. It's a long drive from Orlando. But it's definitely worth it. If you have your own mask and goggles that will save you a few dollars. The staff is super friendly, And was worth it.
+    </p>
+  </mat-card-content>
+</mat-card>
+<mat-card class="example-review5">
+  <mat-card-header>
+    <span class="material-icons">star</span>
+    <span class="material-icons">star</span>
+    <span class="material-icons">star</span>
+    <span class="material-icons">star</span>
+    <span class="material-icons">star</span>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      This cave is pretty awesome. We spent about an hour and 15 minutes in the water. They give you 1.5 hours total. It's a long drive from Orlando. But it's definitely worth it. If you have your own mask and goggles that will save you a few dollars. The staff is super friendly, And was worth it.
+    </p>
+  </mat-card-content>
+</mat-card>
+
