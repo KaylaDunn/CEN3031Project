@@ -15,7 +15,5 @@ type Image struct {
 }
 
 type ImageApiResponse struct {
-	ID uint `json:"id"`
-	Order int `json:"order"`
-	HashedFileName string `json:"fileName"`
+	HashedFileName string `json:"url"`
 }

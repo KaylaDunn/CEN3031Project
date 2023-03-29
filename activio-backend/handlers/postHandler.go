@@ -7,6 +7,7 @@ import (
 
 	"activio-backend/db"
 	"activio-backend/models"
+	"activio-backend/utils"
 
 	"github.com/gin-gonic/gin"
 )
@@ -152,4 +153,101 @@ func GetPost(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"post": PostResponse{post, images, comments},
 	})
+}
+
+func AddImagesToPost (c *gin.Context) {
+	// get the post id from the request
+	postID := c.Param("id")
+
+	// convert the post id to an int
+	id, err := strconv.Atoi(postID)
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": "Invalid ID",
+			"suggestion": "Check if the ID is a number.",
+		})
+		return
+	}
+
+	// check to see if the post exists and if the user is the owner of the post
+	post, err := db.GetPostById(id)
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": "Post not found",
+		})
+		return
+	}
+
+	// get the user id from the context
+	userID := c.MustGet("user").(models.User).ID
+
+	// check to see if the user is the owner of the post
+	if post.UserID != userID {
+		c.JSON(http.StatusUnauthorized, gin.H{
+			"message": "You are not authorized to add images to this post",
+		})
+		return
+	}
+
+	// get the images from the request
+	form, err := c.MultipartForm()
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusBadRequest, gin.H{"Error": "Error uploading file"})
+		return
+	}
+
+	files := form.File["images"]
+
+	// Make sure there are files to upload
+	if len(files) == 0 {
+		log.Println("No files to upload")
+		c.JSON(http.StatusBadRequest, gin.H{"Error": "No files to upload"})
+		return
+	}
+
+	// Store all uploaded filenames to return to the caller
+	filenames := []string{}
+
+	for i, file := range files {
+		
+		// Save image to server
+		compressedName, err := utils.SaveImage(file, 50)
+
+		if err != nil {
+			log.Println(err)
+			c.JSON(http.StatusBadRequest, gin.H{"Error": "Error uploading file"})
+			return
+		}
+
+		// Append the filename to the list of filenames
+		filenames = append(filenames, compressedName)
+		
+		// Print the file name and time of upload
+		log.Printf("File: %s uploaded\n", file.Filename) 
+
+		// Save the image to the database
+		image := models.Image{
+			UploadedBy: userID,
+			PostID : post.ID,
+			OriginalName : file.Filename,
+			HashedFileName: compressedName,
+			Order: i,
+			IsProfilePicture: false,
+		}
+
+		err = db.GetDB().Create(&image).Error
+		if err != nil {
+			log.Println(err)
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"message": "error creating post",
+			})
+			return
+		}
+	}
+
+	// Return the list of filenames to the caller
+	c.JSON(http.StatusOK, gin.H{"status": "ok", "filenames": filenames})
 }
