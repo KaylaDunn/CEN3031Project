@@ -12,14 +12,15 @@
     </mat-card>
 </div>
 
+<div class="whereto-div">
+    Where to?
+</div>
+
 <div class="location-div">
     <mat-form-field appearance="fill" [style.width.%]="23">
-        Where to?
-        <input [style.width.%]="60" matInput placeholder="Enter desired destination...">
-        <mat-hint algin="end">Hint</mat-hint>
+        <input [style.width.%]="100" matInput placeholder="Enter destination...">
     </mat-form-field>
-    
-    <button mat-raised-button color="primary">
+    <button type="locBtn" mat-raised-button color="primary">
         Go!
     </button>
 </div>

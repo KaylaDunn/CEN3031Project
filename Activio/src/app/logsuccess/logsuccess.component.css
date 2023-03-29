@@ -1,0 +1,24 @@
+mat-card {
+    width: fit-content;
+}
+
+.logsuccess-div {
+    height: 13vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.whereto-div {
+    margin: 0 auto;
+    padding-top: 30px;
+    font-size: 16px; 
+    padding-left: 35%;
+}
+.about-us-div {
+    height: 14vh;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}

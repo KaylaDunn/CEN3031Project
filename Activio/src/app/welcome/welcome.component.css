@@ -9,11 +9,21 @@ mat-card {
     align-items: center;
 }
 
+.whereto-div, .location-div {
+    display: inline-block;
+    box-sizing: border-box;
+    padding-top: 30px;
+    font-size: 16px;
+    
+}
+
+.whereto-div {
+    margin-left: 210px;
+}
+
 .location-div {
-    height: 11vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-left: 15px;
+    width: 80%;
 }
 
 .about-us-div {

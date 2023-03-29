@@ -1,0 +1,12 @@
+div {
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.post-div {
+    padding-top: 3%;
+}
+
+.loc-div {
+    padding-top: 1.5%;
+}

@@ -20,13 +20,15 @@ import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {TextFieldModule} from '@angular/cdk/text-field';
+import { MatInputModule } from '@angular/material/input';
+import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { LogsuccessComponent } from './logsuccess/logsuccess.component';
 import { CreateaccountComponent } from './createaccount/createaccount.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
+import { PostComponent } from './post/post.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +36,8 @@ import { AuthService } from './auth.service';
     LoginComponent,
     WelcomeComponent,
     LogsuccessComponent,
-    CreateaccountComponent
+    CreateaccountComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
@@ -71,9 +74,14 @@ import { AuthService } from './auth.service';
       {
         path: 'createaccount',
         component: CreateaccountComponent
+      },
+      {
+        path: 'post',
+        component: PostComponent
       }
       ]),
       MatFormFieldModule,
+      MatInputModule,
       TextFieldModule,
       MatAutocompleteModule
   ],

@@ -1,0 +1,43 @@
+<mat-toolbar class="justify-between max-w-7xl mx-auto border-x">
+    <a routerLink="HomePage">Activio</a>
+    <button type="homeBtn" mat-raised-button color="primary">
+      <a routerLink="/logsuccess">Home</a>
+    </button>
+  </mat-toolbar>
+
+<div class="post-div">
+    <h1>Add your activity to Activio!</h1>
+    <input 
+    style="display: none"
+    type="file"
+    (change)="onFileSelected($event)"
+    #fileInput>
+    <div>
+        <button mat-raised-button color="secondary" type="btnUp" (click)="fileInput.click()">Choose file</button>
+    </div>
+</div>
+
+<div class="loc-div">
+    <mat-form-field>
+        <label>Location</label>
+        <input matInput placeholder="Where was this?">
+    </mat-form-field>
+</div>
+
+<div class="bus-div">
+    <mat-form-field>
+        <label>Company</label>
+        <input matInput placeholder="Tag the business.">
+    </mat-form-field>
+</div>
+
+<div class="act-div">
+    <mat-form-field appearance="fill">
+        <label>Activity</label>
+        <input matInput placeholder="Describe the activity!">
+    </mat-form-field>
+</div>
+
+<div class="btn-div">
+    <button mat-raised-button color="primary" type="button" (click)="onUpload">Post!</button>
+</div>

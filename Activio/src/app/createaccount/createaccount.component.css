@@ -54,7 +54,7 @@ input {
             background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
             background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
             background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
-            background-image: linear-gradient(top, #ffffff, #e6e6e6);
+            background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
             background-repeat: repeat-x;
             filter: progid:dximagetransform.microsoft.gradient(startColorstr=#ffffff, endColorstr=#e6e6e6, GradientType=0);
             border-color: #e6e6e6 #e6e6e6 #e6e6e6;
@@ -110,7 +110,7 @@ input {
             background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#318d42), to(#2c873d));
             background-image: -webkit-linear-gradient(top, #318d42, #2c873d);
             background-image: -o-linear-gradient(top, #318d42, #2c873d);
-            background-image: linear-gradient(top, #318d42, #2c873d);
+            background-image: linear-gradient(to bottom, #318d42, #2c873d);
             background-repeat: repeat-x;
             border: 1px solid #3762bc;
             text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
