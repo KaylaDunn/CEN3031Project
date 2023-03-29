@@ -22,12 +22,14 @@ The following naming conventions are used throughout the documentation:
 - GET [api/auth/me](#apiauthme)
 
 ## Image Management
-- POST [api/images](#apiimages)
+- POST [api/images](#apiimages) -- WILL BE REMOVED (See Post Management)
 - GET [api/image/[id]](#apiimageid)
 
 ## Post Management
 - GET [api/posts](#apiposts)
+- GET [api/post/[id]](#apipostid)
 - POST [api/auth/createpost](#apiauthcreatepost)
+- PUT [/addImageToPost/:id](#addimagetopostid)
 
 ## Miscellaneous
 - GET [api/alive](#apialive)
@@ -116,6 +118,22 @@ The following naming conventions are used throughout the documentation:
 - **URL:** `/api/posts`
 - **Response Body:**
     - `posts` - Up to 10 posts in the database
+
+### `api/post/[id]`
+- **Description:** Get a post
+- **Method:** GET
+- **URL:** `/api/post/[id]`
+- **Response Body:**
+    - `post` - The post
+
+### `api/addimagetopost/[id]`
+- **Description:** Adds images to a post
+- **Method:** PUT
+- **URL:** `/api/addimagetopost/[id]`
+- **Request Body:**
+    - `images` - The images to add to the post
+- **Response Body:**
+    - `filenames` - The names of the images that were added to the post
 
 ### `api/auth/createpost`
 - **Description:** Create a post
