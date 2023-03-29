@@ -1,5 +1,5 @@
 import { HttpClient, HttpEventType } from '@angular/common/http';
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import * as _ from 'cypress/types/lodash';
 
 @Component({
@@ -7,7 +7,15 @@ import * as _ from 'cypress/types/lodash';
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css']
 })
-export class PostComponent {
+export class PostComponent implements OnInit {
+  postData: any = {
+    longitude: 0,
+    latitude: 0
+  }
+  ngOnInit(): void {
+    
+  }
+
   selectedFile: File | null = null;
 
   constructor(private http: HttpClient) { }
@@ -17,13 +25,24 @@ export class PostComponent {
   }
 
   onUpload() {
+    this.http.post('0.0.0.0:3000/api/auth/createpost', this.postData, {
+      reportProgress: true
+    })
+
     if (this.selectedFile) {
       const fd = new FormData()
-      fd.append('image', this.selectedFile, this.selectedFile.name);
-      this.http.post('aa', fd, { // add url to backend function that accepts foreign data
+      this.http.post('0.0.0.0:3000/api/auth/createpost', fd, {
+        reportProgress: true,
+        observe: 'events'
+      })
+
+      fd.append('image', this.selectedFile, this.selectedFile.name);      
+      
+      this.http.post('0.0.0.0:3000/api/auth/addImageToPost/[id]', fd, { // url to backend function that accepts foreign data
         reportProgress: true,
         observe: 'events'
       }) 
+
       .subscribe(event => {
           if (event.type === HttpEventType.UploadProgress) {
             if (event.total) {

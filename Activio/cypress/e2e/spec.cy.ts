@@ -28,5 +28,17 @@ describe('My First Test', () => {
     cy.get('button[data-cy="b2"]').click()
     cy.url().should('eq', 'http://localhost:4200/createaccount')
   })
+
+  it('logged in user can access post', () => {
+    cy.visit('/logsuccess')
+    cy.get('button[type="postBtn"]').click()
+    cy.url().should('eq', 'http://localhost:4200/post')
+  })
+
+  it('post navigates to home', () => {
+    cy.visit('/post')
+    cy.get('button[type="homeBtn"]').click()
+    cy.url().should('eq', 'http://localhost:4200/logsuccess')
+  })
   
 })
