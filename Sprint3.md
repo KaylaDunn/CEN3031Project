@@ -3,6 +3,10 @@
   - Created Post component for logged in users to access.
   - Formatted welcome page and logged in page with placeholder posts and reviews.
   - Logout button and page.
+  - Added ability to create posts on the backend
+  - Added ability to add images to posts
+  - Updated API response types
+  - Added Comments and Image models
 - List unit tests and Cypress tests for frontend
   - Component tests:
     - Post page has fillable text inputs and clickable buttons.
