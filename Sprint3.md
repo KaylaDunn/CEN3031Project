@@ -13,7 +13,16 @@
     - Login page to Create account.
     - Post page to home page.
 - List unit tests for backend
-  -  
+   -  Existing unit tests from sprint 2 are still present and have been expanded upon. New unit tests include:
+    - TestDeleteUserAndUserData
+    - TestGetUserDetails
+    - TestRefreshJWT
+    - TestCreatePost
+    - TestGetPosts
+    - TestRefreshJWTFail
+    - TestGetUserDetailsFail
+    - TestCreatePostFail
+    - TestDeleteUserAndUserDataFail
 - Add documentation for your backend API
   - [API Documentation](https://github.com/KaylaDunn/CEN3031Project/blob/main/activio-backend/README.md)
 - Video presentation link
