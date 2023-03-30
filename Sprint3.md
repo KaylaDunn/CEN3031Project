@@ -13,7 +13,7 @@
     - Login page to Create account.
     - Post page to home page.
 - List unit tests for backend
-  -  Existing unit tests from sprint 2 are still present and have been expanded upon. New unit tests include:
+  - Existing unit tests from sprint 2 are still present and have been expanded upon. New unit tests include:
     - TestDeleteUserAndUserData
     - TestGetUserDetails
     - TestRefreshJWT
