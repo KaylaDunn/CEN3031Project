@@ -1,0 +1,20 @@
+# Sprint 3 Report #
+- Detail work you've completed in Sprint 3
+  - Created Post component for logged in users to access.
+  - Formatted welcome page and logged in page with placeholder posts and reviews.
+  - Logout button and page.
+- List unit tests and Cypress tests for frontend
+  - Component tests:
+    - Post page has fillable text inputs and clickable buttons.
+    - All components are mountable and have valid inputs.
+  - End-to-end tests:
+    - Buttons navigate from page to page:
+    - Welcome page to Login page.
+    - Login page to Create account.
+    - Post page to home page.
+- List unit tests for backend
+  -  
+- Add documentation for your backend API
+  - [API Documentation](https://github.com/KaylaDunn/CEN3031Project/blob/main/activio-backend/README.md)
+- Video presentation link
+  - [Sprint 3 Demo](https://youtu.be/QbDcDAY3rZM)
