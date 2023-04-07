@@ -21,10 +21,10 @@ describe('CreateaccountComponent', () => {
 
     it('types input fields', () => {
         cy.mount(CreateaccountComponent)
-        cy.get('input[name="loc"]').type('Gainesville')
-        // cy.get('input[type="user"]').type('myUsername')
-        // cy.get('input[type="password1"]').type('myPassword')
-        // cy.get('input[type="password2"]').type('myPassword')
+        cy.get('input[type="email"]').type('testEmail@gmail.com')
+        cy.get('input[type="user"]').type('myUsername')
+        cy.get('input[type="password1"]').type('myPassword')
+        cy.get('input[type="password2"]').type('myPassword')
     })
 
     it('creates account', () => {
