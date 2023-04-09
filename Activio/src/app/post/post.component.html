@@ -19,7 +19,7 @@
 
 <div class="loc-div">
     <mat-form-field>
-        <label>Location</label>
+        <label>City</label>
         <input [(ngModel)]="postData.locationname" name="loc" matInput placeholder="Where was this?" required="required">
     </mat-form-field>
 </div>
@@ -39,5 +39,5 @@
 </div>
 
 <div class="btn-div">
-    <button mat-raised-button color="primary" name="postBtn" type="button" (click)="onUpload">Post!</button>
+    <button mat-raised-button color="primary" name="postBtn" type="button" (click)="onPost()">Post!</button>
 </div>
