@@ -4,6 +4,8 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('PostComponent', () => {
 
+  // TODO: update testing for full post component
+
   /*beforeEach(() => TestBed.configureTestingModule({
         imports: [HttpClientTestingModule], 
         providers: [AuthService]
