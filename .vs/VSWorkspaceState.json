@@ -2,14 +2,14 @@
   "ExpandedNodes": [
     "",
     "\\Activio",
-    "\\activio-backend",
-    "\\activio-backend\\middleware",
-    "\\activio-backend\\models",
-    "\\activio-backend\\utils",
     "\\Activio\\src",
     "\\Activio\\src\\app",
     "\\Activio\\src\\app\\createaccount",
-    "\\Activio\\src\\app\\logsuccess"
+    "\\Activio\\src\\app\\login",
+    "\\Activio\\src\\app\\logout",
+    "\\Activio\\src\\app\\logsuccess",
+    "\\Activio\\src\\app\\welcome"
   ],
+  "SelectedNode": "\\Activio\\src\\app\\logout\\logout.component.html",
   "PreviewInSolutionExplorer": false
 }
