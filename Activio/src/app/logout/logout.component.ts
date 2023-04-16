@@ -1,10 +1,23 @@
-import { Component } from '@angular/core';
+
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-logout',
-  templateUrl: './logout.component.html',
-  styleUrls: ['./logout.component.css']
+  template: `
+    <h1>You have been logged out.</h1>
+    <p>Redirecting to the main page in 5 seconds...</p>
+  `,
 })
-export class LogoutComponent {
+export class LogoutComponent implements OnInit {
+  constructor() { }
 
+  ngOnInit(): void {
+    setTimeout(() => {
+      window.location.href = 'header.html';
+    }, 5000); // 5000 milliseconds = 5 seconds
+  }
 }
+
+
+
+
