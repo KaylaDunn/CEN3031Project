@@ -253,3 +253,57 @@ func AddImagesToPost (c *gin.Context) {
 	// Return the list of filenames to the caller
 	c.JSON(http.StatusOK, gin.H{"status": "ok", "filenames": filenames})
 }
+
+func DeletePost(c *gin.Context) {
+	// get the post id from the request
+	postID := c.Param("id")
+
+	// convert the post id to an int
+	id, err := strconv.Atoi(postID)
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": "Invalid ID",
+			"suggestion": "Check if the ID is a number.",
+		})
+		return
+	}
+
+	// check to see if the post exists and if the user is the owner of the post
+	post, err := db.GetPostById(id)
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": "Post not found",
+		})
+		return
+	}
+
+	// get the user id from the context
+	userID := c.MustGet("user").(models.User).ID
+
+	// check to see if the user is the owner of the post
+	if post.UserID != userID {
+		c.JSON(http.StatusUnauthorized, gin.H{
+			"message": "You are not authorized to delete this post",
+		})
+		return
+	}
+
+	// delete the post from the database
+	err = db.GetDB().Unscoped().Delete(&models.Post{}, post.ID).Error
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "error deleting post",
+		})
+		return
+	}
+
+	// TODO: delete images, comments and likes related to the post
+
+	// return the post
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Post deleted successfully",
+	})
+}

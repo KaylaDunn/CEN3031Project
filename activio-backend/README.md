@@ -30,6 +30,7 @@ The following naming conventions are used throughout the documentation:
 - GET [api/post/[id]](#apipostid)
 - POST [api/auth/createpost](#apiauthcreatepost)
 - PUT [/addImageToPost/:id](#addimagetopostid)
+- DELETE [api/auth/deletepost/[id]](#apiauthdeletepostid)
 
 ## Miscellaneous
 - GET [api/alive](#apialive)
@@ -146,6 +147,19 @@ The following naming conventions are used throughout the documentation:
     - `LocationName` - The name of the location of the post
 - **Response Body:**
     - `post` - The post that was created
+
+### `api/auth/deletepost/[id]`
+- **Description:** Delete a post and all related items by id
+- **Method:** DELETE
+- **URL:** `/api/auth/deletepost/[id]`
+- **Request Body:**
+    - None
+- **Response Body:**
+    - On Success:
+        - `message` - "Post deleted successfully"
+    - On Failure:
+        - `error` - "Unauthorized"
+        - `error` - "Post not found"
 
 ## `api/alive`
 - **Description:** Check if the server is alive
