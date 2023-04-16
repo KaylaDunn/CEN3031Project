@@ -411,9 +411,6 @@ func TestRefreshJWTFail(t *testing.T) {
 	}
 	defer response.Body.Close()
 
-	token := response.Header.Get("Set-Cookie")
-	token = token[14:strings.IndexByte(token, ';')]
-
 	httpposturl = "http://0.0.0.0:3000/api/auth/refreshtoken"
 
 	request, _ = http.NewRequest("GET", httpposturl, bytes.NewBuffer(jsonData))

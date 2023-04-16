@@ -360,9 +360,6 @@ func TestDeletePostUnauthorized(t *testing.T) {
 	}
 	defer response.Body.Close()
 
-	token := response.Header.Get("Set-Cookie")
-	token = token[14:strings.IndexByte(token, ';')]
-
 	data = map[string]interface{}{}
 
 	jsonData, err = json.Marshal(data)
