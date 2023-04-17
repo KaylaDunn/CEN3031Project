@@ -76,8 +76,6 @@ func TestCreatePost(t *testing.T) {
 	defer response.Body.Close()
 
 	body, _ := io.ReadAll(response.Body)
-	println("status: " + response.Status)
-	println("body: " + string(body))
 
 	id := string(body)
 	postID = id[14:16]
@@ -95,9 +93,6 @@ func TestCreatePostFail(t *testing.T) {
 
 	data := map[string]interface{}{
 		"postDescription": "Created using api",
-		"longitude":       -5.234,
-		"latitude":        0.234,
-		"locationName":    "paris",
 	}
 
 	jsonData, err := json.Marshal(data)
@@ -419,12 +414,7 @@ func TestDeletePost(t *testing.T) {
 
 func TestDeletePostUnauthorized(t *testing.T) {
 
-	//login first
-
-	data := map[string]interface{}{
-		"password": "bobspassword",
-		"email":    "bob@ufl.edu",
-	}
+	data := map[string]interface{}{}
 
 	jsonData, err := json.Marshal(data)
 	if err != nil {
@@ -432,34 +422,14 @@ func TestDeletePostUnauthorized(t *testing.T) {
 		return
 	}
 
-	httpposturl := "http://0.0.0.0:3000/api/login"
+	httpposturl := "http://0.0.0.0:3000/api/auth/deletepost/2"
 
-	request, _ := http.NewRequest("POST", httpposturl, bytes.NewBuffer(jsonData))
+	request, _ := http.NewRequest("DELETE", httpposturl, bytes.NewBuffer(jsonData))
+
 	request.Header.Set("Content-Type", "application/json; charset=UTF-8")
 
 	client := &http.Client{}
 	response, error := client.Do(request)
-	if error != nil {
-		panic(error)
-	}
-	defer response.Body.Close()
-
-	data = map[string]interface{}{}
-
-	jsonData, err = json.Marshal(data)
-	if err != nil {
-		fmt.Printf("could not marshal json: %s\n", err)
-		return
-	}
-
-	httpposturl = "http://0.0.0.0:3000/api/auth/deletepost/2"
-
-	request, _ = http.NewRequest("DELETE", httpposturl, bytes.NewBuffer(jsonData))
-
-	request.Header.Set("Content-Type", "application/json; charset=UTF-8")
-
-	client = &http.Client{}
-	response, error = client.Do(request)
 	if error != nil {
 		panic(error)
 	}
@@ -591,9 +561,6 @@ func TestLikePostAlreadyLiked(t *testing.T) {
 
 	data = map[string]interface{}{
 		"postDescription": "Created using api",
-		"longitude":       -5.234,
-		"latitude":        0.234,
-		"locationName":    "paris",
 	}
 
 	jsonData, err = json.Marshal(data)
@@ -632,6 +599,49 @@ func TestLikePostAlreadyLiked(t *testing.T) {
 	}
 
 	got = string(body) == "{\"message\":\"You have already liked this post\"}"
+	want = true
+
+	if got != want {
+		t.Errorf("got %t, wanted %t", got, want)
+	}
+
+}
+
+func TestLikePostUnauthorized(t *testing.T) {
+
+	data := map[string]interface{}{
+		"postDescription": "Created using api",
+	}
+
+	jsonData, err := json.Marshal(data)
+	if err != nil {
+		fmt.Printf("could not marshal json: %s\n", err)
+		return
+	}
+
+	httpposturl := "http://0.0.0.0:3000/api/auth/likepost/3"
+
+	request, _ := http.NewRequest("PUT", httpposturl, bytes.NewBuffer(jsonData))
+
+	request.Header.Set("Content-Type", "application/json; charset=UTF-8")
+
+	client := &http.Client{}
+	response, error := client.Do(request)
+	if error != nil {
+		panic(error)
+	}
+	defer response.Body.Close()
+
+	body, _ := io.ReadAll(response.Body)
+
+	got := response.Status == "401 Unauthorized"
+	want := true
+
+	if got != want {
+		t.Errorf("got %t, wanted %t", got, want)
+	}
+
+	got = string(body) == "{\"error\":\"Unauthorized\"}"
 	want = true
 
 	if got != want {
