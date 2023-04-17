@@ -307,3 +307,71 @@ func DeletePost(c *gin.Context) {
 		"message": "Post deleted successfully",
 	})
 }
+
+func LikePost(c *gin.Context) {
+	// get the post id from the request
+	postID := c.Param("id")
+
+	// convert the post id to an int
+	id, err := strconv.Atoi(postID)
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": "Invalid ID",
+			"suggestion": "Check if the ID is a number.",
+		})
+		return
+	}
+
+	// check to see if the post exists
+	post, err := db.GetPostById(id)
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": "Post not found",
+		})
+		return
+	}
+
+	// get the user id from the context
+	userID := c.MustGet("user").(models.User).ID
+
+	// check to see if the user has already liked the post
+	userHasLiked, err := db.UserHasLikedPost(userID, post.ID)
+
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "error liking post",
+		})
+		return
+	}
+
+	if userHasLiked {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": "You have already liked this post",
+		})
+		return
+	}
+
+	// create the like
+	like := models.Like{
+		UserID: userID,
+		PostID: post.ID,
+	}
+
+	// save the like to the database
+	err = db.GetDB().Create(&like).Error
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "error liking post",
+		})
+		return
+	}
+
+	// return the like
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Post liked successfully",
+	})
+}
