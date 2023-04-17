@@ -1,3 +1,7 @@
+<head>
+  <base href="http://localhost:3000/">
+</head>
+
 <mat-toolbar class="justify-between max-w-7xl mx-auto border-x">
   <a routerLink="MemberPage">Activio</a>
   <div class="PostBtn">
@@ -38,6 +42,14 @@
   </div>
 </div>
 
+<div class="post-container" *ngFor="let post of posts">
+  <h2>{{ post.postDescription }}</h2>
+  <img [src]="'assets/images/' + post.images[0]?.url" alt="Post Image">
+  <h2>{{ post.locationName }}</h2>
+</div>
+
+
+<!-- BELOW: EXAMPLE CARDS
 <mat-card class="example-card">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
@@ -172,4 +184,4 @@
     </p>
   </mat-card-content>
 </mat-card>
-
+-->
