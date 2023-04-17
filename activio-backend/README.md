@@ -31,6 +31,7 @@ The following naming conventions are used throughout the documentation:
 - POST [api/auth/createpost](#apiauthcreatepost)
 - PUT [/addImageToPost/:id](#addimagetopostid)
 - DELETE [api/auth/deletepost/[id]](#apiauthdeletepostid)
+- PUT [api/auth/likepost/[id]](#apiauthlikepostid)
 
 ## Miscellaneous
 - GET [api/alive](#apialive)
@@ -160,6 +161,20 @@ The following naming conventions are used throughout the documentation:
     - On Failure:
         - `error` - "Unauthorized"
         - `error` - "Post not found"
+
+### `api/auth/likepost/[id]`
+- **Description:** Like a post
+- **Method:** PUT
+- **URL:** `/api/auth/likepost/[id]`
+- **Request Body:**
+    - None
+- **Response Body:**
+    - On Success:
+        - `message` - "Post liked successfully"
+    - On Failure:
+        - `error` - "Unauthorized"
+        - `error` - "Post not found"
+        - `error` - "Post already liked"
 
 ## `api/alive`
 - **Description:** Check if the server is alive
