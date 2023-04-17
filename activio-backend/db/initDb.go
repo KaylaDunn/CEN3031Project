@@ -30,5 +30,5 @@ func GetDB() *gorm.DB {
 
 // Add models here
 func modelMigrate() {
-	dbInstance.AutoMigrate(&models.User{}, &models.Post{}, &models.Comment{}, &models.Image{})
+	dbInstance.AutoMigrate(&models.User{}, &models.Post{}, &models.Comment{}, &models.Image{}, &models.Like{})
 }
