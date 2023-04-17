@@ -24,7 +24,7 @@ func GetPosts(c *gin.Context) {
 	posts, err := db.GetPosts(10, 0)
 
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"message": "Internal server error",
 		})
@@ -32,7 +32,7 @@ func GetPosts(c *gin.Context) {
 	}
 
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"message": "Internal server error",
 		})
@@ -45,7 +45,7 @@ func GetPosts(c *gin.Context) {
 	for _, post := range posts {
 		images, err := db.GetImagesRelatedToPost(post.ID)
 		if err != nil {
-			log.Fatal(err)
+			log.Println(err)
 			c.JSON(http.StatusInternalServerError, gin.H{
 				"message": "Internal server error",
 			})
@@ -54,7 +54,7 @@ func GetPosts(c *gin.Context) {
 
 		comments, err := db.GetCommentsRelatedToPost(post.ID)
 		if err != nil {
-			log.Fatal(err)
+			log.Println(err)
 			c.JSON(http.StatusInternalServerError, gin.H{
 				"message": "Internal server error",
 			})
@@ -63,7 +63,7 @@ func GetPosts(c *gin.Context) {
 
 		numberOfLikes, err := db.GetNumberOfLikes(post.ID)
 		if err != nil {
-			log.Fatal(err)
+			log.Println(err)
 			c.JSON(http.StatusInternalServerError, gin.H{
 				"message": "Internal server error",
 			})
