@@ -4,12 +4,11 @@
     "\\Activio",
     "\\Activio\\src",
     "\\Activio\\src\\app",
-    "\\Activio\\src\\app\\createaccount",
-    "\\Activio\\src\\app\\login",
-    "\\Activio\\src\\app\\logout",
+    "\\Activio\\src\\app\\components",
+    "\\Activio\\src\\app\\components\\header",
     "\\Activio\\src\\app\\logsuccess",
+    "\\Activio\\src\\app\\post",
     "\\Activio\\src\\app\\welcome"
   ],
-  "SelectedNode": "\\Activio\\src\\app\\logout\\logout.component.html",
   "PreviewInSolutionExplorer": false
 }
