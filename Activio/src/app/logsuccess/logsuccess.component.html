@@ -41,9 +41,9 @@
   <h2>{{ post.postDescription }}</h2>
   <img [src]="'assets/images/' + post.images[0]?.url" alt="Post Image">
   <h2>{{ post.locationName }}</h2>
-  <h3>posted by: {{ post.postedBy }}</h3>
+  <h3>@user-{{ post.postedBy }}</h3>
   <button mat-button (click)="onLike(post.id)">LIKE - {{ post.numberOfLikes }}</button>
-  <button mat-button>COMMENT - {{ post.comments.length }}</button>
+  <button mat-button (click)="onComment()">COMMENT - {{ post.comments.length }}</button>
   <button mat-button>VIEW</button>
 </div>
 

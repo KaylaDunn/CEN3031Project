@@ -23,6 +23,7 @@ export class PostComponent implements OnInit {
   ngOnInit(): void {}
 
   // stores the user-uploaded file
+  fileSelected = false;
   selectedFile: File | null = null;
 
   constructor(private http: HttpClient) { }
@@ -31,6 +32,8 @@ export class PostComponent implements OnInit {
   onFileSelected(event: any) {  
     // sets selectedFile
     this.selectedFile = <File>event?.target.files[0];
+    this.fileSelected = true;
+    console.log('fileSelected: ', this.fileSelected);
   }
 
   // called when user hits Post

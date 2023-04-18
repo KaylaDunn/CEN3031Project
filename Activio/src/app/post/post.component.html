@@ -13,7 +13,7 @@
     (change)="onFileSelected($event)"
     #fileInput>
     <div>
-        <button mat-raised-button color="secondary" type="btnUp" (click)="fileInput.click()">Choose file</button>
+        <button mat-raised-button [color]="fileSelected ? 'secondary' : 'primary'" type="btnUp" (click)="fileInput.click()">Choose file</button>
     </div>
 </div>
 
@@ -28,6 +28,14 @@
     <mat-form-field appearance="fill">
         <label>Activity</label>
         <input [(ngModel)]="postData.postDescription" matInput name="act" placeholder="Describe the activity!" required="required">
+    </mat-form-field>
+</div>
+
+<!-- (waiting on comment adding api) -->
+<div class="comment-div">
+    <mat-form-field appearance="fill">
+        <label>Comment</label>
+        <input matInput name="comment" placeholder="Tell us more!">
     </mat-form-field>
 </div>
 

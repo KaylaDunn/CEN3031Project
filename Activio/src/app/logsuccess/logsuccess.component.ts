@@ -48,4 +48,9 @@ export class LogsuccessComponent {
     }
     )
   }
+
+  // called when user hits comment
+  onComment() {
+    
+  }
 }
