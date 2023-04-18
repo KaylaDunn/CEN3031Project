@@ -41,7 +41,7 @@ import { CreateAccountVerifComponent } from './create-account-verif/create-accou
     CreateaccountComponent,
     PostComponent,
     LogoutComponent,
-    CreateAccountVerifComponent
+    CreateAccountVerifComponent,
   ],
   imports: [
     BrowserModule,
