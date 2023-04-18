@@ -38,6 +38,13 @@ mat-card {
   align-items: center;
 }
 
+.post-container h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  align-items: center;
+}
+
 .post-container img {
   width: 300px;
   height: 300px;

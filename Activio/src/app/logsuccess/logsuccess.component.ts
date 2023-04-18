@@ -34,4 +34,18 @@ export class LogsuccessComponent {
     //     console.log(response);
     //   })
   }
+
+  // called when user likes a post
+  onLike(id: number) {
+    this.http.put(`http://localhost:3000/api/auth/likepost/${id}`, null, {
+      withCredentials: true
+    })
+    .subscribe(response => {
+      console.log(response);
+      window.location.reload();
+    }, error => {
+      console.error(error);
+    }
+    )
+  }
 }
