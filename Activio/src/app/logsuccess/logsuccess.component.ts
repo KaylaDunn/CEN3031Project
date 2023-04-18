@@ -19,15 +19,8 @@ export class LogsuccessComponent {
 
     .subscribe(response => {
 
-      // (debugging) log entire array
-      console.log(response.posts); 
-
       this.posts = response.posts;
 
-      // (debugging) iterate through array
-      response.posts.forEach((post: any) => {
-        console.log(post.postDescription);
-      })
     }, error => {
       console.error('Error retrieving posts.');
     })

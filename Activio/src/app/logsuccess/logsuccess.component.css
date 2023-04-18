@@ -25,15 +25,21 @@ mat-card {
   align-items: center;
   padding: 10px;
   margin-bottom: 20px;
+  margin-right: 20px;
   width: auto;
+  display: inline-block;
+  text-align: center;
 }
 
 .post-container h2 {
   font-size: 18px;
   margin-bottom: 5px;
+  margin-top: 5px;
+  align-items: center;
 }
 
 .post-container img {
-  width: 20%;
-  height: auto;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
 }
