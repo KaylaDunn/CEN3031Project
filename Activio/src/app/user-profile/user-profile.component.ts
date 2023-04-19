@@ -21,7 +21,7 @@ export class UserProfileComponent implements OnInit {
       this.me = response.body;
         console.log(this.me.email);
         console.log(this.me.username);
-        console.log(this.me.firstName)
+        console.log(this.me.firstname)
        
     }, error => {
       console.error('Getting Account Info');
