@@ -4,6 +4,8 @@ import (
 	"log"
 	"net/http"
 
+	"activio-backend/db"
+	"activio-backend/models"
 	"activio-backend/utils"
 
 	"github.com/gin-gonic/gin"
@@ -11,6 +13,16 @@ import (
 
 func UploadImage(c *gin.Context) {
 	// This endpoint is used to upload an image to the server
+	// This will be used to upload profile pictures
+
+	// Get userID from the context
+	user, ok := c.Get("user")
+	if !ok {
+		log.Println("Error getting user from context")
+		c.JSON(http.StatusBadRequest, gin.H{"Error": "Invalid User Request", "Suggestion": "Please check the documentation for the correct request format"})
+		return
+	}
+
 
 	file, err := c.FormFile("image")
 
@@ -32,6 +44,9 @@ func UploadImage(c *gin.Context) {
 
 	// Print the file name and time of upload
 	log.Printf("File: %s uploaded\n", file.Filename)
+
+	// Save the file name to the database
+	db.SetProfilePicture(hashedFilename, user.(models.User).ID)
 
 	c.JSON(http.StatusOK, gin.H{"status": "ok", "hash name": hashedFilename})
 }

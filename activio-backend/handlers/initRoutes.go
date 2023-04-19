@@ -27,7 +27,6 @@ func InitRoutes(r *gin.Engine) {
 
   // image endpoints
   api.Static("/image", "./images")
-  api.POST("/image", UploadImage)
   api.POST("/images", MultipleImageUpload)
 
   // user endpoints
@@ -37,6 +36,7 @@ func InitRoutes(r *gin.Engine) {
   auth.DELETE("/deleteaccount", DeleteUserAndUserData)
   auth.GET("/me", getUserDetails)
   auth.PUT("/updateuser", UpdateUser)
+  auth.POST("/setprofilepicture", UploadImage)
 
   // post endpoints
   api.GET("/posts", GetPosts)
