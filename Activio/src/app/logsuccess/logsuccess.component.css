@@ -4,6 +4,9 @@ mat-card {
 .PostBtn {
     margin-right: -890px;
 }
+.ViewProfile{
+    margin-right: -600px;
+}
 .logsuccess-div {
     height: 13vh;
     display: flex;

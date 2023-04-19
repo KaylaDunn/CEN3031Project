@@ -47,7 +47,7 @@ export class EditProfileInfoComponent implements OnInit {
       const fd = new FormData();
       fd.append('image', this.selectedFile!, this.selectedFile!.name);
       
-      this.http.post<any>('http://localhost:3000/api/auth/setprofileimage', fd, {
+      this.http.post<any>('http://localhost:3000/api/auth/setprofilepicture', fd, {
         observe: 'response', // to get the post id
         withCredentials: true // authentication
       })
