@@ -32,6 +32,8 @@ import { PostComponent } from './post/post.component';
 import { LogoutComponent } from './logout/logout.component';
 import { CreateAccountVerifComponent } from './create-account-verif/create-account-verif.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { LocationSearchComponent } from './location-search/location-search.component';
+import { EditProfileInfoComponent } from './edit-profile-info/edit-profile-info.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +46,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     LogoutComponent,
     CreateAccountVerifComponent,
     UserProfileComponent,
+    LocationSearchComponent,
+    EditProfileInfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -92,6 +96,10 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
       {
         path: 'userProfile',
         component: UserProfileComponent
+      },
+      {
+        path: 'editAccount',
+        component: EditProfileInfoComponent
       },
       {
         path: 'logout',

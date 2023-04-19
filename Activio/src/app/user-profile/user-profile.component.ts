@@ -19,9 +19,8 @@ export class UserProfileComponent implements OnInit {
     })
       .subscribe(response => {
       this.me = response.body;
-        console.log(this.me.email);
-        console.log(this.me.username);
-        console.log(this.me.firstName)
+       
+
        
     }, error => {
       console.error('Getting Account Info');
