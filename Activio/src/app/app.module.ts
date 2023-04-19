@@ -32,6 +32,9 @@ import { PostComponent } from './post/post.component';
 import { LogoutComponent } from './logout/logout.component';
 import { CreateAccountVerifComponent } from './create-account-verif/create-account-verif.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CommentDialogComponent } from './comment-dialog/comment-dialog.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +47,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     LogoutComponent,
     CreateAccountVerifComponent,
     UserProfileComponent,
+    CommentDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -101,7 +105,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
       MatFormFieldModule,
       MatInputModule,
       TextFieldModule,
-      MatAutocompleteModule
+      MatAutocompleteModule,
+      MatDialogModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

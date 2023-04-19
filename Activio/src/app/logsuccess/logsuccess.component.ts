@@ -1,16 +1,20 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { CommentDialogComponent } from '../comment-dialog/comment-dialog.component';
+
 
 @Component({
   selector: 'app-logsuccess',
   templateUrl: './logsuccess.component.html',
   styleUrls: ['./logsuccess.component.css'],
 })
+
 export class LogsuccessComponent {
 
   posts: any[] = [];
   
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private dialog: MatDialog) {}
   
   ngOnInit(): void {
 
@@ -50,7 +54,27 @@ export class LogsuccessComponent {
   }
 
   // called when user hits comment
-  onComment() {
-    
+  onComment(id: number) {
+    const dialogRef: MatDialogRef<CommentDialogComponent> = this.dialog.open(CommentDialogComponent);
+
+    dialogRef.afterClosed().subscribe((comment) => {
+      if (comment) {
+        console.log("Comment: ", comment);
+        this.http.put(`http://localhost:3000/api/auth/comment/${id}`,
+        {
+          comment
+        },
+        {
+          withCredentials: true
+        }
+        )
+        .subscribe(response => {
+          console.log(response);
+          window.location.reload();
+        }, (error) => {
+          console.log(error);
+        });
+      }
+    })
   }
 }

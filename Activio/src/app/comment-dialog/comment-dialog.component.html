@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Add a comment!</h1>
+<div mat-dialog-content>
+    <p>What do you think about this activity?</p>
+    <mat-form-field appearance="fill">
+        <mat-label>Comment</mat-label>
+        <input matInput [(ngModel)]="comment" autofocus>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button [mat-dialog-close]="undefined">Discard</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="comment">Post!</button>
+  </div>
