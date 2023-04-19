@@ -49,6 +49,8 @@ The following naming conventions are used throughout the documentation:
     - `password` - The password of the user
     - `firstName` - The first name of the user
     - `lastName` - The last name of the user
+    - `birthday` - The birthday of the user (Type: Date String)
+    - `phoneNumber` - The phone number of the user
     - `email` - The email of the user (Unique)
 - **Response Body:**
     - `email` - The email of the user
