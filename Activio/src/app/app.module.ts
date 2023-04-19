@@ -31,6 +31,7 @@ import { AuthService } from './auth.service';
 import { PostComponent } from './post/post.component';
 import { LogoutComponent } from './logout/logout.component';
 import { CreateAccountVerifComponent } from './create-account-verif/create-account-verif.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +43,7 @@ import { CreateAccountVerifComponent } from './create-account-verif/create-accou
     PostComponent,
     LogoutComponent,
     CreateAccountVerifComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -86,6 +88,10 @@ import { CreateAccountVerifComponent } from './create-account-verif/create-accou
       {
         path: 'create-account-verif',
         component: CreateAccountVerifComponent
+      },
+      {
+        path: 'userProfile',
+        component: UserProfileComponent
       },
       {
         path: 'logout',
