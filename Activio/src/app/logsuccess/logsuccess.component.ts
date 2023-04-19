@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { CommentDialogComponent } from '../comment-dialog/comment-dialog.component';
 import { ViewDialogComponent } from '../view-dialog/view-dialog.component';
-
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-logsuccess',
@@ -14,8 +15,9 @@ import { ViewDialogComponent } from '../view-dialog/view-dialog.component';
 export class LogsuccessComponent {
 
   posts: any[] = [];
-  
-  constructor(private http: HttpClient, private dialog: MatDialog) {}
+  LocationData: any = {}
+  constructor(private http: HttpClient, private dialog: MatDialog, private _auth: AuthService,
+    private _router: Router) {}
   
   ngOnInit(): void {
 
@@ -29,7 +31,7 @@ export class LogsuccessComponent {
     }, error => {
       console.error('Error retrieving posts.');
     })
-
+   
     // // temp: clear posts for testing
     // const id = 1;
     // this.http.delete(`http://localhost:3000/api/auth/deletepost/${id}`, {
@@ -39,7 +41,17 @@ export class LogsuccessComponent {
     //     console.log(response);
     //   })
   }
-
+  Location() {
+    /*this._auth.Location(this.LocationData)
+      .subscribe(
+        res => {
+          console.log(this.LocationData.input);
+          this._router.navigate(['/location-search']);
+        },
+        err => console.log(err)
+      )
+      */
+  }
   // called when user likes a post
   onLike(id: number) {
 

@@ -1,1 +1,43 @@
-<p>location-search works!</p>
+<mat-toolbar class="justify-between max-w-7xl mx-auto border-x">
+  <a routerLink="MemberPage">Activio</a>
+  <div class="PostBtn">
+    <button type="postBtn" mat-raised-button color="primary">
+      <a routerLink="/post">Post</a>
+    </button>
+  </div>
+  <div class="ViewProfile">
+    <button type="ProfileBttn" mat-raised-button color="primary">
+      <a routerLink="/userProfile">Profile</a>
+    </button>
+  </div>
+  <div class="LogBtn">
+    <button type="LogBtn" mat-raised-button color="primary">
+      <a routerLink="/logout">Logout</a>
+    </button>
+  </div>
+
+</mat-toolbar>
+
+<div class="logsuccess-div">
+  <mat-card class="activio-welcome-back">
+    <mat-card-header>
+      <mat-card-title>
+        Welcome back to Activio!
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      Find the best activities to do around the world and meet other travelers.
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+<div class="post-container" *ngFor="let post of posts">
+  <h2>{{ post.postDescription }}</h2>
+  <img [src]="'assets/images/' + post.images[0]?.url" alt="Post Image">
+  <h2>{{ post.locationName }}</h2>
+  <h3>{{ post.postedBy.username }}</h3>
+  <button mat-button (click)="onLike(post.id)">LIKE - {{ post.numberOfLikes }}</button>
+  <button mat-button (click)="onComment(post.id)">COMMENT - {{ post.comments.length }}</button>
+  <button mat-button (click)="onView(post.id)">VIEW</button>
+</div>

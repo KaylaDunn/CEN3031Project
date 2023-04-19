@@ -112,6 +112,10 @@ import { AddImageComponent } from './add-image/add-image.component';
         component: EditProfileInfoComponent
       },
       {
+        path: 'location-search',
+        component: LocationSearchComponent
+      },
+      {
         path: 'logout',
         component: LogoutComponent
         }
