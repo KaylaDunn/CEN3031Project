@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 export class AuthService {
   private _registerUrl = "http://localhost:3000/api/signup";
   private _loginUrl = "http://localhost:3000/api/login";
+  private _userUpdate = "http://localhost:3000/api/auth/updateuser";
   constructor(private http: HttpClient) { }
   registerUser(user: {}) {
     return this.http.post<any>(this._registerUrl, user)
@@ -11,6 +12,9 @@ export class AuthService {
   loginUser(user: {}) {
     return this.http.post<any>(this._loginUrl, user, { withCredentials : true })
   }
-  //Login data from backend saved
+  User(user: {}) {
+    return this.http.put<any>(this._userUpdate,user)
+  }
+ 
 
 }

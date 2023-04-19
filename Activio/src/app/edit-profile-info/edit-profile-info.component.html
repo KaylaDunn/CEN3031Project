@@ -20,42 +20,21 @@
   <div class="card mb-4">
     <div class="card-header">Account Details</div>
     <div class="card-body">
-      <form>
-        <!-- Form Group (username)-->
-        <div class="mb-3">
-          <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
-          <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username">
-        </div>
-        <!-- Form Row-->
-        <div class="row gx-3 mb-3">
-          <!-- Form Group (first name)-->
-          <div class="col-md-6">
-            <label class="small mb-1" for="inputFirstName">First name</label>
-            <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name">
-          </div>
-          <!-- Form Group (last name)-->
-          <div class="col-md-6">
-            <label class="small mb-1" for="inputLastName">Last name</label>
-            <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name">
-          </div>
-        </div>
-      
-        <!-- Form Row-->
-        <div class="row gx-3 mb-3">
-          <!-- Form Group (phone number)-->
-          <div class="col-md-6">
-            <label class="small mb-1" for="inputPhone">Phone number</label>
-            <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number">
-          </div>
-          <!-- Form Group (birthday)-->
-          <div class="col-md-6">
-            <label class="small mb-1" for="inputBirthday">Birthday</label>
-            <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday">
-          </div>
-        </div>
-        <!-- Save changes button-->
-        <button class="btn btn-primary" type="button" mat-raised-button color="primary">Save changes</button>
-      </form>
+        <form method="post" appearance="fill">
+          <label>Enter your First Name</label>
+          <input [(ngModel)]="UserData.firstName" type="firstName" name="name" placeholder="First Name" required="required" />
+          <label>Enter your Last Name</label>
+          <input [(ngModel)]="UserData.lastName" type="lastName" name="name" placeholder="Last Name" required="required" />
+          <label>Username</label>
+          <input [(ngModel)]="UserData.username" type="user" name="username" placeholder="user123" required="required" />
+          <label>Enter your Birthday</label>
+          <input [(ngModel)]="UserData.birthday" type="birth" name="birthday" placeholder="08/28/2002" required="required" />
+          <label>Enter your Phone Number</label>
+          <input [(ngModel)]="UserData.phoneNumber" type="phone" name="phone" placeholder="(xxx)-xxx-xxxx" required="required" />
+        </form>
+        <button (click)="User()" type="button" class="btn btn-secondary btn-block btn-large">
+          <a>Save Changes</a>
+        </button>
     </div>
   </div>
 </div>
