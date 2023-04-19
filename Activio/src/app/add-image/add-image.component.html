@@ -1,0 +1,17 @@
+<ng-container *ngIf="post">
+    <h1>Add a picture from {{ post.postDescription }}</h1>
+    <input style="display: none" type="file" (change)="onFileSelected($event)" #fileInput>
+    
+    <button mat-raised-button [color]="fileSelected ? 'secondary' : 'primary'" type="btnUp" (click)="fileInput.click()">Choose file</button>
+    
+    <mat-dialog-actions>
+        <button mat-raised-button mat-dialog-close="close">Close</button>
+        <button mat-raised-button color="primary" name="postBtn" type="button" (click)="onPost()">
+          <a>Post!</a>
+        </button>
+    </mat-dialog-actions>
+</ng-container>
+
+
+
+

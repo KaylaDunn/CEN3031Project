@@ -1,0 +1,19 @@
+<ng-container *ngIf="post">
+    <h2 mat-dialog-title>{{ post.postDescription }} in {{ post.locationName }}</h2>
+    
+    <mat-dialog-content>
+        <div *ngFor="let image of post.images">
+            <img [src]="'assets/images/' + image.url" alt="Image" class="post-image">
+        </div>
+        <div *ngFor="let comment of post.comments">
+            <p class="post-comment">{{ comment.comment }} - {{ comment.commentedBy.username }}</p>
+        </div>
+    </mat-dialog-content>
+    
+    <mat-dialog-actions>
+        <button mat-button tabindex="-1" (click)="onLike()">LIKE</button>
+        <button mat-button tabindex="-1" (click)="onComment()">COMMENT</button>
+        <button *ngIf="post.postedBy.id === userID" mat-button tabindex="-1" (click)="addImage()">ADD IMAGE</button>
+        <button color="secondary" mat-raised-button mat-dialog-close tabindex="-1">Close</button>
+    </mat-dialog-actions>
+</ng-container>

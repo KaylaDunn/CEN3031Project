@@ -36,6 +36,8 @@ import { LocationSearchComponent } from './location-search/location-search.compo
 import { EditProfileInfoComponent } from './edit-profile-info/edit-profile-info.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CommentDialogComponent } from './comment-dialog/comment-dialog.component';
+import { ViewDialogComponent } from './view-dialog/view-dialog.component';
+import { AddImageComponent } from './add-image/add-image.component';
 
 
 @NgModule({
@@ -53,6 +55,8 @@ import { CommentDialogComponent } from './comment-dialog/comment-dialog.componen
     LocationSearchComponent,
     EditProfileInfoComponent,
     CommentDialogComponent,
+    ViewDialogComponent,
+    AddImageComponent,
   ],
   
   imports: [
