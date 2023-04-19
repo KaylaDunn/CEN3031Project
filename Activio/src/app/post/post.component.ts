@@ -1,5 +1,7 @@
 import { HttpClient, HttpEventType, HttpHeaders } from '@angular/common/http'; // allows for http requests
 import { Component, Inject, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 import * as _ from 'cypress/types/lodash';
 
 // defines PostComponent
@@ -26,7 +28,8 @@ export class PostComponent implements OnInit {
   fileSelected = false;
   selectedFile: File | null = null;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private _auth: AuthService,
+    private _router: Router) { }
 
   // called when user selects a file
   onFileSelected(event: any) {  
@@ -84,7 +87,7 @@ export class PostComponent implements OnInit {
               }
             } else if (event.type === HttpEventType.Response) {
               console.log(event);
-            }
+          }
         }, error => {
           console.error('Error uploading image: ', error);
         })
@@ -92,5 +95,6 @@ export class PostComponent implements OnInit {
         console.error('Error creating post: ', error);
       })
     }
+    this._router.navigate(['/logsuccess']);
   }
 }

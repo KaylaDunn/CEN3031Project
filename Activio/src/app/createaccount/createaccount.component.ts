@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-createaccount',
   templateUrl: './createaccount.component.html',
@@ -7,7 +8,8 @@ import { AuthService } from '../auth.service';
 })
 export class CreateaccountComponent implements OnInit {
   registerUserData: any = {}
-  constructor(private _auth: AuthService) { }
+  constructor(private _auth: AuthService, 
+    private _router: Router,) { }
   ngOnInit() {
 
   }
@@ -15,7 +17,9 @@ export class CreateaccountComponent implements OnInit {
   registerUser() {
     this._auth.registerUser(this.registerUserData)
       .subscribe(
-        res => console.log(res),
+        res => {
+          this._router.navigate(['/create-account-verif']);
+        },
         err => console.log(err)
     )
   }
