@@ -30,6 +30,7 @@ The following naming conventions are used throughout the documentation:
 - GET [api/posts](#apiposts)
 - GET [api/post/[id]](#apipostid)
 - GET [api/posts/location/[location]](#apipostslocationlocation)
+- GET [api/posts/user/[id]](#apipostsuserid)
 - POST [api/auth/createpost](#apiauthcreatepost)
 - PUT [/addImageToPost/:id](#addimagetopostid)
 - DELETE [api/auth/deletepost/[id]](#apiauthdeletepostid)
@@ -163,6 +164,13 @@ The following naming conventions are used throughout the documentation:
 - **URL:** `/api/posts/location/[location]`
 - **Response Body:**
     - `posts` - All posts in the location
+
+### `api/posts/user/[id]`
+- **Description:** Get all posts by a user
+- **Method:** GET
+- **URL:** `/api/posts/user/[id]`
+- **Response Body:**
+    - `posts` - All posts by the user
 
 ### `api/addimagetopost/[id]`
 - **Description:** Adds images to a post

@@ -566,3 +566,83 @@ func GetPostsByLocation(c *gin.Context) {
 		"posts": postResponses,
 	})
 }
+
+func GetPostsByUser(c *gin.Context) {
+	// get the user id from the request
+	userID := c.Param("id")
+
+	// convert the user id to an int
+	id, err := strconv.Atoi(userID)
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": "Invalid ID",
+			"suggestion": "Check if the ID is a number.",
+		})
+		return
+	}
+
+	// get the posts from the database
+	posts, err := db.GetPostsByUser(id)
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "error getting posts",
+		})
+		return
+	}
+
+	var postResponses []PostResponse
+
+	for _, post := range posts {
+		images, err := db.GetImagesRelatedToPost(post.ID)
+		if err != nil {
+			log.Println(err)
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"message": "Internal server error",
+			})
+			return
+		}
+
+		comments, err := db.GetCommentsRelatedToPost(post.ID)
+		if err != nil {
+			log.Println(err)
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"message": "Internal server error",
+			})
+			return
+		}
+
+		numberOfLikes, err := db.GetNumberOfLikes(post.ID)
+		if err != nil {
+			log.Println(err)
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"message": "Internal server error",
+			})
+			return
+		}
+
+		user, err := db.GetUserById(int(post.UserID))
+		if err != nil {
+			log.Println(err)
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"message": "Internal server error",
+			})
+			return
+		}
+
+		commentResponses := []CommentResponse{}
+		for _, comment := range comments {
+			// get the user who commented
+			user, _ := db.GetUserById(int(comment.UserID))
+			commentResponses = append(commentResponses, CommentResponse{comment, user})
+		}
+
+		postResponses = append(postResponses, PostResponse{post, user, images, commentResponses , int(numberOfLikes)})
+	}
+
+	// return the posts
+	c.JSON(http.StatusOK, gin.H{
+		"posts": postResponses,
+	})
+}
