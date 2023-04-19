@@ -25,10 +25,12 @@
   <div class="loc-div">
     Where to?
     <mat-form-field appearance="fill" [style.width.%]="43">
-      <input [style.width.%]="300" matInput placeholder="Enter desired destination...">
+      <input [(ngModel)]="LocationData.input" type="location" name="location" required="required" [style.width.%]="300" matInput placeholder="Enter desired destination...">
     </mat-form-field>
-    <button type="locBtn" mat-raised-button color="primary">
-      Go!
+    <button (click)="Location()" type="locBtn" mat-raised-button color="primary">
+      <a routerLink="/locationMain">
+        Go!
+        </a>
     </button>
   </div>
 </div>
