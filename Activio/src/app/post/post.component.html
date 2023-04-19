@@ -13,7 +13,7 @@
     (change)="onFileSelected($event)"
     #fileInput>
     <div>
-        <button mat-raised-button color="secondary" type="btnUp" (click)="fileInput.click()">Choose file</button>
+        <button mat-raised-button [color]="fileSelected ? 'secondary' : 'primary'" type="btnUp" (click)="fileInput.click()">Choose file</button>
     </div>
 </div>
 
@@ -24,13 +24,6 @@
     </mat-form-field>
 </div>
 
-<div class="bus-div">
-    <mat-form-field>
-        <label>Company</label>
-        <input matInput name="bus" placeholder="Tag the business.">
-    </mat-form-field>
-</div>
-
 <div class="act-div">
     <mat-form-field appearance="fill">
         <label>Activity</label>
@@ -38,6 +31,17 @@
     </mat-form-field>
 </div>
 
+<!-- (waiting on comment adding api) -->
+<div class="comment-div">
+    <mat-form-field appearance="fill">
+        <label>Comment</label>
+        <input matInput name="comment" placeholder="Tell us more!">
+    </mat-form-field>
+</div>
+
 <div class="btn-div">
-    <button mat-raised-button color="primary" name="postBtn" type="button" (click)="onPost()">Post!</button>
+    <button mat-raised-button color="primary" name="postBtn" type="button" (click)="onPost()">
+      <a routerLink="/logsuccess">Post!</a>
+
+    </button>
 </div>

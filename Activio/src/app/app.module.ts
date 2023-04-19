@@ -30,6 +30,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { PostComponent } from './post/post.component';
 import { LogoutComponent } from './logout/logout.component';
+import { CreateAccountVerifComponent } from './create-account-verif/create-account-verif.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,8 @@ import { LogoutComponent } from './logout/logout.component';
     LogsuccessComponent,
     CreateaccountComponent,
     PostComponent,
-    LogoutComponent
+    LogoutComponent,
+    CreateAccountVerifComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,6 +82,10 @@ import { LogoutComponent } from './logout/logout.component';
       {
         path: 'post',
         component: PostComponent
+      },
+      {
+        path: 'create-account-verif',
+        component: CreateAccountVerifComponent
       },
       {
         path: 'logout',

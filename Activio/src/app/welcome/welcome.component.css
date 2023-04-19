@@ -13,9 +13,6 @@ mat-card {
   display: flex;
   justify-content: center;
 }
-.loc-div {
-  
-}
 
 .about-us-div {
     height: 14vh;
@@ -25,3 +22,27 @@ mat-card {
     margin: 0 auto;
 }
 
+.post-container {
+    border: 1px solid black;
+    align-items: center;
+    padding: 10px;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    width: auto;
+    display: inline-block;
+    text-align: center;
+  }
+  
+  .post-container h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    align-items: center;
+  }
+  
+  .post-container img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+  }
