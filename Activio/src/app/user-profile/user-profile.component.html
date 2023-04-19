@@ -19,32 +19,32 @@
           <div class="col-md-6">
             <label class="small mb-1" for="inputUsername">Username: {{me.username}}</label>
           </div>
+        </div>
+        <!-- Form Group (email address)-->
+        <div class="mb-3">
+          <div class="col-md-6">
+            <label class="small mb-1" for="inputEmailAddress">Email address: {{me.email}}</label>
           </div>
-          <!-- Form Group (email address)-->
-          <div class="mb-3">
-            <div class="col-md-6">
-              <label class="small mb-1" for="inputEmailAddress">Email address: {{me.email}}</label>
-            </div>
+        </div>
+        <!-- Form Row-->
+        <div class="row gx-3 mb-3">
+          <!-- Form Group (first name)-->
+          <div class="col-md-6">
+            <label class="small mb-1" for="inputFirstName">First Name: {{me.firstName}}</label>
           </div>
-          <!-- Form Row-->
-          <div class="row gx-3 mb-3">
-            <!-- Form Group (first name)-->
-            <div class="col-md-6">
-              <label class="small mb-1" for="inputFirstName">First Name: {{me.firstName}}</label>
-            </div>
+        </div>
+        <div class="row gx-3 mb-3">
+          <!-- Form Group (phone number)-->
+          <div class="col-md-6">
+            <label class="small mb-1" for="inputLastName">Last Name: {{me.lastname}}</label>
           </div>
-          <div class="row gx-3 mb-3">
-            <!-- Form Group (phone number)-->
-            <div class="col-md-6">
-              <label class="small mb-1" for="inputLastName">Last Name: {{me.lastName}}</label>
-            </div>
-          </div>
-
+        </div>
+        <div class="row gx-3 mb-3">
           <!-- Form Group (birthday)-->
           <div class="col-md-6">
             <label class="small mb-1" for="inputBirthday">Birthday: {{me.birthday}}</label>
           </div>
-          
+        </div>
           <div class="row gx-3 mb-3">
             <div class="col-md-6">
               <label class="small mb-1" for="inputPhoneNumber">Phone Number: {{me.phoneNumber}}</label>
@@ -58,4 +58,19 @@
       </form>
     </div>
   </div>
-</div>
+  <!-- Account details card-->
+  <div class="card mb-4">
+    <div class="card-header">Your Posts</div>
+    <div class="card-body">
+      <div class="post-container" *ngFor="let post of posts">
+        <div *ngIf="me.username == post.postedBy.username">
+          <h2>{{ post.postDescription }}</h2>
+          <img [src]="'assets/images/' + post.images[0]?.url" alt="Post Image">
+          <h2>{{ post.locationName }}</h2>
+          <button mat-button (click)="onDelete(post.id)">DELETE</button>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
