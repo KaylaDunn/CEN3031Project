@@ -49,3 +49,28 @@ mat-card {
     height: 300px;
     object-fit: cover;
   }
+
+  .post-info {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+
+  .like-info,
+  .comment-info {
+    display: flex;
+    margin-right: 10px;
+    width: 120px;
+    height: 30px;
+    align-items: center;
+  }
+
+  .like-info p,
+  .comment-info p {
+    margin: 0;
+    padding-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

@@ -12,6 +12,10 @@ export class WelcomeComponent {
   LocationData: any = {}
   constructor(private http: HttpClient, private _auth: AuthService,
     private _router: Router) {}
+
+  sortByLikes(posts: any[]) {
+    return posts.sort((a, b) => b.numberOfLikes - a.numberOfLikes);
+  }
   
   ngOnInit(): void {
 
@@ -20,7 +24,7 @@ export class WelcomeComponent {
 
     .subscribe(response => {
 
-      this.posts = response.posts;
+      this.posts = this.sortByLikes(response.posts);
 
     }, error => {
       console.error('Error retrieving posts.');
