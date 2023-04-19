@@ -40,6 +40,7 @@ import { EditProfileInfoComponent } from './edit-profile-info/edit-profile-info.
 import { MatDialogModule } from '@angular/material/dialog';
 import { CommentDialogComponent } from './comment-dialog/comment-dialog.component';
 import { ViewDialogComponent } from './view-dialog/view-dialog.component';
+import { AddImageComponent } from './add-image/add-image.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { ViewDialogComponent } from './view-dialog/view-dialog.component';
     EditProfileInfoComponent,
     CommentDialogComponent,
     ViewDialogComponent,
+    AddImageComponent,
   ],
   
   imports: [

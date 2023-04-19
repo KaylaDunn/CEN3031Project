@@ -40,7 +40,6 @@ export class PostComponent implements OnInit {
     // sets selectedFile
     this.selectedFile = <File>event?.target.files[0];
     this.fileSelected = true;
-    console.log('fileSelected: ', this.fileSelected);
   }
 
   // called when user hits Post

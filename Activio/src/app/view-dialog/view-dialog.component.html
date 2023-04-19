@@ -11,8 +11,9 @@
     </mat-dialog-content>
     
     <mat-dialog-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>COMMENT</button>
-        <button color="secondary" mat-raised-button mat-dialog-close>Close</button>
+        <button mat-button tabindex="-1" (click)="onLike()">LIKE</button>
+        <button mat-button tabindex="-1" (click)="onComment()">COMMENT</button>
+        <button *ngIf="post.postedBy.id === userID" mat-button tabindex="-1" (click)="addImage()">ADD IMAGE</button>
+        <button color="secondary" mat-raised-button mat-dialog-close tabindex="-1">Close</button>
     </mat-dialog-actions>
 </ng-container>
