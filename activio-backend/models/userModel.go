@@ -17,10 +17,6 @@ type User struct {
 
 type UserApiResponse struct {
 	ID uint `json:"id"`
-	Email    string `json:"email"`
 	Username string `json:"username"`
-	FirstName string `json:"firstName"`
-	LastName string `json:"lastName"`
-	Verified bool   `json:"verified"`
 	ProfilePicture string `json:"profilePicture"`
 }

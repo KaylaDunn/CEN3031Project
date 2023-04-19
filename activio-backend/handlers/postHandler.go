@@ -14,6 +14,7 @@ import (
 
 type PostResponse struct {
 	models.PostApiResponse
+	User models.UserApiResponse `json:"postedBy"`
 	Images []models.ImageApiResponse `json:"images"`
 	Comments []models.CommentApiResponse `json:"comments"`
 	NumberOfLikes int `json:"numberOfLikes"`
@@ -70,7 +71,16 @@ func GetPosts(c *gin.Context) {
 			return
 		}
 
-		postResponses = append(postResponses, PostResponse{post, images, comments, int(numberOfLikes)})
+		user, err := db.GetUserById(int(post.UserID))
+		if err != nil {
+			log.Println(err)
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"message": "Internal server error",
+			})
+			return
+		}
+
+		postResponses = append(postResponses, PostResponse{post, user, images, comments, int(numberOfLikes)})
 	}
 
 	// return the posts
@@ -169,9 +179,19 @@ func GetPost(c *gin.Context) {
 		return
 	}
 
+	// Get the user who created the post
+	user, err := db.GetUserById(int(post.UserID))
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "Internal server error",
+		})
+		return
+	}
+	
 	// return the post
 	c.JSON(http.StatusOK, gin.H{
-		"post": PostResponse{post, images, comments, int(numberOfLikes)},
+		"post": PostResponse{post, user, images, comments, int(numberOfLikes)},
 	})
 }
 

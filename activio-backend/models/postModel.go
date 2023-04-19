@@ -16,7 +16,7 @@ type Post struct {
 type PostApiResponse struct {
 	ID uint `json:"id"`
 	CreatedAt string `json:"createdAt"`
-	UserID uint `json:"postedBy"`
+	UserID uint		`json:"postedBy"`
 	Description string `json:"postDescription"`
 	Longitude float64 `json:"longitude"`
 	Latitude float64 `json:"latitude"`
