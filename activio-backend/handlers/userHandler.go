@@ -178,5 +178,9 @@ func getUserDetails(c *gin.Context) {
 		"id":       user.(models.User).ID,
 		"email":    user.(models.User).Email,
 		"verified": user.(models.User).Verified,
+		"firstname": user.(models.User).FirstName,
+		"lastname": user.(models.User).LastName,
+		"phone": user.(models.User).Phonenumber,
+		"birthday": user.(models.User).Birthday,
 	})
 }

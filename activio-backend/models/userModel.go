@@ -11,6 +11,8 @@ type User struct {
 	Username string `json:"username"`
 	FirstName string `json:"firstName"`
 	LastName string `json:"lastName"`
+	Birthday string `json:"birthday"`
+	Phonenumber string `json:"phoneNumber"`
 	Verified bool   `json:"verified"`
 	ProfilePicture string `json:"profilePicture"`
 }
