@@ -41,6 +41,7 @@ func InitRoutes(r *gin.Engine) {
   // post endpoints
   api.GET("/posts", GetPosts)
   api.GET("/post/:id", GetPost)
+  api.GET("/posts/location/:name", GetPostsByLocation)
   auth.POST("/createpost", createPost)
   auth.PUT("/addImageToPost/:id", AddImagesToPost)
   auth.DELETE("/deletepost/:id", DeletePost)

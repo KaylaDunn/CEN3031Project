@@ -496,3 +496,73 @@ func CommentOnPost(c *gin.Context) {
 		"postID": comment.PostID,
 	})
 }
+
+func GetPostsByLocation(c *gin.Context) {
+
+	// get the location from the request
+	location := c.Param("name")
+
+	// get the posts from the database
+	posts, err := db.GetPostsByLocation(location)
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "error getting posts",
+		})
+		return
+	}
+
+	var postResponses []PostResponse
+
+	for _, post := range posts {
+		images, err := db.GetImagesRelatedToPost(post.ID)
+		if err != nil {
+			log.Println(err)
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"message": "Internal server error",
+			})
+			return
+		}
+
+		comments, err := db.GetCommentsRelatedToPost(post.ID)
+		if err != nil {
+			log.Println(err)
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"message": "Internal server error",
+			})
+			return
+		}
+
+		numberOfLikes, err := db.GetNumberOfLikes(post.ID)
+		if err != nil {
+			log.Println(err)
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"message": "Internal server error",
+			})
+			return
+		}
+
+		user, err := db.GetUserById(int(post.UserID))
+		if err != nil {
+			log.Println(err)
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"message": "Internal server error",
+			})
+			return
+		}
+
+		commentResponses := []CommentResponse{}
+		for _, comment := range comments {
+			// get the user who commented
+			user, _ := db.GetUserById(int(comment.UserID))
+			commentResponses = append(commentResponses, CommentResponse{comment, user})
+		}
+
+		postResponses = append(postResponses, PostResponse{post, user, images, commentResponses , int(numberOfLikes)})
+	}
+
+	// return the posts
+	c.JSON(http.StatusOK, gin.H{
+		"posts": postResponses,
+	})
+}
