@@ -107,6 +107,7 @@ The following naming conventions are used throughout the documentation:
     - `lastName` - The last name of the user
     - `birthday` - The birthday of the user (Type: Date String)
     - `phoneNumber` - The phone number of the user
+    - `profilePicture` - The profile picture of the user
 
 
 ### `api/auth/updateuser`
