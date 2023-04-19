@@ -32,6 +32,7 @@ The following naming conventions are used throughout the documentation:
 - PUT [/addImageToPost/:id](#addimagetopostid)
 - DELETE [api/auth/deletepost/[id]](#apiauthdeletepostid)
 - PUT [api/auth/likepost/[id]](#apiauthlikepostid)
+- PUT [api/auth/comment/[id]](#apiauthcommentid)
 
 ## Miscellaneous
 - GET [api/alive](#apialive)
@@ -175,6 +176,19 @@ The following naming conventions are used throughout the documentation:
         - `error` - "Unauthorized"
         - `error` - "Post not found"
         - `error` - "Post already liked"
+
+### `api/auth/comment/[id]`
+- **Description:** Comment on a post
+- **Method:** PUT
+- **URL:** `/api/auth/comment/[id]`
+- **Request Body:**
+    - `comment` - The comment to add to the post
+- **Response Body:**
+    - On Success:
+        - `message` - "Comment added successfully"
+    - On Failure:
+        - `error` - "Unauthorized"
+        - `error` - "Post not found"
 
 ## `api/alive`
 - **Description:** Check if the server is alive
