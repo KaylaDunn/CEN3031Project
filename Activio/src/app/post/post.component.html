@@ -10,10 +10,11 @@
     <input 
     style="display: none"
     type="file"
+    multiple
     (change)="onFileSelected($event)"
     #fileInput>
     <div>
-        <button mat-raised-button [color]="fileSelected ? 'secondary' : 'primary'" type="btnUp" (click)="fileInput.click()">Choose file</button>
+        <button mat-raised-button [color]="fileSelected ? 'secondary' : 'primary'" type="btnUp" (click)="fileInput.click()">Choose files</button>
     </div>
 </div>
 

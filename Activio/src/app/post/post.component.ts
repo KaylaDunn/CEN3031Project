@@ -28,7 +28,7 @@ export class PostComponent implements OnInit {
 
   // stores the user-uploaded file
   fileSelected = false;
-  selectedFile: File | null = null;
+  selectedFiles: File[] = [];
 
   constructor(private http: HttpClient, private _auth: AuthService,
     private _router: Router) {
@@ -37,8 +37,13 @@ export class PostComponent implements OnInit {
 
   // called when user selects a file
   onFileSelected(event: any) {  
-    // sets selectedFile
-    this.selectedFile = <File>event?.target.files[0];
+    // sets selectedFiles
+    const files = event?.target.files;
+    if (files) {
+      for (let i = 0; i < files.length; i++) {
+        this.selectedFiles.push(files[i]);
+      }
+    }
     this.fileSelected = true;
   }
 
@@ -46,7 +51,7 @@ export class PostComponent implements OnInit {
   onPost() {
 
     // if a file is selected, create FormData object
-    if (this.selectedFile instanceof File) {
+    if (this.selectedFiles.length > 0) {
       
       // create request headers
       const headers = new HttpHeaders({
@@ -70,7 +75,9 @@ export class PostComponent implements OnInit {
         const fd = new FormData();
 
         // appends the selected file to the FormData object
-        fd.append('images', this.selectedFile!, this.selectedFile!.name);      
+        for (let i = 0; i < this.selectedFiles.length; i++) {
+          fd.append('images', this.selectedFiles[i], this.selectedFiles[i].name);      
+        }
 
         // (2) another request to backend API with this object (upload/link image)
         // use backticks instead of quotes for id string formatting
