@@ -1,22 +1,31 @@
+<mat-toolbar class="justify-between max-w-7xl mx-auto border-x">
+  <a routerLink="HomePage">Activio</a>
+  <div class="LogBtn">
+    <button type="LogBtn" mat-raised-button color="primary">
+      <a routerLink="/login">Login</a>
+    </button>
+  </div>
 
+</mat-toolbar>
 <div class="main-div">
-    <mat-card class="activio-welcome">
-        <mat-card-header>
-            <mat-card-title>
-                Welcome to Activio!
-            </mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            Find the best activities to do around the world and meet other travelers.
-        </mat-card-content>
-    </mat-card>
+  <mat-card class="activio-welcome">
+    <mat-card-header>
+      <mat-card-title>
+        Welcome to Activio!
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      Find the best activities to do around the world and meet other travelers.
+    </mat-card-content>
+  </mat-card>
 </div>
+
 
 <div class="whereto-div">
   <div class="loc-div">
     Where to?
-    <mat-form-field appearance="fill">
-      <input  matInput placeholder="Enter desired destination...">
+    <mat-form-field appearance="fill" [style.width.%]="43">
+      <input [style.width.%]="300" matInput placeholder="Enter desired destination...">
     </mat-form-field>
     <button type="locBtn" mat-raised-button color="primary">
       Go!
@@ -25,23 +34,23 @@
 </div>
 
 <div class="about-us-div">
-    <mat-card class="about-us">
-        <mat-card-header>
-            <mat-card-title>
-                About us
-            </mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            Activio aims to connect people passionate about travel and provide an easy way to find things to do, 
-            whether it be in your local city or a dream vacation. Created by students at the University of Florida,
-            it is a free and accessible way to learn about the rich cultural life around the world and spice up 
-            any trip. Follow friends, like and comment on posted activities, and have fun exploring!
-        </mat-card-content>
-    </mat-card>
+  <mat-card class="about-us">
+    <mat-card-header>
+      <mat-card-title>
+        About us
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      Activio aims to connect people passionate about travel and provide an easy way to find things to do,
+      whether it be in your local city or a dream vacation. Created by students at the University of Florida,
+      it is a free and accessible way to learn about the rich cultural life around the world and spice up
+      any trip. Follow friends, like and comment on posted activities, and have fun exploring!
+    </mat-card-content>
+  </mat-card>
 </div>
 
 <div class="post-container" *ngFor="let post of posts">
-    <h2>{{ post.postDescription }}</h2>
-    <img [src]="'assets/images/' + post.images[0]?.url" alt="Post Image">
-    <h2>{{ post.locationName }}</h2>
-  </div>
+  <h2>{{ post.postDescription }}</h2>
+  <img [src]="'assets/images/' + post.images[0]?.url" alt="Post Image">
+  <h2>{{ post.locationName }}</h2>
+</div>

@@ -10,16 +10,19 @@ mat-card {
 }
 
 .whereto-div {
-  display: flex;
   justify-content: center;
+  align-items: center;
+  margin-right: 300px;
+  margin: 0 auto;
+  padding-top: 30px;
+  font-size: 16px;
+  padding-left: 35%;
 }
 
 .about-us-div {
     height: 14vh;
     width: 90%;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
+    margin-bottom: 100px;
 }
 
 .post-container {
