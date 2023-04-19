@@ -21,6 +21,8 @@ export class PostComponent implements OnInit {
     locationname: ""
   }
 
+  firstComment: string;
+
   // lifecycle hook called when component is initialized; does nothing
   ngOnInit(): void {}
 
@@ -29,7 +31,9 @@ export class PostComponent implements OnInit {
   selectedFile: File | null = null;
 
   constructor(private http: HttpClient, private _auth: AuthService,
-    private _router: Router) { }
+    private _router: Router) {
+      this.firstComment = '';
+     }
 
   // called when user selects a file
   onFileSelected(event: any) {  
@@ -62,7 +66,6 @@ export class PostComponent implements OnInit {
       .subscribe(response => {
         // get id from response body
         const id = response.body?.post.ID;
-        console.log('id: ', id);
 
         // create FormData object
         const fd = new FormData();
@@ -91,6 +94,23 @@ export class PostComponent implements OnInit {
         }, error => {
           console.error('Error uploading image: ', error);
         })
+
+        // add first comment
+        if (this.firstComment) {
+          this.http.put(`http://localhost:3000/api/auth/comment/${id}`,
+          {
+            comment: this.firstComment
+          },
+          {
+            withCredentials: true
+          })
+          .subscribe(response => {
+            console.log(response);
+          }, error => {
+            console.error(error);
+          });
+        }
+
       }, error => {
         console.error('Error creating post: ', error);
       })

@@ -2,13 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\Activio",
+    "\\activio-backend",
+    "\\activio-backend\\middleware",
+    "\\activio-backend\\models",
+    "\\activio-backend\\utils",
     "\\Activio\\src",
     "\\Activio\\src\\app",
-    "\\Activio\\src\\app\\components",
-    "\\Activio\\src\\app\\components\\header",
-    "\\Activio\\src\\app\\logsuccess",
-    "\\Activio\\src\\app\\post",
-    "\\Activio\\src\\app\\welcome"
+    "\\Activio\\src\\app\\edit-profile-info",
+    "\\Activio\\src\\app\\location-search"
   ],
+  "SelectedNode": "\\Activio\\src\\app\\app.module.ts",
   "PreviewInSolutionExplorer": false
 }
