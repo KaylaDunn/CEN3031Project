@@ -10,6 +10,7 @@ import (
 	"testing"
 )
 
+// this counter is only good for three digit post ids
 var postID = ""
 
 func TestCreatePost(t *testing.T) {
@@ -78,7 +79,9 @@ func TestCreatePost(t *testing.T) {
 	body, _ := io.ReadAll(response.Body)
 
 	id := string(body)
-	postID = id[14:16]
+
+	// this counter is only good for three digit post ids
+	postID = id[14:17]
 
 	got := response.Status == "200 OK"
 	want := true
@@ -950,8 +953,8 @@ func TestCommentOnPostUnauthorized(t *testing.T) {
 	if got != want {
 		t.Errorf("got %t, wanted %t", got, want)
 	}
-
 }
+
 func TestGetPostsByLocation(t *testing.T) {
 
 	data := map[string]interface{}{
@@ -986,7 +989,7 @@ func TestGetPostsByLocation(t *testing.T) {
 
 	body, _ := io.ReadAll(response.Body)
 
-	got = string(body) == "{\"posts\":[{\"id\":3,\"createdAt\":\"2023-03-20T21:23:10.114Z\",\"postDescription\":\"Created using api\",\"longitude\":-5.234,\"latitude\":0.234,\"locationName\":\"palatka\",\"postedBy\":{\"id\":2,\"username\":\"bobert\",\"profilePicture\":\"\"},\"images\":[],\"comments\":[],\"numberOfLikes\":0}]}"
+	got = string(body) == "{\"posts\":[{\"id\":3,\"createdAt\":\"2023-03-20T21:23:10.114Z\",\"postDescription\":\"Created using api\",\"longitude\":-5.234,\"latitude\":0.234,\"locationName\":\"palatka\",\"postedBy\":{\"id\":1,\"username\":\"UserTodd\",\"profilePicture\":\"\"},\"images\":[],\"comments\":[],\"numberOfLikes\":0}]}"
 	want = true
 
 	if got != want {
@@ -1008,6 +1011,90 @@ func TestGetPostsByLocationNoResults(t *testing.T) {
 	}
 
 	httpposturl := "http://0.0.0.0:3000/api/posts/location/wakanda"
+
+	request, _ := http.NewRequest("GET", httpposturl, bytes.NewBuffer(jsonData))
+	request.Header.Set("Content-Type", "application/json; charset=UTF-8")
+
+	client := &http.Client{}
+	response, error := client.Do(request)
+	if error != nil {
+		panic(error)
+	}
+	defer response.Body.Close()
+
+	got := response.Status == "200 OK"
+	want := true
+
+	if got != want {
+		t.Errorf("got %t, wanted %t", got, want)
+	}
+
+	body, _ := io.ReadAll(response.Body)
+
+	got = string(body) == "{\"posts\":null}"
+	want = true
+
+	if got != want {
+		t.Errorf("got %t, wanted %t", got, want)
+	}
+}
+
+func TestGetPostsByUser(t *testing.T) {
+
+	data := map[string]interface{}{
+		"password": "bobspassword",
+		"email":    "bob@ufl.edu",
+	}
+
+	jsonData, err := json.Marshal(data)
+	if err != nil {
+		fmt.Printf("could not marshal json: %s\n", err)
+		return
+	}
+
+	httpposturl := "http://0.0.0.0:3000/api/posts/user/1"
+
+	request, _ := http.NewRequest("GET", httpposturl, bytes.NewBuffer(jsonData))
+	request.Header.Set("Content-Type", "application/json; charset=UTF-8")
+
+	client := &http.Client{}
+	response, error := client.Do(request)
+	if error != nil {
+		panic(error)
+	}
+	defer response.Body.Close()
+
+	got := response.Status == "200 OK"
+	want := true
+
+	if got != want {
+		t.Errorf("got %t, wanted %t", got, want)
+	}
+
+	body, _ := io.ReadAll(response.Body)
+
+	got = string(body) == "{\"posts\":[{\"id\":3,\"createdAt\":\"2023-03-20T21:23:10.114Z\",\"postDescription\":\"Created using api\",\"longitude\":-5.234,\"latitude\":0.234,\"locationName\":\"palatka\",\"postedBy\":{\"id\":1,\"username\":\"UserTodd\",\"profilePicture\":\"\"},\"images\":[],\"comments\":[],\"numberOfLikes\":0}]}"
+	want = true
+
+	if got != want {
+		t.Errorf("got %t, wanted %t", got, want)
+	}
+}
+
+func TestGetPostsByUserNoResults(t *testing.T) {
+
+	data := map[string]interface{}{
+		"password": "bobspassword",
+		"email":    "bob@ufl.edu",
+	}
+
+	jsonData, err := json.Marshal(data)
+	if err != nil {
+		fmt.Printf("could not marshal json: %s\n", err)
+		return
+	}
+
+	httpposturl := "http://0.0.0.0:3000/api/posts/user/9999"
 
 	request, _ := http.NewRequest("GET", httpposturl, bytes.NewBuffer(jsonData))
 	request.Header.Set("Content-Type", "application/json; charset=UTF-8")
