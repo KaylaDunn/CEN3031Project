@@ -20,6 +20,7 @@ The following naming conventions are used throughout the documentation:
 - GET [api/auth/refreshtoken](#apiauthrefreshtoken)
 - DELETE [api/auth/deleteaccount](#apiauthdeleteaccount)
 - GET [api/auth/me](#apiauthme)
+- PUT [api/auth/updateuser](#apiauthupdateuser)
 
 ## Image Management
 - POST [api/images](#apiimages) -- WILL BE REMOVED (See Post Management)
@@ -104,6 +105,22 @@ The following naming conventions are used throughout the documentation:
     - `lastName` - The last name of the user
     - `birthday` - The birthday of the user (Type: Date String)
     - `phoneNumber` - The phone number of the user
+
+### `api/auth/updateuser`
+- **Description:** Updates the user's information
+- **Method:** PUT
+- **URL:** `/api/auth/updateuser`
+- **Request Body:**
+    - `firstName` - The first name of the user (Optional)
+    - `lastName` - The last name of the user (Optional)
+    - `birthday` - The birthday of the user (Type: Date String) (Optional)
+    - `phoneNumber` - The phone number of the user (Optional)
+    - `username` - The username of the user (Optional)
+- **Response Body:**
+    - On Success:
+        - `message` - "User updated successfully"
+    - On Failure:
+        - `error` - "Unauthorized"
     
 ### `api/images`
 - **Description:** Upload multiple images
