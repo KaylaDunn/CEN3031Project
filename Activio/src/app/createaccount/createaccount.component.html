@@ -2,16 +2,20 @@
 <div class="form-div">
     <h1>Sign Up</h1>
     <form method="post" appearance="fill">
-            <label>Email Address</label>
-            <input [(ngModel)]="registerUserData.email" type="email" name="email" placeholder="email.address@example.com" required="required" />
-            <label>Username</label>
-            <input [(ngModel)]="registerUserData.username" type="user" name="username" placeholder="user123" required="required" />
-            <label>Password</label>
-            <input [(ngModel)]="registerUserData.password" type="password1" name="password" placeholder="password" required="required" />
-            <label>Confirm Password</label>
-            <input [(ngModel)]="registerUserData.passwordconfirm" type="password2" name="confirm" placeholder="password" required="required" />
+      <label>Enter your First Name</label>
+      <input [(ngModel)]="registerUserData.firstName" type="firstName" name="name" placeholder="First Name" required="required" />
+      <label>Enter your Last Name</label>
+      <input [(ngModel)]="registerUserData.lastName" type="lastName" name="name" placeholder="Last Name" required="required" />
+      <label>Email Address</label>
+      <input [(ngModel)]="registerUserData.email" type="email" name="email" placeholder="email.address@example.com" required="required" />
+      <label>Username</label>
+      <input [(ngModel)]="registerUserData.username" type="user" name="username" placeholder="user123" required="required" />
+      <label>Password</label>
+      <input [(ngModel)]="registerUserData.password" type="password1" name="password" placeholder="password" required="required" />
+      <label>Confirm Password</label>
+      <input [(ngModel)]="registerUserData.passwordconfirm" type="password2" name="confirm" placeholder="password" required="required" />
     </form>
     <button (click)="registerUser()" type="button" class="btn btn-secondary btn-block btn-large">
-      <a routerLink="/create-account-verif">Create my account</a>
+      <a>Create my account</a>
     </button>
 </div>

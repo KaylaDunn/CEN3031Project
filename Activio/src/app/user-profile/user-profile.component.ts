@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEventType, HttpHeaders } from '@angular/common/http'; // allows for http requests
+import { Component, Inject, OnInit } from '@angular/core';
+import * as _ from 'cypress/types/lodash';
 
 @Component({
   selector: 'app-user-profile',
@@ -10,14 +11,19 @@ export class UserProfileComponent implements OnInit {
   me: any = {}
   constructor(private http: HttpClient) { }
   ngOnInit(): void {
-    this.http.get<any>('http://localhost:3000/api/auth/me')
-      .subscribe(response => {
 
-        this.me = response.me;
-        console.log(this.me.email)
-      }, error => {
-        console.error('Getting Account Info');
-      })
+    this.http.get<any>('http://localhost:3000/api/auth/me',{
+        reportProgress: true,
+          observe: 'response', // to get the post id
+            withCredentials: true // authentication
+    })
+      .subscribe(response => {
+      this.me = response.body;
+      console.log(this.me.email)
+    }, error => {
+      console.error('Getting Account Info');
+    })
+    
   }
   
 }
