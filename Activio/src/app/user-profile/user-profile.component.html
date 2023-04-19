@@ -61,9 +61,8 @@
   <!-- Account details card-->
   <div class="card mb-4">
     <div class="card-header">Your Posts</div>
-    <div class="card-body">
-      <div class="post-container" *ngFor="let post of posts">
-        <div *ngIf="me.username == post.postedBy.username">
+      <div *ngFor="let post of posts">
+        <div class="post-container" *ngIf="me.username == post.postedBy.username">
           <h2>{{ post.postDescription }}</h2>
           <img [src]="'assets/images/' + post.images[0]?.url" alt="Post Image">
           <h2>{{ post.locationName }}</h2>
@@ -71,6 +70,5 @@
         </div>
       </div>
       </div>
-    </div>
   </div>
 

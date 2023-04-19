@@ -122,6 +122,10 @@ import { LocationSearchFromMainComponent } from './location-search-from-main/loc
         component: LocationSearchFromMainComponent
       },
       {
+        path: 'user-profile',
+        component: UserProfileComponent
+      },
+      {
         path: 'logout',
         component: LogoutComponent
         }

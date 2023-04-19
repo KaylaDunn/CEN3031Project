@@ -1,24 +1,46 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEventType, HttpHeaders } from '@angular/common/http';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-edit-profile-info',
   templateUrl: './edit-profile-info.component.html',
   styleUrls: ['./edit-profile-info.component.css']
 })
-export class EditProfileInfoComponent {
+export class EditProfileInfoComponent implements OnInit {
+  
   UserData: any = {}
+  
   constructor(private http: HttpClient, private dialog: MatDialog, private _auth: AuthService,
     private _router: Router) { }
-  ngOnInit() {
 
+ 
+  ngOnInit() : void {
+    
   }
+ 
+
+  /*ProfilePic() {
+    this._auth.ProfilePic(this.ImgData)
+      .subscribe(
+        res => {
+
+        },
+
+        err => console.log(err)
+      )
+
+  }*/
 
   User() {
-    this.http.put(`http://localhost:3000/api/auth/updateuser`, null, {
-      withCredentials: true
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+    console.log(this.UserData);
+    this.http.put(`http://localhost:3000/api/auth/updateuser`, {
+      withCredentials: true,
+      headers: headers,
     })
       .subscribe(
         res => {
@@ -28,7 +50,7 @@ export class EditProfileInfoComponent {
           console.log(this.UserData.lastName)
           console.log(this.UserData.birthday)
           console.log(this.UserData.phoneNumber)
-          this._router.navigate(['/create-account-verif']);
+          this._router.navigate(['/user-profile']);
         },
         err => console.log(err)
       )
