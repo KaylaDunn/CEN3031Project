@@ -18,6 +18,7 @@ func RequireAuth(c *gin.Context) {
 	tokenString, err := c.Cookie("Authorization")
 	if err != nil {
 		c.AbortWithStatusJSON(401, gin.H{"error": "Unauthorized"})
+		return
 	}
 
 	// verify token
@@ -34,6 +35,7 @@ func RequireAuth(c *gin.Context) {
 		// Check if token is expired
 		if float64(time.Now().Unix()) > claims["exp"].(float64) {
 			c.AbortWithStatusJSON(401, gin.H{"error": "Unauthorized"})
+			return
 		}
 
 		// Make sure user is still valid
@@ -42,6 +44,7 @@ func RequireAuth(c *gin.Context) {
 
 		if user.Email == "" {
 			c.AbortWithStatusJSON(401, gin.H{"error": "Unauthorized"})
+			return
 		}
 
 		// Set user in context
@@ -52,5 +55,6 @@ func RequireAuth(c *gin.Context) {
 		c.Next()
 	} else {
 		c.AbortWithStatusJSON(401, gin.H{"error": "Unauthorized"})
+		return
 	}
 }
