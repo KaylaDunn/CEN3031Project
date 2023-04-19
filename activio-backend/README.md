@@ -23,7 +23,7 @@ The following naming conventions are used throughout the documentation:
 - PUT [api/auth/updateuser](#apiauthupdateuser)
 
 ## Image Management
-- POST [api/auth/setprofileimage](#apiauthsetprofileimage)
+- POST [api/auth/setprofilepicture](#setprofilepicture)
 - GET [api/image/[id]](#apiimageid)
 
 ## Post Management
@@ -125,10 +125,10 @@ The following naming conventions are used throughout the documentation:
     - On Failure:
         - `error` - "Unauthorized"
     
-### `api/auth/setprofileimage`
+### `api/auth/setprofilepicture`
 - **Description:** Sets the user's profile image
 - **Method:** POST
-- **URL:** `/api/auth/setprofileimage`
+- **URL:** `/api/auth/setprofilepicture`
 - **Request Body:**
     - `image` - The image to set as the profile image
 - **Response Body:**
