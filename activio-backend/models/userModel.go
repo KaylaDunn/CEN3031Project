@@ -22,3 +22,11 @@ type UserApiResponse struct {
 	Username string `json:"username"`
 	ProfilePicture string `json:"profilePicture"`
 }
+
+type UserUpdateInfo struct {
+	FirstName string `json:"firstname"`
+	LastName string `json:"lastname"`
+	Username string `json:"username"`
+	Phonenumber string `json:"phonenumber"`
+	Birthday string `json:"birthday"`
+}

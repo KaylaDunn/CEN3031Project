@@ -184,10 +184,62 @@ func getUserDetails(c *gin.Context) {
 		"id":       user.(models.User).ID,
 		"email":    user.(models.User).Email,
 		"verified": user.(models.User).Verified,
-		"firstname": user.(models.User).FirstName,
-		"lastname": user.(models.User).LastName,
+		"firstName": user.(models.User).FirstName,
+		"lastName": user.(models.User).LastName,
 		"phoneNumber": user.(models.User).Phonenumber,
 		"username": user.(models.User).Username,
 		"birthday": user.(models.User).Birthday,
 	})
+}
+
+func UpdateUser(c *gin.Context) {
+	// This endpoint is used to update a user's details
+
+	// Get the user from the context
+	user, ok := c.Get("user")
+
+	// Check if there is an error
+	if !ok {
+		c.JSON(http.StatusBadRequest, gin.H{"Error": "Error updating user", "Suggestion": "Please try again later"})
+		return
+	}
+
+	// Verify if the user still exists
+	var existingUser models.User
+	db.GetDB().Find(&existingUser, "id = ?", user.(models.User).ID)
+
+	if existingUser.Email == "" {
+		log.Println("User does not exist")
+		c.JSON(http.StatusBadRequest, gin.H{"Error": "User does not exist", "Suggestion": "Please sign up or check your email"})
+		return
+	}
+
+	// Create a new user object
+	var updatedUser models.UserUpdateInfo
+
+	// Bind the request body to the user object
+	err := c.BindJSON(&updatedUser)
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusBadRequest, gin.H{"Error": "Invalid User Request", "Suggestion": "Please check the documentation for the correct request format"})
+		return
+	}
+
+	// print the user object
+	log.Println(updatedUser.FirstName)
+	log.Println(updatedUser.LastName)
+	log.Println(updatedUser.Username)
+	log.Println(updatedUser.Birthday)
+	log.Println(updatedUser.Phonenumber)
+
+	// Update the user
+	err = db.UpdateUser(updatedUser, user.(models.User).ID)
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusBadRequest, gin.H{"Error": "Error updating user", "Suggestion": "Please try again later"})
+		return
+	}
+
+	// Return a success message
+	c.JSON(http.StatusOK, gin.H{"message": "User updated successfully"})
 }

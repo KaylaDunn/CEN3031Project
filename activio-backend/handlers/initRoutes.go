@@ -36,6 +36,7 @@ func InitRoutes(r *gin.Engine) {
   auth.GET("/refreshtoken", RefreshJWT)
   auth.DELETE("/deleteaccount", DeleteUserAndUserData)
   auth.GET("/me", getUserDetails)
+  auth.PUT("/updateuser", UpdateUser)
 
   // post endpoints
   api.GET("/posts", GetPosts)
