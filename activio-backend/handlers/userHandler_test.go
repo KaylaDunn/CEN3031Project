@@ -41,6 +41,7 @@ func TestLogin(t *testing.T) {
 	if got != want {
 		t.Errorf("got %t, wanted %t", got, want)
 	}
+
 }
 
 func TestLoginFail(t *testing.T) {
@@ -174,6 +175,15 @@ func TestDeleteUserAndUserData(t *testing.T) {
 	if got != want {
 		t.Errorf("got %t, wanted %t", got, want)
 	}
+
+	body, _ := io.ReadAll(response.Body)
+
+	got = string(body) == "{\"message\":\"User deleted successfully\"}"
+	want = true
+
+	if got != want {
+		t.Errorf("got %t, wanted %t", got, want)
+	}
 }
 
 func TestDeleteUserAndUserDataFail(t *testing.T) {
@@ -273,6 +283,15 @@ func TestGetUserDetails(t *testing.T) {
 
 	got := response.Status == "200 OK"
 	want := true
+
+	if got != want {
+		t.Errorf("got %t, wanted %t", got, want)
+	}
+
+	body, _ := io.ReadAll(response.Body)
+
+	got = string(body) == "{\"birthday\":\"\",\"email\":\"bob@ufl.edu\",\"firstName\":\"bob\",\"id\":2,\"lastName\":\"roberts\",\"phoneNumber\":\"555-555-5555\",\"profilePicture\":\"\",\"username\":\"bobert\",\"verified\":false}"
+	want = true
 
 	if got != want {
 		t.Errorf("got %t, wanted %t", got, want)
