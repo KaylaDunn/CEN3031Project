@@ -202,8 +202,6 @@ func TestGetPost(t *testing.T) {
 
 	sillyString := "{\"post\":{\"id\":1,\"createdAt\":\"2023-03-20T21:20:52.848Z\",\"postDescription\":\"Created using api\",\"longitude\":-5.234,\"latitude\":0.234,\"locationName\":\"paris\",\"postedBy\":{\"id\":2,\"username\":\"bobert\",\"profilePicture\":\"\"},\"images\":[],\"comments\":[],\"numberOfLikes\":1}}"
 
-	println("status: " + response.Status)
-	println("body: " + string(body))
 	got = string(body) == sillyString
 	want = true
 

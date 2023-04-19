@@ -213,9 +213,6 @@ func TestDeleteUserAndUserDataFail(t *testing.T) {
 
 	body, _ := io.ReadAll(response.Body)
 
-	println("status: " + response.Status)
-	println("body: " + string(body))
-
 	got = string(body) == "{\"error\":\"Unauthorized\"}"
 	want = true
 
@@ -440,4 +437,154 @@ func TestRefreshJWTFail(t *testing.T) {
 		t.Errorf("got %t, wanted %t", got, want)
 	}
 
+}
+
+func TestUpdateUser(t *testing.T) {
+
+	//login first
+
+	data := map[string]interface{}{
+		"password": "bobspassword",
+		"email":    "bob@ufl.edu",
+	}
+
+	jsonData, err := json.Marshal(data)
+	if err != nil {
+		fmt.Printf("could not marshal json: %s\n", err)
+		return
+	}
+
+	httpposturl := "http://0.0.0.0:3000/api/login"
+
+	request, _ := http.NewRequest("POST", httpposturl, bytes.NewBuffer(jsonData))
+	request.Header.Set("Content-Type", "application/json; charset=UTF-8")
+
+	client := &http.Client{}
+	response, error := client.Do(request)
+	if error != nil {
+		panic(error)
+	}
+	defer response.Body.Close()
+
+	token := response.Header.Get("Set-Cookie")
+	token = token[14:strings.IndexByte(token, ';')]
+
+	httpposturl = "http://0.0.0.0:3000/api/auth/updateuser"
+
+	data = map[string]interface{}{
+		"firstName":   "bob",
+		"lastName":    "roberts",
+		"birthday":    "",
+		"phoneNumber": "555-555-5555",
+		"username":    "bobert",
+	}
+
+	jsonData, err = json.Marshal(data)
+	if err != nil {
+		fmt.Printf("could not marshal json: %s\n", err)
+		return
+	}
+
+	request, _ = http.NewRequest("PUT", httpposturl, bytes.NewBuffer(jsonData))
+
+	request.Header.Set("Content-Type", "application/json; charset=UTF-8")
+
+	cookie := &http.Cookie{
+		Name:   "Authorization",
+		Value:  token,
+		MaxAge: 86400,
+	}
+	request.AddCookie(cookie)
+
+	client = &http.Client{}
+	response, error = client.Do(request)
+	if error != nil {
+		panic(error)
+	}
+	defer response.Body.Close()
+
+	got := response.Status == "200 OK"
+	want := true
+
+	if got != want {
+		t.Errorf("got %t, wanted %t", got, want)
+	}
+
+	body, _ := io.ReadAll(response.Body)
+	got = string(body) == "{\"message\":\"User updated successfully\"}"
+	want = true
+
+	if got != want {
+		t.Errorf("got %t, wanted %t", got, want)
+	}
+}
+
+func TestUpdateUserFail(t *testing.T) {
+
+	//login first
+
+	data := map[string]interface{}{
+		"password": "bobspassword",
+		"email":    "bob@ufl.edu",
+	}
+
+	jsonData, err := json.Marshal(data)
+	if err != nil {
+		fmt.Printf("could not marshal json: %s\n", err)
+		return
+	}
+
+	httpposturl := "http://0.0.0.0:3000/api/login"
+
+	request, _ := http.NewRequest("POST", httpposturl, bytes.NewBuffer(jsonData))
+	request.Header.Set("Content-Type", "application/json; charset=UTF-8")
+
+	client := &http.Client{}
+	response, error := client.Do(request)
+	if error != nil {
+		panic(error)
+	}
+	defer response.Body.Close()
+
+	httpposturl = "http://0.0.0.0:3000/api/auth/updateuser"
+
+	data = map[string]interface{}{
+		"firstName":   "bob",
+		"lastName":    "roberts",
+		"birthday":    "",
+		"phoneNumber": "555-555-5555",
+		"username":    "bobert",
+	}
+
+	jsonData, err = json.Marshal(data)
+	if err != nil {
+		fmt.Printf("could not marshal json: %s\n", err)
+		return
+	}
+
+	request, _ = http.NewRequest("PUT", httpposturl, bytes.NewBuffer(jsonData))
+
+	request.Header.Set("Content-Type", "application/json; charset=UTF-8")
+
+	client = &http.Client{}
+	response, error = client.Do(request)
+	if error != nil {
+		panic(error)
+	}
+	defer response.Body.Close()
+
+	got := response.Status == "401 Unauthorized"
+	want := true
+
+	if got != want {
+		t.Errorf("got %t, wanted %t", got, want)
+	}
+
+	body, _ := io.ReadAll(response.Body)
+	got = string(body) == "{\"error\":\"Unauthorized\"}"
+	want = true
+
+	if got != want {
+		t.Errorf("got %t, wanted %t", got, want)
+	}
 }
