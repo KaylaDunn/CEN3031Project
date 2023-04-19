@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { CommentDialogComponent } from '../comment-dialog/comment-dialog.component';
+import { ViewDialogComponent } from '../view-dialog/view-dialog.component';
 
 
 @Component({
@@ -41,6 +42,7 @@ export class LogsuccessComponent {
 
   // called when user likes a post
   onLike(id: number) {
+
     this.http.put(`http://localhost:3000/api/auth/likepost/${id}`, null, {
       withCredentials: true
     })
@@ -55,6 +57,7 @@ export class LogsuccessComponent {
 
   // called when user hits comment
   onComment(id: number) {
+
     const dialogRef: MatDialogRef<CommentDialogComponent> = this.dialog.open(CommentDialogComponent);
 
     dialogRef.afterClosed().subscribe((comment) => {
@@ -75,5 +78,13 @@ export class LogsuccessComponent {
         });
       }
     })
+  }
+
+  // called when user hits view
+  onView(id: number) {
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = { id: id };
+    const dialogRef: MatDialogRef<ViewDialogComponent> = this.dialog.open(ViewDialogComponent, dialogConfig);
   }
 }
