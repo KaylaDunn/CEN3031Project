@@ -18,6 +18,12 @@ export class CreateaccountComponent implements OnInit {
     this._auth.registerUser(this.registerUserData)
       .subscribe(
         res => {
+          console.log(this.registerUserData.email);
+          console.log(this.registerUserData.username);
+          console.log(this.registerUserData.firstName)
+          console.log(this.registerUserData.lastName)
+          console.log(this.registerUserData.birthday)
+          console.log(this.registerUserData.phoneNumber)
           this._router.navigate(['/create-account-verif']);
         },
         err => console.log(err)
