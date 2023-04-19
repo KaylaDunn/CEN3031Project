@@ -38,7 +38,9 @@
       <input [(ngModel)]="LocationData.input" type="location" name="location" required="required" [style.width.%]="300" matInput placeholder="Enter desired destination...">
     </mat-form-field>
     <button (click)="Location()" type ="locBtn" mat-raised-button color="primary">
-      Go!
+      <a routerLink="/location-search">
+        Go!
+      </a>
     </button>
   </div>
 </div>

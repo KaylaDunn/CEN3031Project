@@ -38,6 +38,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CommentDialogComponent } from './comment-dialog/comment-dialog.component';
 import { ViewDialogComponent } from './view-dialog/view-dialog.component';
 import { AddImageComponent } from './add-image/add-image.component';
+import { LocationSearchFromMainComponent } from './location-search-from-main/location-search-from-main.component';
 
 
 @NgModule({
@@ -57,6 +58,7 @@ import { AddImageComponent } from './add-image/add-image.component';
     CommentDialogComponent,
     ViewDialogComponent,
     AddImageComponent,
+    LocationSearchFromMainComponent,
   ],
   
   imports: [
@@ -114,6 +116,10 @@ import { AddImageComponent } from './add-image/add-image.component';
       {
         path: 'location-search',
         component: LocationSearchComponent
+      },
+      {
+        path: 'locationMain',
+        component: LocationSearchFromMainComponent
       },
       {
         path: 'logout',
