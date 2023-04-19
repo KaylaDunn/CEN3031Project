@@ -16,8 +16,13 @@ type PostResponse struct {
 	models.PostApiResponse
 	User models.UserApiResponse `json:"postedBy"`
 	Images []models.ImageApiResponse `json:"images"`
-	Comments []models.CommentApiResponse `json:"comments"`
+	Comments []CommentResponse `json:"comments"`
 	NumberOfLikes int `json:"numberOfLikes"`
+}
+
+type CommentResponse struct {
+	models.CommentApiResponse
+	User models.UserApiResponse `json:"commentedBy"`
 }
 
 func GetPosts(c *gin.Context) {
@@ -80,7 +85,14 @@ func GetPosts(c *gin.Context) {
 			return
 		}
 
-		postResponses = append(postResponses, PostResponse{post, user, images, comments, int(numberOfLikes)})
+		commentResponses := []CommentResponse{}
+		for _, comment := range comments {
+			// get the user who commented
+			user, _ := db.GetUserById(int(comment.UserID))
+			commentResponses = append(commentResponses, CommentResponse{comment, user})
+		}
+
+		postResponses = append(postResponses, PostResponse{post, user, images, commentResponses , int(numberOfLikes)})
 	}
 
 	// return the posts
@@ -188,10 +200,18 @@ func GetPost(c *gin.Context) {
 		})
 		return
 	}
+
+	commentResponses := []CommentResponse{}
+	for _, comment := range comments {
+		// get the user who commented
+		user, _ := db.GetUserById(int(comment.UserID))
+		commentResponses = append(commentResponses, CommentResponse{comment, user})
+	}
+
 	
 	// return the post
 	c.JSON(http.StatusOK, gin.H{
-		"post": PostResponse{post, user, images, comments, int(numberOfLikes)},
+		"post": PostResponse{post, user, images, commentResponses, int(numberOfLikes)},
 	})
 }
 
@@ -413,5 +433,66 @@ func LikePost(c *gin.Context) {
 	// return the like
 	c.JSON(http.StatusOK, gin.H{
 		"message": "Post liked successfully",
+	})
+}
+
+func CommentOnPost(c *gin.Context) {
+	// get the post id from the request
+	postID := c.Param("id")
+
+	// convert the post id to an int
+	id, err := strconv.Atoi(postID)
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": "Invalid ID",
+			"suggestion": "Check if the ID is a number.",
+		})
+		return
+	}
+
+	// check to see if the post exists
+	post, err := db.GetPostById(id)
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": "Post not found",
+		})
+		return
+	}
+
+	// get the user id from the context
+	userID := c.MustGet("user").(models.User).ID
+
+	// get the comment from the request
+	var comment models.Comment
+	err = c.ShouldBindJSON(&comment)
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": "Invalid comment",
+		})
+		return
+	}
+
+	// create the comment
+	comment.UserID = userID
+	comment.PostID = post.ID
+
+	// save the comment to the database
+	err = db.GetDB().Create(&comment).Error
+	if err != nil {
+		log.Println(err)
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": "error commenting on post",
+		})
+		return
+	}
+
+	// return the comment
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Comment created successfully",
+		"comment": comment.Comment,
+		"postID": comment.PostID,
 	})
 }
