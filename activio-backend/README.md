@@ -108,6 +108,7 @@ The following naming conventions are used throughout the documentation:
     - `birthday` - The birthday of the user (Type: Date String)
     - `phoneNumber` - The phone number of the user
 
+
 ### `api/auth/updateuser`
 - **Description:** Updates the user's information
 - **Method:** PUT

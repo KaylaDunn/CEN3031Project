@@ -9,7 +9,13 @@
       <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
       <!-- Profile picture upload button-->
       <form action="/action_page.php">
-        <input type="file" id="myFile" name="filename">
+        <input style="display: none"
+               type="file"
+               (change)="onFileSelected($event)"
+               #fileInput>
+        <div>
+          <button mat-raised-button [color]="fileSelected ? 'secondary' : 'primary'" type="btnUp" (click)="fileInput.click()">Choose files</button>
+        </div>
       </form>
     </div>
   </div>
