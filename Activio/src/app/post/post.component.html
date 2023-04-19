@@ -31,11 +31,10 @@
     </mat-form-field>
 </div>
 
-<!-- (waiting on comment adding api) -->
 <div class="comment-div">
     <mat-form-field appearance="fill">
         <label>Comment</label>
-        <input matInput name="comment" placeholder="Tell us more!">
+        <input [(ngModel)]="firstComment" matInput name="comment" placeholder="Tell us more!">
     </mat-form-field>
 </div>
 

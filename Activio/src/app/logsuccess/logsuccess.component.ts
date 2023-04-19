@@ -66,8 +66,7 @@ export class LogsuccessComponent {
         },
         {
           withCredentials: true
-        }
-        )
+        })
         .subscribe(response => {
           console.log(response);
           window.location.reload();
