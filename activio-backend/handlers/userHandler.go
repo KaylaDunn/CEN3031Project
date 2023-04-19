@@ -51,6 +51,12 @@ func SignUp(c *gin.Context) {
 		"id":       user.ID,
 		"email":    user.Email,
 		"verified": user.Verified,
+		"username": user.Username,
+		"firstName": user.FirstName,
+		"lastName": user.LastName,
+		"birthday": user.Birthday,
+		"phoneNumber": user.Phonenumber,
+		"profilePicture": user.ProfilePicture,
 	})
 }
 
