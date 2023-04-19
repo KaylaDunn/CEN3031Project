@@ -180,7 +180,7 @@ func getUserDetails(c *gin.Context) {
 		"verified": user.(models.User).Verified,
 		"firstname": user.(models.User).FirstName,
 		"lastname": user.(models.User).LastName,
-		"phone": user.(models.User).Phonenumber,
+		"phoneNumber": user.(models.User).Phonenumber,
 		"birthday": user.(models.User).Birthday,
 	})
 }

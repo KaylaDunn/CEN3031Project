@@ -100,6 +100,10 @@ The following naming conventions are used throughout the documentation:
     - `email` - The email of the user
     - `id` - The id of the user
     - `verified` - Whether the user has verified their email
+    - `firstName` - The first name of the user
+    - `lastName` - The last name of the user
+    - `birthday` - The birthday of the user (Type: Date String)
+    - `phoneNumber` - The phone number of the user
     
 ### `api/images`
 - **Description:** Upload multiple images
