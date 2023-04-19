@@ -41,6 +41,7 @@ export class LogsuccessComponent {
     //     console.log(response);
     //   })
   }
+
   Location() {
     /*this._auth.Location(this.LocationData)
       .subscribe(
@@ -52,6 +53,7 @@ export class LogsuccessComponent {
       )
       */
   }
+  
   // called when user likes a post
   onLike(id: number) {
 
