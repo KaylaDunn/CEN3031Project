@@ -1,4 +1,52 @@
-Detail work you've completed in Sprint 4
-List frontend unit and Cypress tests
-List backend unit tests
-Show updated documentation for your backend API 
+# Sprint 4 Report #
+- Detail work you've completed in Sprint 4
+  - Frontend
+    - Post upload functionality
+    - Uploading multiple files at once
+    - Welcome/Logged in page display
+    - Posts in order of most liked to least liked
+    - Like/comment/view posts
+    - See/edit profile
+    - Delete posts, add images to posts
+    - Log out
+  - Backend
+
+- List frontend unit and Cypress tests
+  - End-to-end
+   - Added navigation button functionality
+      - Createaccount navigates to verification
+      - Verification back to login
+      - Profile navigates to userProfile
+      - Edit account button redirects
+      - Logout redirects to logout and then to main page
+      - Post button with filled inputs redirects home
+      - Makes sure a user with invalid credentials cannot log in
+  - Component
+     - Add image dialog
+     - Add comment dialog
+     - View dialog
+     - Post buttons enabled
+     - Updated all existing component tests to account for additional providers and imports
+- List backend unit test
+  - TestGetPost
+  - TestGetPostFail
+  - TestDeletePost
+  - TestDeletePostFail
+  - TestDeletePostUnauthorized
+  - TestLikePost
+  - TestLikePostAlreadyLiked
+  - TestLikePostUnauthorized
+  - TestLikePostFail
+  - TestUpdateUser
+  - TestUpdateUserFail
+  - TestCommentOnPost
+  - TestCommentOnPostFail
+  - TestCommentOnPostUnauthorized
+  - TestGetPostsByLocation
+  - TestGetPostsByLocationNoResults
+  - TestGetPostsByUser
+  - TestGetPostsByUserNoResults
+- Show updated documentation for your backend API
+  - [API Documentation](https://github.com/KaylaDunn/CEN3031Project/tree/main/activio-backend#readme)
+- Video Presentation Link
+  - link
