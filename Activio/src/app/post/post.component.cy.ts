@@ -1,34 +1,27 @@
 import { TestBed } from '@angular/core/testing';
 import { PostComponent } from './post.component'
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { AuthService } from '../auth.service';
 
 describe('PostComponent', () => {
 
-  // TODO: update testing for full post component
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [AuthService]
+    }).compileComponents();
 
-  /*beforeEach(() => TestBed.configureTestingModule({
-        imports: [HttpClientTestingModule], 
-        providers: [AuthService]
-      }));*/
-
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [HttpClientTestingModule]
-  }));
+    cy.mount(PostComponent);
+  });
   
-  it('should mount', () => {
-    cy.mount(PostComponent)
-  })
 
   it('buttons enabled except post', () => {
-    cy.mount(PostComponent)
     cy.get('button[type="homeBtn"]').should('be.enabled')
     cy.get('button[type="btnUp"]').should('be.enabled')
   })
 
   it('fills inputs', () => {
-    cy.mount(PostComponent)
     cy.get('input[name="loc"]').type('Gainesville')
-    cy.get('input[name="bus"]').type('Krishna @ Plaza')
     cy.get('input[name="act"]').type('Getting Krishna')
   })
 

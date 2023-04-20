@@ -1,11 +1,22 @@
 import { WelcomeComponent } from './welcome.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { TestBed } from '@angular/core/testing';
+import { AuthService } from '../auth.service';
+
 describe('WelcomeComponent', () => {
-    it('mounts', () => {
-        cy.mount(WelcomeComponent)
-    })
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            imports: [HttpClientTestingModule, HttpClientModule],
+            providers: [
+                { provide: AuthService }
+            ]
+        }).compileComponents();
+
+        cy.mount(WelcomeComponent);
+    });
 
     it('buttons enabled', () => {
-        cy.mount(WelcomeComponent)
         cy.get('button').should('be.enabled')
     })
 })

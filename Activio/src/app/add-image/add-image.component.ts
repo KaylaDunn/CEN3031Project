@@ -1,3 +1,5 @@
+// opened by ViewDialogComponent
+
 import { Component, Inject } from '@angular/core';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
