@@ -19,5 +19,5 @@ export class AuthService {
   ProfilePic(img: {}) {
     return this.http.post<any>(this._imgUpload, img)
   }
-
+  
 }

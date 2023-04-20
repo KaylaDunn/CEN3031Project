@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { CommentDialogComponent } from '../comment-dialog/comment-dialog.component';
 import { ViewDialogComponent } from '../view-dialog/view-dialog.component';
@@ -24,7 +24,7 @@ export class LogsuccessComponent {
   }
 
   ngOnInit(): void {
-
+    
     // GET request for the posts
     this.http.get<any>('http://localhost:3000/api/posts')
 
@@ -36,27 +36,20 @@ export class LogsuccessComponent {
       console.error('Error retrieving posts.');
     })
    
-    // // temp: clear posts for testing
-    // const id = 1;
-    // this.http.delete(`http://localhost:3000/api/auth/deletepost/${id}`, {
-    //   withCredentials: true
-    // })
-    //   .subscribe(response => {
-    //     console.log(response);
-    //   })
   }
-
-  Location() {
-    /*this._auth.Location(this.LocationData)
-      .subscribe(
-        res => {
-          console.log(this.LocationData.input);
-          this._router.navigate(['/location-search']);
-        },
-        err => console.log(err)
-      )
-      */
+  
+  onGo(location: string) {
+    this.http.get<any>('http://localhost:3000/api/posts/location/${location}', {
+      reportProgress: true,
+      withCredentials: true 
+    })
+      .subscribe(response => {
+        this.posts = this.sortByLikes(response.posts);
+      }, error => {
+        console.error('Getting Account Info');
+      })
   }
+ 
   
   // called when user likes a post
   onLike(id: number) {
