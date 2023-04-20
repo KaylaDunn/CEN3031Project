@@ -30,16 +30,18 @@ export class WelcomeComponent {
       console.error('Error retrieving posts.');
     })
   }
-  Location() {
-    /*this._auth.Location(this.LocationData)
-      .subscribe(
-        res => {
-          console.log(this.LocationData.input);
-          this._router.navigate(['/location-search']);
-        },
-        err => console.log(err)
-      )
-      */
+  
+  onGo(location: string) {
+    this.http.get<any>(`http://localhost:3000/api/posts/location/${location}`, {
+      reportProgress: true,
+      withCredentials: true 
+    })
+      .subscribe(response => {
+        this.posts = this.sortByLikes(response.posts);
+      }, error => {
+        console.error('Getting Account Info');
+      })
   }
+  
 }
 

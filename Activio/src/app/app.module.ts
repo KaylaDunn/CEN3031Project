@@ -32,13 +32,11 @@ import { PostComponent } from './post/post.component';
 import { LogoutComponent } from './logout/logout.component';
 import { CreateAccountVerifComponent } from './create-account-verif/create-account-verif.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { LocationSearchComponent } from './location-search/location-search.component';
 import { EditProfileInfoComponent } from './edit-profile-info/edit-profile-info.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CommentDialogComponent } from './comment-dialog/comment-dialog.component';
 import { ViewDialogComponent } from './view-dialog/view-dialog.component';
 import { AddImageComponent } from './add-image/add-image.component';
-import { LocationSearchFromMainComponent } from './location-search-from-main/location-search-from-main.component';
 
 
 @NgModule({
@@ -53,12 +51,10 @@ import { LocationSearchFromMainComponent } from './location-search-from-main/loc
     LogoutComponent,
     CreateAccountVerifComponent,
     UserProfileComponent,
-    LocationSearchComponent,
     EditProfileInfoComponent,
     CommentDialogComponent,
     ViewDialogComponent,
-    AddImageComponent,
-    LocationSearchFromMainComponent,
+    AddImageComponent
   ],
   
   imports: [
@@ -112,14 +108,6 @@ import { LocationSearchFromMainComponent } from './location-search-from-main/loc
       {
         path: 'editAccount',
         component: EditProfileInfoComponent
-      },
-      {
-        path: 'location-search',
-        component: LocationSearchComponent
-      },
-      {
-        path: 'locationMain',
-        component: LocationSearchFromMainComponent
       },
       {
         path: 'user-profile',

@@ -39,7 +39,7 @@ export class LogsuccessComponent {
   }
   
   onGo(location: string) {
-    this.http.get<any>('http://localhost:3000/api/posts/location/${location}', {
+    this.http.get<any>(`http://localhost:3000/api/posts/location/${location}`, {
       reportProgress: true,
       withCredentials: true 
     })
