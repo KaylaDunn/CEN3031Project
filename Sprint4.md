@@ -10,24 +10,31 @@
     - Delete posts, add images to posts
     - Log out
   - Backend
-
+     - Mainly focused on updating and enriching the API to ease frontend use
+     - Posts, images, and comments auto fill upon requesting the backend for them
+     - Backend will send updated user information upon request
+     - Profile photo upload works now by linking images into database
+     - Comments are stored by saving who commented on which post and links the original author of the comment to that post
+     - Likes are stored based on who liked a post and which post was liked
+     - Allows frontend to query the backend for posts given a certain location 
+     - Updated the documentation as needed
 - List frontend unit and Cypress tests
   - End-to-end
-   - Added navigation button functionality
+    - Added navigation button functionality
       - Createaccount navigates to verification
       - Verification back to login
       - Profile navigates to userProfile
       - Edit account button redirects
       - Logout redirects to logout and then to main page
       - Post button with filled inputs redirects home
-      - Makes sure a user with invalid credentials cannot log in
+    - Makes sure a user with invalid credentials cannot log in
   - Component
      - Add image dialog
      - Add comment dialog
      - View dialog
      - Post buttons enabled
      - Updated all existing component tests to account for additional providers and imports
-- List backend unit test
+- List backend unit tests
   - TestGetPost
   - TestGetPostFail
   - TestDeletePost
@@ -49,4 +56,4 @@
 - Show updated documentation for your backend API
   - [API Documentation](https://github.com/KaylaDunn/CEN3031Project/tree/main/activio-backend#readme)
 - Video Presentation Link
-  - link
+  - [Youtube Link](https://youtu.be/kyHxxQ7C2z0)
